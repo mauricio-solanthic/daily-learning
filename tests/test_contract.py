@@ -190,6 +190,12 @@ def _():
             body=GOOD_BODY.replace("Prose here.", "It cost $1,800 and $x \\ge 0$ held."))
 
 
+@case("escaped currency dollars do not count as math delimiters (003/005's bug)")
+def _():
+    errs, _ = validate(body=GOOD_BODY.replace("Prose here.", "It cost \\$1,800 and \\$3,000 more."))
+    assert not errs, f"escaped currency dollars should not trip the balance check:\n{errs}"
+
+
 @case("an unclosed think block is rejected")
 def _():
     rejects("closing",

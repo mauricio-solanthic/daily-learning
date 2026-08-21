@@ -466,6 +466,7 @@ def validate(meta, body):
 
     # ---- math and call-out balance ----
     stripped = re.sub(r"\$\$.*?\$\$", "", body, flags=re.S)
+    stripped = re.sub(r"\\\$", "", stripped)  # escaped \$ is literal currency, not a math delimiter
     if stripped.count("$") % 2:
         errs.append("odd number of `$` delimiters outside display math — an unbalanced "
                     "inline equation (a bare currency `$` is the usual cause)")
