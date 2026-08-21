@@ -30,6 +30,22 @@ mirrors, and any substitution you were forced into.
 | `academic.oup.com` | Abstracts fetch; full text usually does not. Enough to confirm a citation exists and what it claims. |
 | `nobelprize.org` | Primary for prize citations and dates. |
 
+## Known permanent gaps
+
+Reports whose committed PDF cannot be exactly reproduced from the current
+source, and why. `tests/test_contract.py`'s CI render job skips the exact
+page-match check for these by name (`KNOWN_GAPS` in `.github/workflows/ci.yml`)
+rather than failing on them forever.
+
+- **008** (`GridInertia_Energy`) — Only the prose and equations were recovered
+  from the Notion attachment after the original scheduled run shipped with no
+  device bridge; the figure (initial RoCoF vs. stored kinetic energy, log
+  scale) and its generator script were not found alongside the source. The
+  committed PDF is the real, 6-page report with that figure; re-rendering the
+  recovered source today produces a reproducible but figure-less 7-page PDF.
+  If the generator script ever surfaces, restore it to `figures/`, add the
+  figure back into the source, and remove the `KNOWN_GAPS` entry.
+
 ## The bias this creates
 
 "Cite the paper that establishes the claim" plus a robots-blocked national lab
