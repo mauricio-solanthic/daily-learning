@@ -1,0 +1,91 @@
+name: contract
+
+# The format contract lives in code, not prose. This runs it.
+# Report 007 shipped with a broken reference block and report 008 shipped in the
+# wrong typeface; both would have been caught here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Contract tests (no browser needed)
+        run: python3 tests/test_contract.py
+
+      - name: Ledger and archive agree
+        run: python3 tools/ledger.py verify
+
+      - name: README is in sync with the archive
+        run: |
+          python3 tools/ledger.py index
+          if ! git diff --quiet -- README.md; then
+            echo "::error::README.md is stale. It is generated — run 'python3 tools/ledger.py index' and commit the result."
+            git --no-pager diff -- README.md
+            exit 1
+          fi
+
+  render:
+    # A real render is slower and needs a browser, so it is a separate job.
+    # It proves the vendored fonts still produce the house format on a machine
+    # that is not the one the reports were written on.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install renderer dependencies
+        run: |
+          python3 -m pip install --quiet Markdown pypdf
+          npm install --silent playwright@1.56.0
+          npx playwright install --with-deps chromium
+
+      - name: Re-render every report with a recovered source
+        run: |
+          mkdir -p /tmp/out
+          status=0
+          for f in src/*.md; do
+            if grep -q "BODY NOT RECOVERED" "$f"; then
+              echo "skip  $(basename "$f")  (source body not recovered)"
+              continue
+            fi
+            echo "::group::$(basename "$f")"
+            NODE_PATH="$PWD/node_modules" python3 tools/render.py "$f" --outdir /tmp/out || status=1
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Confirm the re-render matches the committed PDF page for page
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          def pages(p):
+              d = pathlib.Path(p).read_bytes()
+              c = [int(m.group(1)) for m in re.finditer(rb"/Type\s*/Pages[^>]*?/Count\s+(\d+)", d, re.S)]
+              return max(c) if c else None
+          bad = []
+          for fresh in sorted(pathlib.Path("/tmp/out").glob("*.pdf")):
+              committed = pathlib.Path("reports") / fresh.name
+              if not committed.exists():
+                  bad.append(f"{fresh.name}: re-render has no committed counterpart")
+                  continue
+              a, b = pages(fresh), pages(committed)
+              if a != b:
+                  bad.append(f"{fresh.name}: re-render is {a} pages, committed is {b}")
+          for m in bad:
+              print(f"::error::{m}")
+          sys.exit(1 if bad else 0)
+          PY

@@ -1,0 +1,10 @@
+# Renderer intermediates
+*.html
+!skill/*.html
+__pycache__/
+.DS_Store
+
+# Local node install for playwright (CI installs its own)
+node_modules/
+package.json
+package-lock.json
