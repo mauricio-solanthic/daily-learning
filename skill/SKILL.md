@@ -25,7 +25,10 @@ python3 tools/ledger.py next          # 1. what to write, decided for you
 python3 tools/render.py src/NNN_*.md --outdir reports   # 4. render (§5)
 python3 tools/ledger.py index         # 5. regenerate README.md
 python3 tests/test_contract.py        # 6. prove nothing broke
-git add -A && git commit && git push  # 7. one atomic commit (§6)
+git checkout -b report-NNN            # 7. one atomic commit on its own branch (§6)
+git add -A && git commit
+git push -u origin report-NNN
+gh pr create --base main --fill       # 8. open the PR for review (§6)
 ```
 
 Use absolute paths if you have changed directory. `tools/render.py` resolves its
@@ -220,25 +223,31 @@ One commit carries the PDF, the source, any figures, and the regenerated
 and updated the ledger afterwards, so an interrupted run left a report that
 existed but was never recorded — which is how a category got repeated.
 
+The commit lands on its own branch and goes to Mauricio as a pull request —
+never straight to `main`. Nothing is archived until he reviews and merges it,
+which he does from his phone.
+
 ```bash
 python3 tools/ledger.py index
+git checkout -b report-NNN
 git add -A
 git commit -m "008: Energy — grid inertia and RoCoF
 
 Rotation: Energy was the oldest never-covered category.
 Sources: 12 searches, 17 fetches; 3 declined automated access (see docs/source-notes.md).
 Verified: RoCoF estimate cross-checked against ERCOT's simulation regression."
-git push
+git push -u origin report-NNN
+gh pr create --base main --fill
 ```
 
 Then **`PushNotification`** with two or three sentences: the topic, why the
-rotation landed there, and explicitly whether the push succeeded. A scheduled run
+rotation landed there, and explicitly whether the PR was opened. A scheduled run
 reaches a transcript nobody opens; the notification is the only thing that
-actually arrives. Say "pushed" or say what failed.
+actually arrives. Say "opened PR #N" or say what failed.
 
-If the push is rejected because the remote moved, rebase and push again. If it
-fails for any other reason, say so in the notification and leave the commit
-local — do not force-push, and do not start writing a handoff document.
+If the branch push is rejected, rebase and push again. If it fails for any other
+reason, say so in the notification and leave the commit local — do not
+force-push, and do not start writing a handoff document.
 
 ## 7. If the user replies afterwards
 
