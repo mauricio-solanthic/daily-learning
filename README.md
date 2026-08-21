@@ -21,7 +21,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 005 | 2026-08-18 | Operations Research | Duality Theory in Linear Programming and the Prices Nobody Sets | [005_2026.08.18_DualityTheoryAndTheElectricityPrice_OperationsResearch.pdf](reports/005_2026.08.18_DualityTheoryAndTheElectricityPrice_OperationsResearch.pdf) |
 | 006 | 2026-08-19 | Physics | Black Hole Thermodynamics and the Information Paradox | [006_2026.08.19_BlackHoleThermodynamics_Physics.pdf](reports/006_2026.08.19_BlackHoleThermodynamics_Physics.pdf) |
 | 007 | 2026-08-20 | Quantitative Finance | The Volatility Smile and What the 1987 Crash Wrote Into Every Option Ever Since | [007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf](reports/007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf) |
-| 008 | 2026-08-21 | Energy | Seconds of Spin — Inertia and the Physics of Keeping a Grid Together ⚠︎ | [008_2026.08.21_GridInertia_Energy.pdf](reports/008_2026.08.21_GridInertia_Energy.pdf) |
+| 008 | 2026-08-21 | Energy | Seconds of Spin — Inertia and the Physics of Keeping a Grid Together | [008_2026.08.21_GridInertia_Energy.pdf](reports/008_2026.08.21_GridInertia_Energy.pdf) |
 
 ## Rotation state
 
@@ -50,13 +50,15 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 
 ### Energy
 
-- Grid inertia, the inertia constant H, and stored kinetic energy measured in seconds <sub>(008)</sub>
-- Rate of change of frequency (RoCoF) and the swing-equation estimate of it <sub>(008)</sub>
-- The 9 August 2019 Great Britain frequency event (Hornsea, Little Barford, low-frequency demand disconnection) <sub>(008)</sub>
-- The April 2025 Iberian blackout as a contrasting failure mode <sub>(008)</sub>
-- Minimum-inertia and critical-inertia policy floors (all-island Ireland, ERCOT, Continental Europe) <sub>(008)</sub>
-- Synthetic inertia versus grid-forming inverters, and what each actually provides <sub>(008)</sub>
-- Inertia as a proxy metric and what it was standing in for <sub>(008)</sub>
+- Grid inertia and frequency stability in any framing - the swing equation, the inertia constant H, stored kinetic energy in MW·s / GVA·s, RoCoF and its formula, inertia floors, minimum-inertia policy, synthetic inertia <sub>(008)</sub>
+- The GB 9 August 2019 Hornsea / Little Barford event and the 0.125 Hz/s loss-of-mains threshold - retire this as an opening anecdote <sub>(008)</sub>
+- The all-island Irish inertia floor of 23,000 MW·s, the SNSP limit and the RoCoF trials <sub>(008)</sub>
+- ERCOT's 100 GW·s critical-inertia level and its 2024 decision not to create an inertia product <sub>(008)</sub>
+- The NESO Stability Pathfinder and grid-forming batteries <sub>(008)</sub>
+- The 4 November 2006 UCTE system split <sub>(008)</sub>
+- The South Australian black system of 28 September 2016 <sub>(008)</sub>
+- The 28 April 2025 Iberian blackout, including the voltage-versus-inertia framing and the Badajoz oscillation <sub>(008)</sub>
+- The "210 GVA·s is only 58 MWh" comparison against Hornsdale <sub>(008)</sub>
 
 ### Physics
 
@@ -117,11 +119,19 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 ### Energy
 
-- Capacity markets and the missing-money problem
-- HVDC and the physics of long-distance transmission
-- Grid-scale storage chemistry and the duration question
-- Nuclear load-following and the economics of inflexible baseload
-- Molten-salt thermal storage and the economics of holding heat
+- Nuclear fuel cycle and enrichment economics
+- HVDC transmission and multi-terminal DC
+- Molten-salt and other long-duration thermal storage
+- Pumped hydro siting and economics
+- Geothermal, including enhanced geothermal
+- Grid-scale battery degradation and warranty economics
+- Capacity markets and resource adequacy
+- Electricity market unit commitment
+- Transformer and cable supply chains
+- Distribution-network hosting capacity
+- Industrial heat electrification
+- Hydrogen electrolysis efficiency
+- Refining and biofuel process engineering
 
 ### Physics
 
@@ -152,7 +162,3 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Monte Carlo methods and variance reduction
 - Optimal execution and market microstructure (Almgren-Chriss, Kyle)
 - Rough volatility
-
-## Provenance notes
-
-- **008** — Body not recovered. This report was produced by a scheduled cloud run with no device bridge; the byte-exact Markdown source is attached to the Notion index page "Daily Learning — Index". Front matter below was reconstructed from the shipped PDF and is authoritative for the ledger. Restore the body before treating this source as re-renderable.
