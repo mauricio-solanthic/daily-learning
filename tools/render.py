@@ -375,7 +375,6 @@ def to_pdf(html_path, pdf_path, running):
     js = Path(tempfile.mkdtemp()) / "topdf.js"
     js.write_text(PDF_JS, encoding="utf-8")
     env = dict(os.environ)
-    env.setdefault("PLAYWRIGHT_BROWSERS_PATH", "/opt/pw-browsers")
     node_path = env.get("NODE_PATH", "")
     globals_ = subprocess.run(["npm", "root", "-g"], capture_output=True,
                               text=True).stdout.strip()
