@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**8 reports.** Next up: **Cross-Domain Synthesis** as No. 009 — Cross-Domain Synthesis is the standing slot for weekday 4 and is due.
+**9 reports.** Next up: **Geopolitics of Resources** as No. 010 — never covered; first in the rotation order among never-covered categories.
 
 ## Log
 
@@ -22,6 +22,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 006 | 2026-08-19 | Physics | Black Hole Thermodynamics and the Information Paradox | [006_2026.08.19_BlackHoleThermodynamics_Physics.pdf](reports/006_2026.08.19_BlackHoleThermodynamics_Physics.pdf) |
 | 007 | 2026-08-20 | Quantitative Finance | The Volatility Smile and What the 1987 Crash Wrote Into Every Option Ever Since | [007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf](reports/007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf) |
 | 008 | 2026-08-21 | Energy | Seconds of Spin — Inertia and the Physics of Keeping a Grid Together | [008_2026.08.21_GridInertia_Energy.pdf](reports/008_2026.08.21_GridInertia_Energy.pdf) |
+| 009 | 2026-08-22 | History of Science | Ninety-Five Per Cent — Soda, Smoke and the First Emission Standard | [009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf](reports/009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf) |
 
 ## Rotation state
 
@@ -32,7 +33,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| History of Science | — | 0 |
 | Geopolitics of Resources | — | 0 |
 | Economics | — | 0 |
 | Philosophy | — | 0 |
@@ -42,6 +42,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Physics | 2026-08-19 | 2 |
 | Quantitative Finance | 2026-08-20 | 1 |
 | Energy | 2026-08-21 | 1 |
+| History of Science | 2026-08-22 | 1 |
 
 ## Burned territory
 
@@ -73,6 +74,22 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The information paradox and the Page curve <sub>(006)</sub>
 - Replica wormholes and the island formula <sub>(006)</sub>
 - The holographic principle and entropy bounds <sub>(006)</sub>
+
+### History of Science
+
+- The Leblanc soda process, its two-stage chemistry (salt cake and black ash), and its per-tonne mass balance <sub>(009)</sub>
+- Nicolas Leblanc, the 1775 Academie des Sciences prize of 2,400 livres, the Saint-Denis works and his 1806 suicide <sub>(009)</sub>
+- Galligu / tank waste, calcium sulfide, and the 1.75 tonnes-per-tonne waste ratio cross-checked against stoichiometry <sub>(009)</sub>
+- The Alkali Act 1863, the 95 per cent condensation rule, Robert Angus Smith and the Alkali Inspectorate <sub>(009)</sub>
+- The Earl of Derby's 22 May 1865 report to the Lords - 5,762 tons of salt a week, 98.72 per cent condensation, 64 works <sub>(009)</sub>
+- The one-fifth grain per cubic foot volumetric standard and its conversion to 458 mg/m3 against the modern 1-10 mg/Nm3 BAT-AEL <sub>(009)</sub>
+- Ernest Solvay, the 1861 ammonia-soda patent, the carbonating tower, and Solvay & Cie <sub>(009)</sub>
+- Why the direct route from salt and limestone fails - the +104 kJ/mol standard Gibbs energy and the aqueous equilibrium <sub>(009)</sub>
+- Ammonia as a circulating carrier - the 321 kg/tonne figure and the recovery-rate sensitivity worked example <sub>(009)</sub>
+- The solubility argument (NaHCO3 at 10.3 vs NaCl 36.0 and NH4Cl 39.5 g/100 g at 25 C) <sub>(009)</sub>
+- Bleaching powder and chlorine as the co-product that kept Leblanc alive; the Weldon and Deacon processes <sub>(009)</sub>
+- The United Alkali Company of 1890 and its forty-five Leblanc firms <sub>(009)</sub>
+- Retire as openings - the Widnes smell, the dying hedgerows of Cheshire, the flowers that died in two hours <sub>(009)</sub>
 
 ### Operations Research
 
@@ -140,6 +157,17 @@ meant to build rather than restart, so prefer these over starting fresh.
 - The AdS/CFT correspondence
 - Cosmological inflation and the early universe
 - Quantum field theory in curved spacetime
+
+### History of Science
+
+- The synthetic dye industry and the birth of the corporate research laboratory
+- The Thomas-Gilchrist basic steel process and the phosphorus problem
+- Interchangeable parts and the American system of manufactures
+- Precision measurement, gauge blocks and the metrology of mass production
+- The early history of the vacuum and the air pump
+- The Haber-Bosch process and high-pressure chemical engineering
+- Standardisation of screw threads and the machine-tool trade
+- The Portland cement industry and the rotary kiln
 
 ### Operations Research
 
