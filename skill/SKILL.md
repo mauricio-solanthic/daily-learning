@@ -9,10 +9,10 @@ Produce one report and commit it. Runs unattended: never ask a question, never
 offer a menu of topics, never wait for confirmation. Pick, research, write,
 render, commit.
 
-Everything you need is in one git repository. There is no Notion page to read,
-no local folder to reach, no MCP server to depend on, and no queue of unfiled
-work. If you find yourself writing a handoff document, something has gone wrong
-with this skill rather than with the run.
+This repository is the whole system: research notes, the ledger, the format
+contract, and the archive all live here. If you find yourself writing a
+handoff document, something has gone wrong with this skill rather than with
+the run.
 
 ## Run order
 
@@ -152,7 +152,7 @@ burned only after three separate pieces opened with it.
 | Display math | `$$ ... $$` alone on its lines, blank line either side |
 | Table | GFM pipe table, 4 columns max, short cells; numeric columns auto-align |
 | Citation | bare `[1]`, `[2]`, `[3], [7]` — no links, no author-year |
-| Figure | `![Caption](../figures/NNN-name.svg)` |
+| Figure | `![Caption](../figures/NNN-name.svg)` or `.png` |
 | Call-out | `:::think Label` … `:::`, one or two, answered in the prose after |
 
 **The reference block.** `## References` must be the last thing in the file, and
