@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**9 reports.** Next up: **Geopolitics of Resources** as No. 010 — never covered; first in the rotation order among never-covered categories.
+**10 reports.** Next up: **Economics** as No. 011 — never covered; first in the rotation order among never-covered categories.
 
 ## Log
 
@@ -23,6 +23,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 007 | 2026-08-20 | Quantitative Finance | The Volatility Smile and What the 1987 Crash Wrote Into Every Option Ever Since | [007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf](reports/007_2026.08.20_VolatilitySmile_QuantitativeFinance.pdf) |
 | 008 | 2026-08-21 | Energy | Seconds of Spin — Inertia and the Physics of Keeping a Grid Together | [008_2026.08.21_GridInertia_Energy.pdf](reports/008_2026.08.21_GridInertia_Energy.pdf) |
 | 009 | 2026-08-22 | History of Science | Ninety-Five Per Cent — Soda, Smoke and the First Emission Standard | [009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf](reports/009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf) |
+| 010 | 2026-08-24 | Geopolitics of Resources | The Escaping Element — Helium, Hormuz and the Reserve That Was Sold | [010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf](reports/010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf) |
 
 ## Rotation state
 
@@ -33,7 +34,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Geopolitics of Resources | — | 0 |
 | Economics | — | 0 |
 | Philosophy | — | 0 |
 | Climate & Sustainability | — | 0 |
@@ -43,6 +43,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Quantitative Finance | 2026-08-20 | 1 |
 | Energy | 2026-08-21 | 1 |
 | History of Science | 2026-08-22 | 1 |
+| Geopolitics of Resources | 2026-08-24 | 1 |
 
 ## Burned territory
 
@@ -90,6 +91,27 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Bleaching powder and chlorine as the co-product that kept Leblanc alive; the Weldon and Deacon processes <sub>(009)</sub>
 - The United Alkali Company of 1890 and its forty-five Leblanc firms <sub>(009)</sub>
 - Retire as openings - the Widnes smell, the dying hedgerows of Cheshire, the flowers that died in two hours <sub>(009)</sub>
+
+### Geopolitics of Resources
+
+- Helium as a geopolitical commodity in any framing - the byproduct problem, chokepoint concentration, and the absence of a storable buffer <sub>(010)</sub>
+- The 2026 Iranian strikes on Ras Laffan (2 and 19 March), QatarEnergy's force majeure, and the Hormuz closure as a helium shock <sub>(010)</sub>
+- The two hundred stranded cryogenic ISO containers and the 35-48 day boil-off window <sub>(010)</sub>
+- The three competing shock figures (11 per cent, 14 per cent, 5.2 million cubic metres a month) and the denominator lesson behind them <sub>(010)</sub>
+- The 2017 Saudi-UAE blockade of Qatar and the severed road route to Jebel Ali <sub>(010)</sub>
+- The US Federal Helium Reserve - the 1925 Helium Act, Cliffside, the 1960 amendment, the 290 million dollar principal that grew to 1.3 billion, the 1996 Privatization Act, the 2013 Stewardship Act, and the June 2024 sale to Messer for 460 million dollars <sub>(010)</sub>
+- The 1938 refusal to sell helium to Germany, Harold Ickes, and the FRUS telegrams <sub>(010)</sub>
+- Radiogenic helium-4 from alpha decay - eight alphas per uranium-238 chain, seven per uranium-235, six per thorium-232 <sub>(010)</sub>
+- Cratons, thorium at 20-30 ppm, and nitrogen as the advective carrier gas for crustal helium <sub>(010)</sub>
+- The Yellowstone helium-degassing paper and the 17,100 mol/yr average-crust production rate scaled to continental area <sub>(010)</sub>
+- The atmospheric helium budget - 5.4 ppm, the 50 g/s escape flux, the polar wind, and the ~2.4 million year residence time computed as M/Phi <sub>(010)</sub>
+- The concentration-ratio argument against extracting helium from air (185x to 556x) <sub>(010)</sub>
+- The 0.1 versus 0.3 per cent economic-threshold disagreement between Danabalan and Physics World <sub>(010)</sub>
+- Ras Laffan Helium 1 (700 MMscf/yr, 2005) and Helium 2 (1.3 Bscf/yr, 2013), reconciled with Air Liquide's 38 Mm3/yr rating <sub>(010)</sub>
+- Gazprom's Amur plant, 42 bcm of gas and 60 Mm3 of helium, and Russia's April 2026 export controls <sub>(010)</sub>
+- The Rukwa Basin, Tanzania - the 138 Bcf P50 estimate and the Tanzanian Craton's 7.0e5 Bcf generative potential <sub>(010)</sub>
+- Helium shortages 1.0 through 4.0 and the laboratory NMR shutdowns of 2022 <sub>(010)</sub>
+- Retire as openings - the boiling-off containers, the balloon-versus-MRI framing <sub>(010)</sub>
 
 ### Operations Research
 
@@ -168,6 +190,17 @@ meant to build rather than restart, so prefer these over starting fresh.
 - The Haber-Bosch process and high-pressure chemical engineering
 - Standardisation of screw threads and the machine-tool trade
 - The Portland cement industry and the rotary kiln
+
+### Geopolitics of Resources
+
+- Phosphate rock, Morocco and the Western Sahara question
+- Rare earth separation chemistry and the economics of the midstream
+- Niobium and the single-supplier problem
+- Uranium enrichment, conversion capacity and the fuel-cycle bottleneck
+- Water as a traded resource - the Colorado compact and desalination geopolitics
+- Copper grade decline and the coming supply gap
+- Shipping chokepoints as a general class - Malacca, Bab el-Mandeb, Panama
+- Cobalt, artisanal mining and the Congolese state
 
 ### Operations Research
 
