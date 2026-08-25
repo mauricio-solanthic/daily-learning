@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**10 reports.** Next up: **Economics** as No. 011 — never covered; first in the rotation order among never-covered categories.
+**11 reports.** Next up: **Philosophy** as No. 012 — never covered; first in the rotation order among never-covered categories.
 
 ## Log
 
@@ -24,6 +24,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 008 | 2026-08-21 | Energy | Seconds of Spin — Inertia and the Physics of Keeping a Grid Together | [008_2026.08.21_GridInertia_Energy.pdf](reports/008_2026.08.21_GridInertia_Energy.pdf) |
 | 009 | 2026-08-22 | History of Science | Ninety-Five Per Cent — Soda, Smoke and the First Emission Standard | [009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf](reports/009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf) |
 | 010 | 2026-08-24 | Geopolitics of Resources | The Escaping Element — Helium, Hormuz and the Reserve That Was Sold | [010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf](reports/010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf) |
+| 011 | 2026-08-25 | Economics | Constant Utility — The Quiet Fight Over How Inflation Is Measured | [011_2026.08.25_ConstantUtility_Economics.pdf](reports/011_2026.08.25_ConstantUtility_Economics.pdf) |
 
 ## Rotation state
 
@@ -34,7 +35,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Economics | — | 0 |
 | Philosophy | — | 0 |
 | Climate & Sustainability | — | 0 |
 | Cross-Domain Synthesis | — | 0 |
@@ -44,6 +44,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Energy | 2026-08-21 | 1 |
 | History of Science | 2026-08-22 | 1 |
 | Geopolitics of Resources | 2026-08-24 | 1 |
+| Economics | 2026-08-25 | 1 |
 
 ## Burned territory
 
@@ -112,6 +113,28 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Rukwa Basin, Tanzania - the 138 Bcf P50 estimate and the Tanzanian Craton's 7.0e5 Bcf generative potential <sub>(010)</sub>
 - Helium shortages 1.0 through 4.0 and the laboratory NMR shutdowns of 2022 <sub>(010)</sub>
 - Retire as openings - the boiling-off containers, the balloon-versus-MRI framing <sub>(010)</sub>
+
+### Economics
+
+- The consumer price index as a contested political instrument rather than a measurement <sub>(011)</sub>
+- The 1944 wage-stabilization fight - the Little Steel formula, labour's 43.5 per cent against the BLS index's 23.5 per cent, the Mills and Mitchell committees, and George Meany's "retail price index" line <sub>(011)</sub>
+- The Konus true cost-of-living index defined through the expenditure function, and the Laspeyres-upper-bound / Paasche-lower-bound theorem <sub>(011)</sub>
+- The two-good CES worked example where one price doubles - Laspeyres 50 per cent, Paasche 33.3 per cent, Fisher and the truth 41.4 per cent <sub>(011)</sub>
+- Superlative index numbers, Diewert 1976, and the fact that Fisher is exact only locally and drifts at high substitution elasticity <sub>(011)</sub>
+- The CPI's physical machinery - 243 item strata by 32 index areas giving 7,776 basic indexes, 80,000 goods priced, 6,000 housing units, 23,000 establishments, 93 per cent population coverage <sub>(011)</sub>
+- The 0.07 per cent median standard error on the 12-month CPI change, and the point that sampling noise is smaller than the conceptual disagreements <sub>(011)</sub>
+- The January 1999 geometric-mean change, the 61 per cent of weight it covered, and the shelter / utilities / medical-services carve-outs <sub>(011)</sub>
+- The January 2023 move to annual single-year expenditure weights and the 0.036-point effect <sub>(011)</sub>
+- Nordhaus's history of lighting - hours of work per 1,000 lumen-hours from 5.37 to 0.000119, and the 900-to-1,600-fold overstatement <sub>(011)</sub>
+- Hausman's virtual price, Apple-Cinnamon Cheerios, and the 25 per cent overstatement of the cereal index <sub>(011)</sub>
+- The Stigler Committee of 1961 and its constant-utility and hedonic-regression recommendations <sub>(011)</sub>
+- The counterintuitive direction of hedonic adjustment - BLS's own 0.005-point figure and the one-per-cent hedonic weight <sub>(011)</sub>
+- The Boskin Commission - the five members, 4 December 1996, the 1.1-point estimate, the 0.8-1.6 range, the four-component decomposition, and the "fourth largest federal program" argument <sub>(011)</sub>
+- The 1999 GAO follow-up and the members' revised 0.73-0.90 estimates; Gordon's 2006 retrospective revising upward to 1.2-1.3 <sub>(011)</sub>
+- The chained CPI - Tornqvist formula, August 2002 introduction, CBO's 0.25-point expected gap, the 2017 tax-code switch, and the 2020 reversal <sub>(011)</sub>
+- Inflation inequality - Jaravel's 0.661-point retail gap between bottom and top income quintiles, and the CPI-W mismatch in Social Security indexation <sub>(011)</sub>
+- Argentina's INDEC 2007-2015, the divide-by-three approximation, and online price indexes as an outside check <sub>(011)</sub>
+- Retire as openings - the union grievance of 1944, the congressional commission of 1996 <sub>(011)</sub>
 
 ### Operations Research
 
@@ -201,6 +224,16 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Copper grade decline and the coming supply gap
 - Shipping chokepoints as a general class - Malacca, Bab el-Mandeb, Panama
 - Cobalt, artisanal mining and the Congolese state
+
+### Economics
+
+- National accounts - what GDP includes, excludes and imputes, and the 2013 R&D capitalisation
+- Hedonic pricing beyond the CPI - housing, wages and the value of a statistical life
+- The economics of measurement itself - who funds statistical agencies and what gets counted
+- Purchasing power parity, the Penn effect and international income comparisons
+- Unemployment definitions - U-3 through U-6, labour force participation and discouraged workers
+- The natural rate of interest and the estimation of unobservable macroeconomic quantities
+- Sovereign inflation-linked debt and the design of indexed contracts
 
 ### Operations Research
 
