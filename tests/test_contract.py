@@ -17,9 +17,11 @@ Exits non-zero on the first failure with a diff-shaped message.
 from __future__ import annotations
 
 import io
+import json
+import os
 import re
 import sys
-from contextlib import redirect_stderr
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -90,6 +92,9 @@ GOOD_META = {
     "seq": "99", "date": "2026-08-24", "category": "Energy",
     "title": "A Fixture Title", "slug": "Fixture",
     "burned": ["First burned item", "Second burned item"],
+    "slack": ("A fixture summary standing in for a real one. It has to be long enough "
+              "to clear the minimum and carry at least two sentences, because that is "
+              "what the channel post is made of. The third sentence says why it matters."),
     "next": ["Somewhere to go next"],
 }
 
@@ -262,6 +267,157 @@ def _():
     prose = "One two three four five.\n\n| a | b |\n|---|---|\n| 1 | 2 |\n\n$$ x = y $$\n"
     assert render.prose_word_count(prose) == 5, (
         f"expected 5 prose words, got {render.prose_word_count(prose)}")
+
+
+# --------------------------------------------------------------------------- #
+# the Slack contract: `slack:` is what the channel post is made of
+# --------------------------------------------------------------------------- #
+
+@case("missing slack: summary is rejected")
+def _():
+    m = dict(GOOD_META); m["slack"] = ""
+    rejects("slack", meta=m)
+
+
+@case("a one-line slack: summary is rejected")
+def _():
+    m = dict(GOOD_META); m["slack"] = "Grid inertia, explained."
+    rejects("characters", meta=m)
+
+
+@case("slack: copied from deck: is rejected")
+def _():
+    m = dict(GOOD_META)
+    m["deck"] = ("A deck long enough to clear the length floor on its own, written as "
+                 "a standfirst. It even has a second sentence so only the duplication "
+                 "check can fire. And a third for good measure.")
+    m["slack"] = m["deck"]
+    rejects("identical to", meta=m)
+
+
+@case("chat scaffolding in slack: is rejected")
+def _():
+    m = dict(GOOD_META)
+    m["slack"] = ("This report explores grid inertia and why it matters. It covers the "
+                  "swing equation and RoCoF in some depth. It closes on policy.")
+    rejects("scaffolding", meta=m)
+
+
+@case("every shipped report carries a slack: summary")
+def _():
+    import frontmatter as fmod
+    missing = []
+    for f in sorted((ROOT / "src").glob("*.md")):
+        meta, _ = fmod.parse(f.read_text(encoding="utf-8"))
+        if not (meta.get("slack") or "").strip():
+            missing.append(f.name)
+    assert not missing, f"sources with no slack: summary {missing}"
+
+
+@case("announce.py builds a valid payload for the newest report")
+def _():
+    import announce
+    seqs = sorted(int(f.name[:3]) for f in (ROOT / "src").glob("*.md"))
+    p = announce.payload(seqs[-1], release_url="https://example.invalid/r")
+    assert p["tag"] == f"report-{seqs[-1]:03d}", p["tag"]
+    comment = p["slack"]["initial_comment"]
+    assert p["url"] in comment, "the release link is not in the Slack comment"
+    assert len(comment) > 200, "Slack comment looks empty"
+    assert p["slack"]["channel_id"] == announce.SLACK_CHANNEL_ID
+    assert p["url"].startswith("https://"), p["url"]
+
+
+@case("announce detect ignores edits and only reports additions")
+def _():
+    import announce
+    assert announce.detect("", "HEAD") == [], (
+        "an empty base must announce nothing, not the whole back catalogue")
+
+
+class _FakeResp:
+    def __init__(self, body: bytes, status=200):
+        self._body, self.status = body, status
+    def read(self): return self._body
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+
+
+@case("announce.py post() uploads and shares into the configured channel")
+def _():
+    import announce
+    calls = []
+
+    def fake_urlopen(req, timeout=None):
+        url = req.full_url
+        calls.append(url)
+        if url.endswith("files.getUploadURLExternal"):
+            return _FakeResp(json.dumps(
+                {"ok": True, "upload_url": "https://files.slack.com/upload/v1/xyz",
+                 "file_id": "F123"}).encode())
+        if "files.slack.com/upload" in url:
+            return _FakeResp(b"", status=200)
+        if url.endswith("files.completeUploadExternal"):
+            return _FakeResp(json.dumps({"ok": True, "files": [{"id": "F123"}]}).encode())
+        raise AssertionError(f"unexpected URL: {url}")
+
+    seq = sorted(int(f.name[:3]) for f in (ROOT / "src").glob("*.md"))[-1]
+    real_urlopen = announce.urllib.request.urlopen
+    announce.urllib.request.urlopen = fake_urlopen
+    buf_out, buf_err = io.StringIO(), io.StringIO()
+    os.environ["SLACK_BOT_TOKEN"] = "xoxb-fake-token-should-never-print"
+    try:
+        with redirect_stdout(buf_out), redirect_stderr(buf_err):
+            announce.post(seq, "https://example.invalid/r")
+    finally:
+        announce.urllib.request.urlopen = real_urlopen
+        del os.environ["SLACK_BOT_TOKEN"]
+
+    assert calls == [
+        "https://slack.com/api/files.getUploadURLExternal",
+        "https://files.slack.com/upload/v1/xyz",
+        "https://slack.com/api/files.completeUploadExternal",
+    ], calls
+    assert "xoxb-fake-token-should-never-print" not in buf_out.getvalue()
+    assert "xoxb-fake-token-should-never-print" not in buf_err.getvalue()
+
+
+@case("announce.py post() fails loudly, without leaking the token, on a Slack error")
+def _():
+    import announce
+
+    def fake_urlopen(req, timeout=None):
+        url = req.full_url
+        if url.endswith("files.getUploadURLExternal"):
+            return _FakeResp(json.dumps(
+                {"ok": True, "upload_url": "https://files.slack.com/upload/v1/xyz",
+                 "file_id": "F123"}).encode())
+        if "files.slack.com/upload" in url:
+            return _FakeResp(b"", status=200)
+        if url.endswith("files.completeUploadExternal"):
+            return _FakeResp(json.dumps(
+                {"ok": False, "error": "not_in_channel"}).encode())
+        raise AssertionError(f"unexpected URL: {url}")
+
+    seq = sorted(int(f.name[:3]) for f in (ROOT / "src").glob("*.md"))[-1]
+    real_urlopen = announce.urllib.request.urlopen
+    announce.urllib.request.urlopen = fake_urlopen
+    buf_out, buf_err = io.StringIO(), io.StringIO()
+    os.environ["SLACK_BOT_TOKEN"] = "xoxb-fake-token-should-never-print"
+    try:
+        with redirect_stdout(buf_out), redirect_stderr(buf_err):
+            try:
+                announce.post(seq, "https://example.invalid/r")
+                raised = False
+            except SystemExit as e:
+                raised = True
+                assert "not_in_channel" in str(e), str(e)
+    finally:
+        announce.urllib.request.urlopen = real_urlopen
+        del os.environ["SLACK_BOT_TOKEN"]
+
+    assert raised, "post() should exit on a Slack-reported failure"
+    assert "xoxb-fake-token-should-never-print" not in buf_out.getvalue()
+    assert "xoxb-fake-token-should-never-print" not in buf_err.getvalue()
 
 
 # --------------------------------------------------------------------------- #

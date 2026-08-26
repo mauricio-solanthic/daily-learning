@@ -1,0 +1,106 @@
+name: announce
+
+# When a report PR merges to main, cut a GitHub release for it and post the
+# summary to Slack.
+#
+# This lives in Actions rather than in the daily Claude run for two reasons that
+# were both measured, not assumed: the Slack connector available to that run has
+# no file-upload tool, and slack.com is blocked outright by the sandbox's egress
+# proxy. Actions has open network and the repository, so it is where this belongs.
+#
+# It also means the channel only ever sees reports that were reviewed and merged.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "reports/**.pdf"
+  workflow_dispatch:
+    inputs:
+      seq:
+        description: "Announce a specific report by sequence number (e.g. 12)"
+        required: true
+        type: string
+
+permissions:
+  contents: write        # needed to create releases
+
+concurrency:
+  group: announce
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # detect needs both commits present
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Work out which reports are new
+        id: detect
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "seqs=${{ inputs.seq }}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          set +e
+          out=$(python3 tools/announce.py detect \
+                  --before "${{ github.event.before }}" \
+                  --after  "${{ github.sha }}")
+          code=$?
+          set -e
+          if [ $code -eq 3 ]; then
+            echo "No newly added report PDFs in this push — nothing to announce."
+            echo "seqs=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          [ $code -eq 0 ] || exit $code
+          echo "Detected: $out"
+          echo "seqs=$(echo "$out" | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Release and announce
+        if: steps.detect.outputs.seqs != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          set -euo pipefail
+          for seq in ${{ steps.detect.outputs.seqs }}; do
+            printf -v padded "%03d" "$seq"
+            tag="report-$padded"
+            echo "::group::$tag"
+
+            meta=$(python3 tools/announce.py payload "$seq")
+            title=$(python3 -c "import json,sys;print(json.load(sys.stdin)['title'])" <<<"$meta")
+            pdf=$(python3   -c "import json,sys;print(json.load(sys.stdin)['pdf'])"   <<<"$meta")
+            python3 -c "import json,sys;print(json.load(sys.stdin)['notes'])" <<<"$meta" > /tmp/notes.md
+
+            # Releases are idempotent: re-running must not duplicate or fail.
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "Release $tag already exists — refreshing its asset and notes."
+              gh release edit "$tag" --title "$title" --notes-file /tmp/notes.md
+              gh release upload "$tag" "$pdf" --clobber
+              already_released=true
+            else
+              gh release create "$tag" "$pdf" \
+                --title "$title" --notes-file /tmp/notes.md --latest
+              already_released=false
+            fi
+
+            url=$(gh release view "$tag" --json url -q .url)
+            echo "Release: $url"
+
+            if [ -z "${SLACK_BOT_TOKEN:-}" ]; then
+              echo "::warning::SLACK_BOT_TOKEN is not set. Release published, Slack post skipped."
+            elif [ "$already_released" = "true" ]; then
+              echo "::notice::$tag was already released, so the channel has already seen it. Not re-posting."
+            else
+              python3 tools/announce.py post "$seq" --release-url "$url"
+            fi
+            echo "::endgroup::"
+          done
