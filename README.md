@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**11 reports.** Next up: **Philosophy** as No. 012 — never covered; first in the rotation order among never-covered categories.
+**12 reports.** Next up: **Climate & Sustainability** as No. 013 — never covered; first in the rotation order among never-covered categories.
 
 ## Log
 
@@ -25,6 +25,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 009 | 2026-08-22 | History of Science | Ninety-Five Per Cent — Soda, Smoke and the First Emission Standard | [009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf](reports/009_2026.08.22_NinetyFivePerCent_HistoryOfScience.pdf) |
 | 010 | 2026-08-24 | Geopolitics of Resources | The Escaping Element — Helium, Hormuz and the Reserve That Was Sold | [010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf](reports/010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf) |
 | 011 | 2026-08-25 | Economics | Constant Utility — The Quiet Fight Over How Inflation Is Measured | [011_2026.08.25_ConstantUtility_Economics.pdf](reports/011_2026.08.25_ConstantUtility_Economics.pdf) |
+| 012 | 2026-08-26 | Philosophy | Two Boxes — The Argument That Never Settled | [012_2026.08.26_TwoBoxes_Philosophy.pdf](reports/012_2026.08.26_TwoBoxes_Philosophy.pdf) |
 
 ## Rotation state
 
@@ -35,7 +36,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Philosophy | — | 0 |
 | Climate & Sustainability | — | 0 |
 | Cross-Domain Synthesis | — | 0 |
 | Operations Research | 2026-08-18 | 4 |
@@ -45,6 +45,7 @@ last-covered. Ties among never-covered are broken by the order in
 | History of Science | 2026-08-22 | 1 |
 | Geopolitics of Resources | 2026-08-24 | 1 |
 | Economics | 2026-08-25 | 1 |
+| Philosophy | 2026-08-26 | 1 |
 
 ## Burned territory
 
@@ -135,6 +136,27 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Inflation inequality - Jaravel's 0.661-point retail gap between bottom and top income quintiles, and the CPI-W mismatch in Social Security indexation <sub>(011)</sub>
 - Argentina's INDEC 2007-2015, the divide-by-three approximation, and online price indexes as an outside check <sub>(011)</sub>
 - Retire as openings - the union grievance of 1944, the congressional commission of 1996 <sub>(011)</sub>
+
+### Philosophy
+
+- Newcomb's problem and the causal versus evidential decision theory split <sub>(012)</sub>
+- William Newcomb at Lawrence Livermore in 1960, the word-of-mouth transmission, and Nozick's 1969 Hempel festschrift paper <sub>(012)</sub>
+- Nozick's "these people seem to divide almost evenly" line and Gardner's 1973 Scientific American column <sub>(012)</sub>
+- The dominance-versus-expected-utility collision on the standard 1,000,000 / 1,000 payoffs <sub>(012)</sub>
+- The 0.5005 predictor-accuracy threshold and the closed form p* = (B+s)/(2B) <sub>(012)</sub>
+- Jeffrey's conditional expected utility in The Logic of Decision (1965) and the Gibbard-Harper counterfactual formulation (1978) <sub>(012)</sub>
+- The smoking lesion, Fisher's 1958 constitutional hypothesis, and Eells's tickle defence <sub>(012)</sub>
+- Egan's psychopath button and Death in Damascus as counterexamples running the other way <sub>(012)</sub>
+- The three-theory comparison table across Newcomb, smoking lesion, psychopath button and Death in Damascus <sub>(012)</sub>
+- The PhilPapers surveys - 292 versus 198 in 2009, 39.0 versus 31.2 per cent in 2020, and the 61-to-26 lean among decision-theory specialists <sub>(012)</sub>
+- Lewis's "Why ain'cha rich?" and his reply that the reward is for irrationality <sub>(012)</sub>
+- The Oesterheld et al. Newcomb-like dataset and the finding that more capable models lean evidential <sub>(012)</sub>
+- Wolpert and Benford's dissolution - the Realist and the Fearful playing two different Bayes nets <sub>(012)</sub>
+- Pearl's "confusion between actions and acts" and the do-operator reading of the split <sub>(012)</sub>
+- Quattrone and Tversky's voter's illusion and the cold-water self-deception experiment <sub>(012)</sub>
+- Kydland and Prescott's time inconsistency as a real Newcomb problem with commitment as one-boxing <sub>(012)</sub>
+- Hofstadter's twenty-colleague prisoner's dilemma and superrationality <sub>(012)</sub>
+- Retire as an opening - the two boxes on a table, the perfect predictor <sub>(012)</sub>
 
 ### Operations Research
 
@@ -234,6 +256,17 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Unemployment definitions - U-3 through U-6, labour force participation and discouraged workers
 - The natural rate of interest and the estimation of unobservable macroeconomic quantities
 - Sovereign inflation-linked debt and the design of indexed contracts
+
+### Philosophy
+
+- The problem of induction, Goodman's grue, and why enumerative support is not a rule
+- Personal identity - fission, teleportation and what Parfit thought survival amounted to
+- Vagueness and the sorites paradox, from Eubulides to supervaluation
+- Moral luck - the 1976 Williams and Nagel symposium and what control has to do with blame
+- Reference and necessity - Kripke's causal-historical account against descriptivism
+- Aggregation and social choice - Arrow's theorem read as a philosophical result rather than an economic one
+- Free will, Frankfurt cases and the compatibilist reading of "could have done otherwise
+- The reference class problem and what a single-case probability could possibly mean
 
 ### Operations Research
 
