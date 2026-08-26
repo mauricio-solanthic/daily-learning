@@ -7,6 +7,55 @@ day, and it exists because report 008 spent four fetches rediscovering a redirec
 Record: hosts that decline automated access, hosts that redirect, reliable
 mirrors, and any substitution you were forced into.
 
+## First: check whether the run has any web access at all
+
+Report 012 was written in a container whose network policy blocked **all**
+outbound HTTPS except the Anthropic API, the package registries in `no_proxy`
+(pypi, npm, crates, proxy.golang.org) and git-over-HTTPS to GitHub. Every
+`WebFetch` returned `EGRESS_BLOCKED`; `curl` returned `CONNECT tunnel failed,
+response 403`. Hosts confirmed dead in that session included
+`plato.stanford.edu`, `arxiv.org`, `philarchive.org`, `consc.net`,
+`journals.publishing.umich.edu`, `survey2020.philpeople.org`,
+`link.springer.com` and `www.bls.gov` — the last of which the table below calls
+excellent. So a refusal is not always the site's decision, and the tables in
+this file describe *site* behaviour, not reachability.
+
+Spend one probe before planning the research, not fifteen:
+
+```bash
+curl -sS -o /dev/null -w "%{http_code}\n" --max-time 20 https://arxiv.org/
+curl -sS "$HTTPS_PROXY/__agentproxy/status"      # says nothing about the allowlist
+```
+
+`000` or a 403 CONNECT on two unrelated hosts means the whole open web is gone
+for that run. What still works in that state: `WebSearch` (it goes out through
+the API, not through the sandbox), the GitHub MCP tools, `git`, and `pip`/`npm`.
+
+Research is still possible, but it changes shape, and it is worth saying plainly
+what is lost: no primary PDFs, so no reading the paper that establishes the
+claim. What survives:
+
+- **Pick a topic whose load-bearing content is derivable rather than reported.**
+  Report 012 went to Newcomb's problem partly because its central numbers are
+  arithmetic on stipulated payoffs — the 0.5005 accuracy threshold is a
+  three-line derivation checked in Python, not a figure taken on trust.
+- **Search the same fact two or three ways with different phrasings** and keep
+  only what comes back consistent. Search backends do read the pages, so a
+  figure that recurs across differently-worded queries is better attested than
+  one that appears once.
+- **Lean harder on arithmetic identities**, which is the one check a summariser
+  cannot fake. The 2009 PhilPapers Newcomb split came back as raw counts from
+  one query (292 two-boxers, 198 one-boxers) and as percentages from another
+  (31.4 and 21.3 per cent); 292/931 and 198/931 reproduce both to two decimals,
+  which is what made them safe to print.
+- **Bibliographic detail is the one thing search does well.** Titles, journals,
+  volumes, page ranges and years cross-check cleanly. Content does not.
+- **Say in the commit message which sources you could not read.** Report 012
+  never opened Nozick 1969, Gibbard and Harper 1978, either Bourget–Chalmers
+  survey paper, or Quattrone and Tversky 1984; the last is cited for its design
+  and the direction of its result, not for its numbers, because the reported
+  tolerance figures could not be cross-hosted.
+
 ## Declines automated access — do not attempt to work around
 
 | Host | Behaviour | What to do instead |
@@ -137,6 +186,50 @@ event disagree, quote the spread and explain the denominators rather than pickin
 one — report 010's three competing shock figures (11 per cent, 14 per cent, 5.2
 million cubic metres a month) all turned out to be right about different things.
 
+
+## Toolchain notes for a fresh container
+
+A container cloned from this repo has none of the renderer's dependencies. What
+report 012 needed, in order, all of it reachable even when the open web is not:
+
+```bash
+pip install Markdown pypdf matplotlib brotli
+npm install playwright@1.56.0        # chromium is already at /opt/pw-browsers
+```
+
+Do **not** run `playwright install`. `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`
+already holds `chromium-1194`, which playwright 1.56.0 accepts, so
+`tools/render.py` finds a browser without a download. That also matters for the
+CI page-for-page check: the re-render matches only if the local chromium is the
+revision CI's pinned playwright would have fetched.
+
+**matplotlib cannot read the vendored fonts, and fails silently.**
+`tools/fonts/` holds woff2, which matplotlib's font manager ignores, so
+`font.serif: ["TeX Gyre Pagella"]` falls straight through to DejaVu Sans with a
+`findfont` warning buried in a wall of repeats. That is report 008's failure
+mode wearing a different hat: the figure comes out in the wrong typeface and
+nothing errors. The fix, now in `figures/012-newcomb-accuracy-threshold.py` and
+worth copying forward, is to decompress the vendored faces at run time and
+register those:
+
+```python
+from fontTools.ttLib import TTFont          # needs brotli for woff2
+face = TTFont("tools/fonts/texgyrepagella-regular.woff2")
+face.flavor = None                          # woff2 -> ttf
+face.save(tmp / "texgyrepagella-regular.ttf")
+matplotlib.font_manager.fontManager.addfont(str(tmp / "..."))
+```
+
+The script then asserts the family is actually registered and exits rather than
+drawing in a substitute face. Figure scripts for 009-011 name the family and
+assume the host has it installed, which is true only on the machine they were
+first drawn on.
+
+One smaller quirk: `from pypdf import PdfReader` panicked once against the
+distro-installed `cryptography` (`_cffi_backend` missing, then a pyo3
+`PanicException`) and imported fine on the next invocation. `tools/render.py`
+prints the page count either way, so use its JSON rather than reaching for
+pypdf yourself.
 
 ## Reaching this repository from a Claude session
 
