@@ -34,6 +34,7 @@ import re
 import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -131,17 +132,32 @@ def payload(seq: int, release_url: str | None = None):
     }
 
 
-def _slack_call(method: str, token: str, body: dict):
+def _slack_call(method: str, token: str, body: dict, form: bool = False):
     """POST a normal Slack Web API method. Raises via sys.exit on any failure,
     including a 200-OK response carrying `"ok": false` — Slack's Web API signals
-    failure that way, not just through HTTP status."""
-    req = urllib.request.Request(
-        f"https://slack.com/api/{method}",
-        data=json.dumps(body).encode(),
-        headers={"Authorization": f"Bearer {token}",
-                 "Content-Type": "application/json; charset=utf-8"},
-        method="POST",
-    )
+    failure that way, not just through HTTP status.
+
+    `form` picks the request encoding: some Web API methods (chat.*,
+    files.completeUploadExternal, anything with nested objects like `files:`)
+    accept a JSON body, but files.getUploadURLExternal only accepts
+    application/x-www-form-urlencoded — sending it as JSON gets a silent
+    `invalid_arguments` with no hint which argument."""
+    if form:
+        req = urllib.request.Request(
+            f"https://slack.com/api/{method}",
+            data=urllib.parse.urlencode(body).encode(),
+            headers={"Authorization": f"Bearer {token}",
+                     "Content-Type": "application/x-www-form-urlencoded"},
+            method="POST",
+        )
+    else:
+        req = urllib.request.Request(
+            f"https://slack.com/api/{method}",
+            data=json.dumps(body).encode(),
+            headers={"Authorization": f"Bearer {token}",
+                     "Content-Type": "application/json; charset=utf-8"},
+            method="POST",
+        )
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             resp = json.loads(r.read().decode())
@@ -171,7 +187,8 @@ def post(seq: int, release_url: str):
     data = (ROOT / p["pdf"]).read_bytes()
 
     step1 = _slack_call("files.getUploadURLExternal", token,
-                        {"filename": slack["filename"], "length": len(data)})
+                        {"filename": slack["filename"], "length": len(data)},
+                        form=True)
     upload_url, file_id = step1["upload_url"], step1["file_id"]
 
     up_req = urllib.request.Request(upload_url, data=data, method="POST")
