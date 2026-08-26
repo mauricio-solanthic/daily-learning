@@ -442,6 +442,33 @@ def validate(meta, body):
     elif len(burned) < 2:
         warns.append("only one `burned:` entry; most reports consume several "
                      "sub-topics, anecdotes or examples")
+    summary = (meta.get("slack") or "").strip()
+    if not summary:
+        errs.append("front matter has no `slack:` summary. That paragraph is what "
+                    "gets posted to #daily-research when the report is merged; "
+                    "without it the announce workflow has nothing to say. Write "
+                    "two or three sentences: what it is about, the one surprising "
+                    "thing in it, and why it matters.")
+    else:
+        sentences = len(re.findall(r"[.!?](?:\s|$)", summary))
+        if len(summary) < 180:
+            errs.append(f"`slack:` is only {len(summary)} characters. Two or three "
+                        f"real sentences, not a restatement of the title.")
+        elif len(summary) > 900:
+            warns.append(f"`slack:` is {len(summary)} characters; Slack shows it as "
+                         f"a wall of text past roughly 900")
+        if sentences < 2:
+            errs.append("`slack:` should be two or three sentences; it reads as one")
+        low = summary.lower()
+        for bad in ("today's", "this report", "this piece explores", "in this",
+                    "we will", "i couldn't", "as an ai"):
+            if bad in low:
+                errs.append(f"`slack:` contains chat scaffolding ({bad!r}). Write it "
+                            f"as a standalone note to a channel, not as narration.")
+        if meta.get("deck") and summary == meta["deck"].strip():
+            errs.append("`slack:` is identical to `deck:`. The deck is a standfirst "
+                        "under a title; the Slack post has to stand on its own.")
+
     if not (meta.get("next") or []):
         warns.append("no `next:` list; naming where this track should go next is how "
                      "the series builds instead of restarting")

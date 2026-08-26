@@ -136,3 +136,22 @@ AGBI, *Foreign Policy*, *The National*, CNBC and C&EN. When sources for a live
 event disagree, quote the spread and explain the denominators rather than picking
 one — report 010's three competing shock figures (11 per cent, 14 per cent, 5.2
 million cubic metres a month) all turned out to be right about different things.
+
+
+## Reaching this repository from a Claude session
+
+Worth writing down because a session lost time to it, and then compounded the
+mistake by reading stale numbers rather than saying access had failed.
+
+| Method | Works? | Notes |
+|---|---|---|
+| `git clone https://github.com/mauricio-solanthic/daily-learning.git` | yes | The repo is public. This is the reliable way to read the real state. |
+| `raw.githubusercontent.com/.../main/<path>` | yes | HTTP 200. Good for reading one file without cloning. |
+| `WebFetch` on the github.com repo page | yes | Renders the README, including the generated log table. |
+| `api.github.com/repos/...` | **no** | The sandbox proxy gates it: *"GitHub access to this repository is not enabled for this session."* Returns the same refusal with or without a token. |
+| `github.com/...` HTML pages via `curl` | **no** | 403 at the egress proxy. Not evidence that a link is broken — it will open fine in a browser. |
+| `slack.com`, `files.slack.com`, `hooks.slack.com` | **no** | 403 at the egress proxy. This is why announcing to Slack is a GitHub Actions job and not something the daily run does. |
+
+The rule that matters more than the table: **if a lookup fails, say so in the
+reply.** A failed call followed by a confident answer from memory is worse than
+no answer, because it looks identical to a real one.

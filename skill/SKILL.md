@@ -126,6 +126,7 @@ category: PLACEHOLDER — take this from `ledger.py next`
 title: Title Case Goes Here
 slug: ShortCamelCase
 deck: One italic sentence of standfirst — the promise of the piece, not a summary.
+slack: Two or three sentences for the #daily-research channel. What it is about, the one surprising thing in it, and why it matters. Written to stand alone in a chat window, not as narration.
 burned:
   - Each specific sub-topic, anecdote, worked example or framing this piece spends
   - One per line, concrete enough that a later run can collide with it
@@ -141,6 +142,29 @@ Be concrete. "Grid inertia" is too thin; "Grid inertia, the inertia constant H,
 and stored kinetic energy measured in seconds" can actually be collided with.
 Include anecdotes and openings you have used up — the Stigler diet problem got
 burned only after three separate pieces opened with it.
+
+### The `slack:` summary
+
+When the report is merged, a GitHub Actions workflow cuts a release with the PDF
+attached, then uploads the PDF itself into **#daily-research** along with this
+paragraph and a link to the release. It is the only part of the report most
+people in that channel will read, so write it deliberately rather than
+compressing the deck.
+
+Two or three sentences. What the piece is about; the one genuinely surprising
+thing in it; why it matters. Concrete beats abstract — a number or a name from
+the piece earns its place. The renderer rejects it if it is shorter than 180
+characters, is a single sentence, duplicates the `deck:`, or contains narration
+like "this report explores" or "today's". Nobody in the channel needs telling
+that a report is a report.
+
+Good: *"A power grid's entire safety margin is kinetic energy stored in spinning
+steel, and Great Britain's amounted to less than half a large battery on the day
+a lightning strike took out a million customers. The sting is in the 2025 Iberian
+blackout, where inertia was not the cause at all."*
+
+Bad: *"This report explores grid inertia and why it matters for the energy
+transition."*
 
 ### Body markup
 
@@ -239,6 +263,14 @@ Verified: RoCoF estimate cross-checked against ERCOT's simulation regression."
 git push -u origin report-NNN
 gh pr create --base main --fill
 ```
+
+Merging the PR is what publishes the report. A workflow then cuts a GitHub
+release tagged `report-NNN` with the PDF attached, uploads the PDF itself into
+**#daily-research**, and posts the `slack:` paragraph and a link to that release
+alongside it. Nothing you do in the run touches Slack directly — the Slack
+connector cannot upload files and slack.com is blocked from the sandbox, so
+that step belongs to Actions. Your job is to make sure the `slack:` field is
+worth posting.
 
 Then **`PushNotification`** with two or three sentences: the topic, why the
 rotation landed there, and explicitly whether the PR was opened. A scheduled run
