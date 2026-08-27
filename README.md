@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**12 reports.** Next up: **Climate & Sustainability** as No. 013 — never covered; first in the rotation order among never-covered categories.
+**13 reports.** Next up: **Operations Research** as No. 014 — oldest last-covered date (2026-08-18).
 
 ## Log
 
@@ -26,6 +26,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 010 | 2026-08-24 | Geopolitics of Resources | The Escaping Element — Helium, Hormuz and the Reserve That Was Sold | [010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf](reports/010_2026.08.24_EscapingElement_GeopoliticsOfResources.pdf) |
 | 011 | 2026-08-25 | Economics | Constant Utility — The Quiet Fight Over How Inflation Is Measured | [011_2026.08.25_ConstantUtility_Economics.pdf](reports/011_2026.08.25_ConstantUtility_Economics.pdf) |
 | 012 | 2026-08-26 | Philosophy | Two Boxes — The Argument That Never Settled | [012_2026.08.26_TwoBoxes_Philosophy.pdf](reports/012_2026.08.26_TwoBoxes_Philosophy.pdf) |
+| 013 | 2026-08-27 | Climate & Sustainability | Stock and Flow — What a Tonne of Methane Is Worth | [013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf](reports/013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf) |
 
 ## Rotation state
 
@@ -36,7 +37,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Climate & Sustainability | — | 0 |
 | Cross-Domain Synthesis | — | 0 |
 | Operations Research | 2026-08-18 | 4 |
 | Physics | 2026-08-19 | 2 |
@@ -46,6 +46,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Geopolitics of Resources | 2026-08-24 | 1 |
 | Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
+| Climate & Sustainability | 2026-08-27 | 1 |
 
 ## Burned territory
 
@@ -158,6 +159,25 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Hofstadter's twenty-colleague prisoner's dilemma and superrationality <sub>(012)</sub>
 - Retire as an opening - the two boxes on a table, the perfect predictor <sub>(012)</sub>
 
+### Climate & Sustainability
+
+- Methane's GWP100 of 27, the 100-year time horizon, and why the horizon was never chosen scientifically <sub>(013)</sub>
+- The 1990 IPCC First Assessment Report presenting GWP as an illustration of the difficulty rather than a solution <sub>(013)</sub>
+- Decision 18/CMA.1 and the Paris transparency framework's mandated common metric <sub>(013)</sub>
+- Stock versus flow pollutants, the one-box atmospheric model, and the steady-state burden E times tau <sub>(013)</sub>
+- The burden-over-emissions identity - 1,922 ppb times 2.75 Tg/ppb over 575 Tg/yr giving a 9.2-year lifetime <sub>(013)</sub>
+- Methane's 11.8-year perturbation lifetime against its 9.1-year atmospheric lifetime, and the OH feedback <sub>(013)</sub>
+- AGWP as an integral, methane's saturating integral against carbon dioxide's growing one <sub>(013)</sub>
+- The Joos et al. 2013 four-term carbon dioxide impulse response function and its use as a check <sub>(013)</sub>
+- Reproducing the GWP20-to-GWP100 ratio of about three from a two-line integral <sub>(013)</sub>
+- GWP* as defined by Allen 2018, Cain 2019 and Smith 2021, with r = 0.75, s = 0.25, H = 100, dt = 20 <sub>(013)</sub>
+- The exact 15/16 zero-warming condition and the 0.32 per cent a year decline rate <sub>(013)</sub>
+- The 16-to-1 charge asymmetry between a new methane source and an established one <sub>(013)</sub>
+- Rogelj and Schleussner's grandfathering critique and the Cain et al. reply on who decides fairness <sub>(013)</sub>
+- New Zealand's split-gas target, the 2019 Zero Carbon Act, and the December 2025 cut to 14-24 per cent <sub>(013)</sub>
+- The Sum44 lagged-cumulative-sum metric as a 2025 alternative to GWP* <sub>(013)</sub>
+- Table of one methane source priced five ways under GWP100 and GWP* <sub>(013)</sub>
+
 ### Operations Research
 
 - Linear programming duality in any framing: weak and strong duality, complementary slackness, shadow prices <sub>(001)</sub>
@@ -267,6 +287,14 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Aggregation and social choice - Arrow's theorem read as a philosophical result rather than an economic one
 - Free will, Frankfurt cases and the compatibilist reading of "could have done otherwise
 - The reference class problem and what a single-case probability could possibly mean
+
+### Climate & Sustainability
+
+- The carbon cycle's airborne fraction and why cumulative emissions predict temperature so linearly
+- Cement, calcination stoichiometry and the carbonation sink that quietly takes some of it back
+- Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
+- Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
+- Carbon border adjustment mechanisms and the measurement problem underneath them
 
 ### Operations Research
 
