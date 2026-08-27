@@ -56,6 +56,46 @@ claim. What survives:
   and the direction of its result, not for its numbers, because the reported
   tolerance figures could not be cross-hosted.
 
+### Report 013: the second fully-blocked run, and what it cost
+
+The same total egress block as report 012, confirmed in three calls rather than
+fifteen: `curl` returned `000` for `arxiv.org`, `ipcc.ch` and `iea.org`, and
+`WebFetch` returned `EGRESS_BLOCKED` for `www.ipcc.ch`, `pmc.ncbi.nlm.nih.gov`
+and `ora.ox.ac.uk`. `pmc.ncbi.nlm.nih.gov` is worth naming because it is the
+open-access host that would otherwise have served four of this piece's sources
+in full; it is blocked by the sandbox, not by NIH. Probe two unrelated hosts and
+one `WebFetch`, then stop probing and plan around it.
+
+What made a search-only run survivable was picking a topic whose load-bearing
+numbers are arithmetic on published coefficients. Everything that carried weight
+in report 013 — the 15/16 zero-warming condition, the 3.75 rate coefficient, the
+16-to-1 new-versus-established asymmetry — is three lines of algebra on r = 0.75,
+s = 0.25, H = 100 and dt = 20, each of which came back identically from two
+differently-worded searches. Two further identities did the verification work
+that a fetched PDF would normally do:
+
+- **Burden over emissions must equal the lifetime.** 1,921.79 ppb (NOAA 2024)
+  times 2.75 Tg/ppb over 575 Tg/yr (Global Carbon Project, 2010s) gives 9.19
+  years against an assessed atmospheric lifetime of 9.1. Three numbers from
+  three separate sources, none of which could be read directly, all confirmed at
+  once.
+- **A modelled ratio against a tabulated one.** Integrating the Joos et al. 2013
+  carbon dioxide impulse response and a single methane exponential gives
+  GWP20/GWP100 = 3.06; the assessed values give about 3.0. Close enough to
+  confirm the shape, far enough to be honest that indirect chemistry is missing.
+
+One caution learned here. Search returns AR6's methane GWP values inconsistently
+— 27.0, 27.2, 27.9 and 29.8 all came back for GWP100, and 79.7, 80.8 and 82.5
+for GWP20, because fossil and non-fossil rows get conflated. **Do not print an
+AR6 metric value to a decimal place from search alone.** Report 013 wrote
+"roughly 80 and 27", which is robust to every variant that came back, and the
+derived ratio of 3.0 is identical under all of them.
+
+Bibliographic detail again cross-checked cleanly: article numbers, volumes and
+author lists for all eight journal references were confirmed by a second,
+differently-phrased query. Nothing in the piece is cited for content that could
+not be established from at least two independent search returns.
+
 ## Declines automated access — do not attempt to work around
 
 | Host | Behaviour | What to do instead |
