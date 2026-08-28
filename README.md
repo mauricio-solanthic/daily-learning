@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**13 reports.** Next up: **Operations Research** as No. 014 — oldest last-covered date (2026-08-18).
+**14 reports.** Next up: **Operations Research** as No. 015 — oldest last-covered date (2026-08-18).
 
 ## Log
 
@@ -27,6 +27,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 011 | 2026-08-25 | Economics | Constant Utility — The Quiet Fight Over How Inflation Is Measured | [011_2026.08.25_ConstantUtility_Economics.pdf](reports/011_2026.08.25_ConstantUtility_Economics.pdf) |
 | 012 | 2026-08-26 | Philosophy | Two Boxes — The Argument That Never Settled | [012_2026.08.26_TwoBoxes_Philosophy.pdf](reports/012_2026.08.26_TwoBoxes_Philosophy.pdf) |
 | 013 | 2026-08-27 | Climate & Sustainability | Stock and Flow — What a Tonne of Methane Is Worth | [013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf](reports/013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf) |
+| 014 | 2026-08-28 | Cross-Domain Synthesis | The Threshold at One — Criticality in Six Sciences | [014_2026.08.28_ThresholdAtOne_CrossDomain.pdf](reports/014_2026.08.28_ThresholdAtOne_CrossDomain.pdf) |
 
 ## Rotation state
 
@@ -37,7 +38,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Cross-Domain Synthesis | — | 0 |
 | Operations Research | 2026-08-18 | 4 |
 | Physics | 2026-08-19 | 2 |
 | Quantitative Finance | 2026-08-20 | 1 |
@@ -47,6 +47,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
+| Cross-Domain Synthesis | 2026-08-28 | 1 |
 
 ## Burned territory
 
@@ -215,6 +216,32 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Breeden-Litzenberger recovery of the risk-neutral density <sub>(007)</sub>
 - Variance swaps, log-contract replication and the variance risk premium <sub>(007)</sub>
 
+### Cross-Domain Synthesis
+
+- Branching processes as the shared mathematics of criticality across surnames, polymers, neutrons, epidemics, genetics and networks <sub>(014)</sub>
+- The Galton-Watson process, the probability generating function, and extinction as the smallest fixed point of q = f(q) <sub>(014)</sub>
+- Galton's 1873 Educational Times problem, Watson's reply, and the 1875 Journal of the Anthropological Institute paper <sub>(014)</sub>
+- Watson's error - concluding extinction is certain even in the supercritical case <sub>(014)</sub>
+- Bienaymé's 1845 priority, the promised derivation he never published, and Heyde and Seneta's 1972 historical note <sub>(014)</sub>
+- Haldane 1927, Erlang 1929, and Steffensen's correct 1930 Danish solution reissued in French in 1933 <sub>(014)</sub>
+- Flory's 1941 gel point, the condition alpha(f-1) = 1, and alpha_c = 1/(f-1) giving 1/2 and 1/3 <sub>(014)</sub>
+- Szilard's secret British patent GB 630,726, filed 4 July 1934, and the concept of critical mass <sub>(014)</sub>
+- Hawkins and Ulam's LA-171 of 14 November 1944 and the bacteria / cosmic-ray-showers generality quote <sub>(014)</sub>
+- Kermack and McKendrick's 1927 threshold density and the overshoot remark <sub>(014)</sub>
+- Whittle's 1955 branching approximation to the stochastic epidemic <sub>(014)</sub>
+- Erdos and Renyi's 1960 giant component and S = 1 - exp(-cS) as the same equation as Poisson survival <sub>(014)</sub>
+- The Molloy-Reed criterion and the excess-degree mean as the branching mean of a network <sub>(014)</sub>
+- Pastor-Satorras and Vespignani's vanishing epidemic threshold on scale-free networks <sub>(014)</sub>
+- The near-threshold expansion S ~ 2(m-1)/sigma^2 and Haldane's 2s survival rule for a new mutation <sub>(014)</sub>
+- The four-offspring-law table at mean 2 giving extinction probabilities 0.000, 0.203, 0.500, 0.890 <sub>(014)</sub>
+- Lloyd-Smith's SARS dispersion k = 0.16 and Endo's SARS-CoV-2 k of about 0.1 <sub>(014)</sub>
+- Chicago Pile-1's 28 minutes of two-minute doublings, the factor of 16,384, and k backed out as about 1.0005 <sub>(014)</sub>
+- Delayed neutrons, beta = 0.0065, the second threshold at prompt criticality, and the 800-fold period difference <sub>(014)</sub>
+- Half a watt as 1.6e10 fissions a second, and the law of large numbers as the real difference between a reactor and an epidemic <sub>(014)</sub>
+- The Tokaimura criticality accident of 30 September 1999 as a self-limiting oscillation about k = 1 <sub>(014)</sub>
+- Measles R0 of 12-18, the 92-94 per cent threshold, and WHO/UNICEF 2024 coverage of 84 and 76 per cent <sub>(014)</sub>
+- Openings now spent - the dying aristocratic surname, and the generating-function fixed-point diagram <sub>(014)</sub>
+
 ## Backlog
 
 Where each track should go next, accumulated from the `next:` lists. Advisory,
@@ -317,3 +344,10 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Monte Carlo methods and variance reduction
 - Optimal execution and market microstructure (Almgren-Chriss, Kyle)
 - Rough volatility
+
+### Cross-Domain Synthesis
+
+- Percolation proper - lattice thresholds, universality classes, and why the exponents do not care what the substance is
+- Renormalisation group as the reason unrelated systems share critical exponents
+- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
+- The inspection paradox and size-biased sampling across queues, lifetimes and network degrees

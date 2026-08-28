@@ -96,6 +96,87 @@ author lists for all eight journal references were confirmed by a second,
 differently-phrased query. Nothing in the piece is cited for content that could
 not be established from at least two independent search returns.
 
+### Report 014: the third fully-blocked run — treat the block as the default
+
+Three runs in a row now (012, 013, 014) have had **all** outbound HTTPS blocked
+except the Anthropic API, the package registries and git-over-HTTPS. Assume it.
+Report 014 spent exactly three calls confirming it — `curl` returned `CONNECT
+tunnel failed, response 403` for `arxiv.org`, `www.nature.com` and
+`www.bls.gov`, and one `WebFetch` of an arXiv abstract returned
+`EGRESS_BLOCKED` — and then stopped probing and planned around it. Do the same:
+two `curl` probes on unrelated hosts plus one `WebFetch`, then move on. The
+tables below still describe *site* behaviour, not reachability.
+
+**Pick the topic to survive the block, not in spite of it.** Report 014 went to
+branching processes because the entire load-bearing content of the piece is a
+fixed-point equation and its consequences. Twenty-five searches supplied history
+and bibliography; Python supplied every number. Nothing in the piece rests on a
+figure that had to be taken on trust from a summariser. Three kinds of check did
+the work a fetched PDF would normally do:
+
+- **An internal consistency identity in the reported facts themselves.** The
+  Chicago Pile-1 accounts say the reaction ran 28 minutes at a two-minute
+  doubling time and rose by "a factor of around 16,000". Those are two
+  independently reported numbers, and 28/2 = 14 doublings with $2^{14} =
+  16{,}384$. Both figures confirmed at once, by arithmetic that a summariser
+  could not have faked.
+- **Deriving a quantity rather than sourcing it.** The pile's multiplication
+  factor is not quoted in any source that could be read, so it was recovered:
+  period = 120/ln 2 = 173 s, effective generation time 0.081 s from
+  β = 0.0065 and a 12.5 s mean precursor lifetime, giving k − 1 = 4.7e−4. A
+  derived number with its inputs stated is safer than a fetched one.
+- **An asymptotic formula checked against exact fixed points.** S ≈ 2(m−1)/σ²
+  was verified against numerically exact extinction probabilities for three
+  different offspring laws at three values of m — nine agreements. That is also
+  how Haldane's 2s rule was confirmed before being attributed to him.
+
+Two things search does reliably, confirmed again: **bibliography** (every one of
+this piece's 22 references had its journal, volume and page range confirmed by a
+second differently-worded query, including a 1930 paper in Danish and a 1933 one
+in French), and **who got what wrong**, which turns out to be well documented in
+the history-of-mathematics literature and to cross-check cleanly.
+
+One thing it does badly, worth naming: **narrow experimental moments**. Two
+queries for the prompt-neutron multiplicity moments of thermal U-235 fission
+returned 2.41, 4.63 and 6.86 from an unattributable secondary path. They are
+almost certainly right — they reproduce Diven's published factor of about 0.80
+to three digits — but neither the primary measurement nor a citable evaluation
+could be reached, so the piece dropped the sub-Poisson-variance argument
+entirely and made the reactor/epidemic contrast on sample size instead (half a
+watt is 1.6e10 fissions a second, so the law of large numbers, not the offspring
+law, is what makes a reactor predictable). That substitution improved the piece.
+**When a number cannot be attributed, look for the argument that does not need
+it** rather than softening the sentence around it.
+
+Two smaller notes for the next run. The `pypdf` / distro-`cryptography` panic
+recorded below is *not* self-healing — it failed identically on two consecutive
+invocations, and `pip install --upgrade cryptography` cannot fix it either
+("Cannot uninstall cryptography 41.0.7, RECORD file not found. Hint: The package
+was installed by debian"). What did work: `pip install --upgrade cffi`, after
+which `from pypdf import PdfReader` imports and page-by-page text extraction
+works — the fastest way to find out *which* page a 9-page draft is spilling
+onto. And matplotlib's `mathtext.fontset: custom` needs `mathtext.cal`,
+`mathtext.sf` and `mathtext.tt` set as well as `rm`/`it`/`bf`, or the figure
+script emits a `findfont: Font family ['cursive'] not found` warning; the figure
+is fine, but the render is supposed to be warning-free.
+
+### Getting a 9-page draft down to 8
+
+Recorded because report 014 lost real time to it. Ninety words of prose cuts
+moved the page count not at all: prose reflows within pages 1-7 and the last
+page stays saturated. The renderer's own advice (add or cut a table, a figure or
+a worked example) is right, but there is a fourth lever it does not mention.
+**Find out what is actually on the last page first** — with `pypdf` per the note
+above. In report 014 the ninth page held 44 words: the colophon alone, with the
+whole reference block fitting on page 8. Nothing in the prose was the problem.
+What fixed it was shortening reference *entries* so that four of them dropped
+from two rendered lines to one — trimming a series title, a journal's "of Great
+Britain and Ireland", redundant issue numbers, `et al.` for a seven-author paper
+— plus dropping one reference outright. The one dropped was a textbook cited for
+a theorem, repointed at the two papers that actually established it, so the fix
+also improved the citations. Reference entries are the cheapest page-count lever
+in the format and the easiest to overlook.
+
 ## Declines automated access — do not attempt to work around
 
 | Host | Behaviour | What to do instead |
