@@ -160,6 +160,59 @@ onto. And matplotlib's `mathtext.fontset: custom` needs `mathtext.cal`,
 script emits a `findfont: Font family ['cursive'] not found` warning; the figure
 is fine, but the render is supposed to be warning-free.
 
+### Report 015: the fourth blocked run — and what a second query is actually for
+
+Four in a row (012-015). The block is the default; stop treating it as news. Report
+015 spent three `curl` probes (`arxiv.org`, `www.nature.com`, `pubsonline.informs.org`,
+all `000`) and one `WebFetch` (`EGRESS_BLOCKED`) and then planned around it.
+**`pubsonline.informs.org` is worth naming**, because it is the primary host for
+essentially the entire operations-research literature — *Operations Research*,
+*Management Science*, *INFORMS Journal on Computing* — and it is blocked by the
+sandbox, not by INFORMS. Any OR piece will therefore be written without reading
+its own primary sources. Plan for it.
+
+The topic was chosen to survive that, and the rule from 014 held: **pick a subject
+whose load-bearing content is computable rather than reported.** Every number in
+report 015 — 175,968 patterns, 40 columns, 29 iterations, `z_LP` = 44.287709, 45
+reels, the 0.0000/0.0070/1.8247/20.6121 bound table — was computed locally, and
+the central claim was checked two independent ways: column generation against the
+same LP with all 175,968 columns enumerated (agreeing to 2e-13), and the integer
+optimum against the rounded-up relaxation. Nothing quantitative rests on a
+summariser. `scipy` is **not** preinstalled and `pip install scipy` works fine;
+HiGHS via `scipy.optimize.linprog` and `milp` is enough for real LP and MILP work
+inside the sandbox.
+
+Three attribution traps, all caught by a second differently-worded query, all of
+which would have shipped as errors on one query:
+
+- **Search stated as fact that Kantorovich's 1939 monograph already contains the
+  Gilmore-Gomory pattern formulation.** A second query surfaced Uchoa and Sadykov's
+  2026 *Mathematical Programming* paper describing exactly that as a widespread
+  misconception — and arguing the real precursor is Kantorovich and Zalgaller's
+  1951 book. The cross-check did not confirm the claim; it inverted it, and
+  improved the piece.
+- **The 1963 Lanchester Prize was for Part II (1963), not the famous 1961 paper.**
+  A one-query answer conflates them.
+- **Search implied the 1961 paper carried computational results.** It did not;
+  Part II does. Asking specifically for the computational details is what
+  established the absence.
+
+One numeric contradiction of the AR6-GWP kind. Asked for the largest known
+integrality gap in one-dimensional cutting stock, one query returned "raised to
+6/5, and no instance known with a gap greater than 7/6" — internally inconsistent,
+since 6/5 > 7/6. A second query pinned it to Rietz and Dempe 2008: gaps of 13/11
+and 6/5, from 18 and 28 distinct widths. **When a single answer contradicts
+itself, it is not a source; re-query rather than picking the half you prefer.**
+
+Bibliography again cross-checked cleanly — all 24 references had journal, volume,
+issue and page range confirmed by a second query, including a 2026 paper and a
+1958 *Management Science* note. Two smaller notes: the `pypdf` / `cryptography`
+panic recorded below is still live and `pip install --upgrade cffi` still fixes it;
+and `pdftoppm` is **not** installed, so to actually look at a rendered page use
+`pip install pypdfium2` and `PdfDocument(path)[i].render(scale=1.6).to_pil()`.
+Eyeballing the PDF is worth the two minutes — it is what confirmed the figure,
+the pipe tables and the numeric column alignment survived the render.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -198,6 +251,7 @@ in the format and the easiest to overlook.
 | `pubs.aeaweb.org` | HTTP 403 on `/doi/pdf/...` | The AEA's own host declines, so JEP and AER full text is closed. Authors' institutional copies are usually open — `economics.mit.edu/sites/default/files/...` and `hbs.edu/ris/Publication%20Files/...` both served AEA papers in full on report 011. |
 | `elischolar.library.yale.edu` | HTTP 403 on `/cgi/viewcontent.cgi?article=...` | Yale's repository declines PDF fetches, which costs the Cowles discussion-paper versions. Nordhaus's history-of-lighting paper is readable as the NBER chapter instead (see Redirects). |
 | `hbs.edu/ris/download.aspx?name=...` | Returns an empty document, not an error | Silently useless: the fetch succeeds and the summariser reports it has no content. The `/ris/Publication%20Files/<name>_<hash>.pdf` form of the same paper returns the full text. |
+| `pubsonline.informs.org` | Blocked at the egress proxy in every run so far — this is the sandbox, not INFORMS | It hosts *Operations Research*, *Management Science* and *INFORMS Journal on Computing*, so an OR piece cannot read its own primary literature. Bibliographic detail (volume, issue, pages) cross-checks reliably through search; content does not. Report 015 cited 24 papers without opening one of them, and said so. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
