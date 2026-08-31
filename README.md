@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**14 reports.** Next up: **Operations Research** as No. 015 — oldest last-covered date (2026-08-18).
+**15 reports.** Next up: **Physics** as No. 016 — oldest last-covered date (2026-08-19).
 
 ## Log
 
@@ -28,6 +28,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 012 | 2026-08-26 | Philosophy | Two Boxes — The Argument That Never Settled | [012_2026.08.26_TwoBoxes_Philosophy.pdf](reports/012_2026.08.26_TwoBoxes_Philosophy.pdf) |
 | 013 | 2026-08-27 | Climate & Sustainability | Stock and Flow — What a Tonne of Methane Is Worth | [013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf](reports/013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf) |
 | 014 | 2026-08-28 | Cross-Domain Synthesis | The Threshold at One — Criticality in Six Sciences | [014_2026.08.28_ThresholdAtOne_CrossDomain.pdf](reports/014_2026.08.28_ThresholdAtOne_CrossDomain.pdf) |
+| 015 | 2026-08-31 | Operations Research | The Patterns Never Written Down — Column Generation and the Cutting Stock Problem | [015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf](reports/015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf) |
 
 ## Rotation state
 
@@ -38,7 +39,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Operations Research | 2026-08-18 | 4 |
 | Physics | 2026-08-19 | 2 |
 | Quantitative Finance | 2026-08-20 | 1 |
 | Energy | 2026-08-21 | 1 |
@@ -48,6 +48,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
 | Cross-Domain Synthesis | 2026-08-28 | 1 |
+| Operations Research | 2026-08-31 | 5 |
 
 ## Burned territory
 
@@ -203,6 +204,30 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Von Neumann's minimax theorem as an LP dual pair <sub>(005)</sub>
 - LP-relaxation rounding as an approximation-algorithm technique <sub>(005)</sub>
 - The SVM dual as the same structure in another costume <sub>(005)</sub>
+- Column generation and delayed pricing as a general technique for linear programs with astronomically many variables <sub>(015)</sub>
+- The Gilmore-Gomory pattern formulation of the one-dimensional cutting stock problem <sub>(015)</sub>
+- The pricing subproblem as an unbounded integer knapsack solved by dynamic programming over the stock width <sub>(015)</sub>
+- Reduced cost of a cutting pattern as one minus the dual-weighted item content <sub>(015)</sub>
+- The paper mill worked example - 5,600 mm reel, twelve widths 423-901 mm, 380 rolls, 175,968 patterns, 40 columns, 29 iterations, z_LP 44.2877, 45 reels <sub>(015)</sub>
+- Counting cutting patterns exactly by dynamic programming, and 27,559,358 patterns for a twenty-width narrow-roll order book <sub>(015)</sub>
+- Farley's bound z_RMP divided by the pricing optimum as a lower bound during column generation <sub>(015)</sub>
+- The convergence sandwich, tailing off, and the non-monotone dual as the motivation for stabilization <sub>(015)</sub>
+- The basis-size argument - an LP with n rows has an optimum supported on at most n columns, whatever the column count <sub>(015)</sub>
+- The derived inverse relation between pattern count and the strength of the LP bound over total-length-over-stock-width <sub>(015)</sub>
+- Cutting stock shading into bin packing as pieces per stock unit falls <sub>(015)</sub>
+- The integer round-up property, IRUP, and Baum and Trotter's 1981 coinage <sub>(015)</sub>
+- Marcotte's 1986 counterexample to the rounding property <sub>(015)</sub>
+- The MIRUP conjecture of Scheithauer and Terno and the gap-below-two question <sub>(015)</sub>
+- Rietz and Dempe's gaps of 13/11 and 6/5 from 18 and 28 piece widths <sub>(015)</sub>
+- Kartak, Ripatti, Scheithauer and Kurz - all instances with at most nine widths round up, non-IRUP at ten, gap above one at eleven <sub>(015)</sub>
+- Karmarkar-Karp additive O(log squared) and Hoberg-Rothvoss O(log OPT) integrality gaps for bin packing <sub>(015)</sub>
+- Ford and Fulkerson 1958 multicommodity flow as the first delayed-pricing computation, with shortest chain as the pricing step <sub>(015)</sub>
+- Dantzig-Wolfe decomposition named only as the parent frame of column generation, not developed <sub>(015)</sub>
+- Uchoa and Sadykov's claim that Kantorovich and Zalgaller 1951 contains a complete column generation algorithm <sub>(015)</sub>
+- Gilmore and Gomory's IBM customer visits to paper mills, and the 1963 Lanchester Prize for Part II <sub>(015)</sub>
+- Branch-and-price and why you cannot branch on a pattern variable <sub>(015)</sub>
+- Airline crew pairing as set partitioning with billions of candidate pairings <sub>(015)</sub>
+- Openings now spent - the mill reel and the order book of widths <sub>(015)</sub>
 
 ### Quantitative Finance
 
@@ -325,17 +350,15 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 ### Operations Research
 
-- Integer programming and branch-and-bound
 - Cutting-plane methods and the travelling salesman problem
 - Interior-point methods developed properly
-- Lagrangian relaxation and decomposition (Dantzig-Wolfe, Benders)
-- Column generation and the cutting-stock problem
 - Matching theory and market design
-- Maximum flow, min cut, and the Ford-Fulkerson family
-- Dynamic programming and the curse of dimensionality
 - Stochastic programming and robust optimization
 - Unit commitment as a mixed-integer problem
 - Semidefinite programming and relaxation hierarchies
+- Lagrangian relaxation and the subgradient method as the other route to the same bound
+- Cutting planes and the travelling salesman problem, with the separation oracle as the mirror of the pricing oracle
+- Bin packing approximation algorithms - first-fit-decreasing and the asymptotic PTAS
 
 ### Quantitative Finance
 
