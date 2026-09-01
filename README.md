@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**15 reports.** Next up: **Physics** as No. 016 — oldest last-covered date (2026-08-19).
+**16 reports.** Next up: **Quantitative Finance** as No. 017 — oldest last-covered date (2026-08-20).
 
 ## Log
 
@@ -29,6 +29,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 013 | 2026-08-27 | Climate & Sustainability | Stock and Flow — What a Tonne of Methane Is Worth | [013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf](reports/013_2026.08.27_StockAndFlow_ClimateAndSustainability.pdf) |
 | 014 | 2026-08-28 | Cross-Domain Synthesis | The Threshold at One — Criticality in Six Sciences | [014_2026.08.28_ThresholdAtOne_CrossDomain.pdf](reports/014_2026.08.28_ThresholdAtOne_CrossDomain.pdf) |
 | 015 | 2026-08-31 | Operations Research | The Patterns Never Written Down — Column Generation and the Cutting Stock Problem | [015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf](reports/015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf) |
+| 016 | 2026-09-01 | Physics | The Symmetry That Hid Itself | [016_2026.09.01_SymmetryThatHid_Physics.pdf](reports/016_2026.09.01_SymmetryThatHid_Physics.pdf) |
 
 ## Rotation state
 
@@ -39,7 +40,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Physics | 2026-08-19 | 2 |
 | Quantitative Finance | 2026-08-20 | 1 |
 | Energy | 2026-08-21 | 1 |
 | History of Science | 2026-08-22 | 1 |
@@ -49,6 +49,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Climate & Sustainability | 2026-08-27 | 1 |
 | Cross-Domain Synthesis | 2026-08-28 | 1 |
 | Operations Research | 2026-08-31 | 5 |
+| Physics | 2026-09-01 | 3 |
 
 ## Burned territory
 
@@ -80,6 +81,23 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The information paradox and the Page curve <sub>(006)</sub>
 - Replica wormholes and the island formula <sub>(006)</sub>
 - The holographic principle and entropy bounds <sub>(006)</sub>
+- Spontaneous symmetry breaking, the Higgs mechanism, and the Mexican-hat potential calibrated to v and m_H <sub>(016)</sub>
+- Curie's principle and the ferromagnet at 1043 K as the canonical symmetric-law/asymmetric-state case <sub>(016)</sub>
+- Goldstone's theorem, massless Nambu-Goldstone bosons, magnons and the Goldstone-Salam-Weinberg 1962 proof <sub>(016)</sub>
+- Anderson 1963, the Meissner effect, and the photon's 5 eV mass inside niobium from the London penetration depth <sub>(016)</sub>
+- The four months of 1964 - Englert-Brout, Higgs's two papers, Guralnik-Hagen-Kibble - and Kibble 1967 <sub>(016)</sub>
+- Physics Letters rejecting Higgs's second paper, the added incomplete-multiplets sentence, and Nambu as the PRL referee <sub>(016)</sub>
+- The degrees-of-freedom bookkeeping, 12 before and 12 after, and the eaten Goldstone bosons <sub>(016)</sub>
+- v = (sqrt2 G_F)^-1/2 = 246.22 GeV from the muon lifetime, and lambda = m_H^2/2v^2 = 0.129 <sub>(016)</sub>
+- sin^2 theta_W = 1 - (m_W/m_Z)^2 = 0.2232 as a one-line consistency check on the two boson masses <sub>(016)</sub>
+- The 3.6 per cent Delta r gap, the running of alpha, the top-quark loop, and weighing the top before 1995 <sub>(016)</sub>
+- The Yukawa ladder - y_e = 2.9e-6 to y_t = 0.991, 5.5 decades of unexplained numbers <sub>(016)</sub>
+- The proton mass decomposition - 9 per cent quark condensate, 91 per cent QCD dynamics <sub>(016)</sub>
+- Susskind's Higgsless world where QCD chiral breaking gives the W a mass of 30 MeV, and v/f_pi = 2673 <sub>(016)</sub>
+- Quigg and Shrock's gedanken worlds without Higgs fields <sub>(016)</sub>
+- The electroweak crossover at 159.5 GeV, 9 picoseconds, and why it is a crossover rather than a transition <sub>(016)</sub>
+- Higgs near-criticality and the metastable vacuum <sub>(016)</sub>
+- Openings now spent - the ball in the wine-bottle punt, and the calibrated finite-temperature potential figure <sub>(016)</sub>
 
 ### History of Science
 
@@ -292,10 +310,14 @@ meant to build rather than restart, so prefer these over starting fresh.
 ### Physics
 
 - The variational principle and Hamiltonian mechanics
-- Spontaneous symmetry breaking and the Higgs mechanism
 - The AdS/CFT correspondence
 - Cosmological inflation and the early universe
 - Quantum field theory in curved spacetime
+- The renormalisation group as a physical statement about scale, not a calculational trick
+- Effective field theory, naturalness, and whether the hierarchy problem was ever a problem
+- Neutrino mass - Dirac, Majorana, the seesaw, and why it does not fit the pattern above
+- Anomalies, the axial current, and why the pion decays at all
+- Topological defects - Kibble's cosmic strings, vortices, and the ordering of a broken vacuum
 
 ### History of Science
 

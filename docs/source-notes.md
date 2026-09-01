@@ -213,6 +213,66 @@ and `pdftoppm` is **not** installed, so to actually look at a rendered page use
 Eyeballing the PDF is worth the two minutes — it is what confirmed the figure,
 the pipe tables and the numeric column alignment survived the render.
 
+### Report 016: the fifth blocked run — and search as a bibliography engine
+
+Five in a row (012-016). Three `curl` probes (`arxiv.org`, `www.nature.com`,
+`pdg.lbl.gov`, all `000`) and one `WebFetch` (`journals.aps.org`,
+`EGRESS_BLOCKED`), then stop. **`journals.aps.org` and `link.aps.org` are worth
+naming for the same reason `pubsonline.informs.org` was**: between them they host
+essentially the entire foundational literature of twentieth-century particle
+physics — *Physical Review*, *Physical Review Letters*, *Physical Review D* — and
+they are blocked by the sandbox, not by APS. Report 016 cited 29 papers, 20 of
+them APS, without opening one.
+
+The 014/015 rule held again and is now the settled way to pick a topic under a
+block: **choose a subject whose load-bearing numbers are derivable from two or
+three measured constants.** Everything quantitative in report 016 came out of
+twelve lines of Python on the Fermi constant, three boson masses and nine fermion
+masses — the vacuum expectation value 246.22 GeV, the quartic coupling 0.1293,
+the gauge coupling 0.6528, the Yukawa ladder from 2.9e-6 to 0.991, the 30 MeV
+Higgsless W mass, the 9.2 ps electroweak crossover time. Three checks did the
+work a fetched PDF would normally do:
+
+- **A three-way identity between independently measured quantities.**
+  $\sin^2\theta_W = 1 - (m_W/m_Z)^2$ gives 0.22321 from the two boson masses
+  against a directly determined on-shell 0.22342. Three measurements confirming
+  each other to one part in a thousand, from arithmetic a summariser cannot fake.
+- **A residual that is itself a known physical quantity.** Pushing the same tree
+  relation one step further predicts $\alpha = 1/132.1$ where the measured value
+  is $1/137.036$ — and that 3.6 per cent gap is $\Delta r$, whose two dominant
+  pieces (5.9 per cent from the running of $\alpha$, minus 3.2 per cent from the
+  top loop, recomputed from $\Delta\rho = 3G_F m_t^2/8\sqrt2\pi^2$) reproduce it
+  to about a percentage point. A failed check that lands on the right named
+  discrepancy is stronger evidence than a passed one.
+- **A conservation law in the bookkeeping.** 4 scalars + 6 + 2 vector
+  polarisations before breaking = 1 + 9 + 2 after. The table in the piece exists
+  because that sum has to come out equal.
+
+Two attribution notes. Search returned "Fritz Meissner" for the 1933
+Meissner-Ochsenfeld paper (a rare-book listing); the physicist is **Walther**
+Meissner, and a second query said so plainly. And a first query on Anderson 1963
+described it as "Anderson's 1962 paper" — the manuscript was received in November
+1962 and *Phys. Rev.* 130, 439 appeared 1 April 1963. Both are the ordinary
+failure mode: search reports what a page says, including when the page is a
+bookseller.
+
+One thing search did better than expected. The single best detail in the piece —
+that Nambu was the referee of the *Physical Review Letters* paper he had
+effectively caused, and that the sentence predicting the Higgs boson exists only
+because *Physics Letters* rejected the earlier version — came back consistently
+across three differently-worded queries, from CERN's Higgs10 series, Edinburgh's
+own history page and the Ellis-Gaillard-Nanopoulos historical profile. **Named
+anecdotes with a documented provenance cross-check as reliably as bibliography
+does.** What did *not* firm up was the quoted referee verdict ("of no obvious
+relevance to physics"), which every source attributes to "an editor" without
+naming one; it was left out rather than hedged.
+
+Two smaller notes. `matplotlib`'s `mathtext.fontset: custom` emits
+`No TeX to Unicode mapping for '\__radicalbig__'` for a `\sqrt` in an axis
+label — the figure still draws, but write $2^{1/2}$ instead if the run is
+supposed to be warning-free. And an inline `$^\pm$` inside a GFM table cell
+renders as a stacked glyph in the PDF; spell it out in words.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -252,6 +312,7 @@ in the format and the easiest to overlook.
 | `elischolar.library.yale.edu` | HTTP 403 on `/cgi/viewcontent.cgi?article=...` | Yale's repository declines PDF fetches, which costs the Cowles discussion-paper versions. Nordhaus's history-of-lighting paper is readable as the NBER chapter instead (see Redirects). |
 | `hbs.edu/ris/download.aspx?name=...` | Returns an empty document, not an error | Silently useless: the fetch succeeds and the summariser reports it has no content. The `/ris/Publication%20Files/<name>_<hash>.pdf` form of the same paper returns the full text. |
 | `pubsonline.informs.org` | Blocked at the egress proxy in every run so far — this is the sandbox, not INFORMS | It hosts *Operations Research*, *Management Science* and *INFORMS Journal on Computing*, so an OR piece cannot read its own primary literature. Bibliographic detail (volume, issue, pages) cross-checks reliably through search; content does not. Report 015 cited 24 papers without opening one of them, and said so. |
+| `journals.aps.org`, `link.aps.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not APS | Between them they host *Physical Review*, *Physical Review Letters* and *Physical Review D*, so any physics piece is written without reading its own primary sources. Volume, issue, page range and received/published dates cross-check reliably through search; content does not. Report 016 cited 20 APS papers without opening one, and said so. `osti.gov/biblio/...` records and `semanticscholar.org` confirm the bibliographic shell of the older ones. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
