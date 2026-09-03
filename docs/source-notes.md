@@ -273,6 +273,73 @@ label — the figure still draws, but write $2^{1/2}$ instead if the run is
 supposed to be warning-free. And an inline `$^\pm$` inside a GFM table cell
 renders as a stacked glyph in the PDF; spell it out in words.
 
+### Report 017: the sixth blocked run — and a check that beats a fetched PDF
+
+Six in a row (012-017). Three `curl` probes (`arxiv.org`, `www.nature.com`,
+`www.sec.gov`, all `CONNECT tunnel failed, response 403` / `000`) and one
+`WebFetch` (`arxiv.org`, `EGRESS_BLOCKED`), then stop. **`www.sec.gov` is worth
+naming alongside `pubsonline.informs.org` and `journals.aps.org`**: it hosts the
+joint CFTC-SEC report on the 2010 flash crash, every SEC concept release, and
+the rule filings that document US market structure, and it is blocked by the
+sandbox, not by the SEC. `papers.ssrn.com` and `onlinelibrary.wiley.com` were
+never reachable either, which between them closes off most of the quantitative
+finance literature. Report 017 cited 17 sources without opening one.
+
+The topic was picked to survive that, and the 014/015/016 rule held again.
+Everything quantitative in the piece is a derivation, not a report: Kyle's
+$\beta$, $\lambda$ and half-revelation result; the Almgren-Chriss trajectory,
+half-life and efficient frontier; the capacity ratio. Four checks did the work a
+fetched PDF would have done, and one of them is stronger than anything a PDF
+could have supplied:
+
+- **A closed form checked against a general-purpose optimiser.** The
+  Almgren-Chriss sinh trajectory was compared with SLSQP minimising the same
+  $E + \lambda V$ over unconstrained trade lists at four risk aversions. Agreement
+  to 0.0 shares at all four, once the variables were scaled to fractions of the
+  position — unscaled, SLSQP stopped about 1,500 shares short and made the closed
+  form look wrong. **Scale the decision variables before concluding a formula
+  disagrees with an optimiser.**
+- **Calibration constants that decode.** Almgren and Chriss's $\gamma = 2.5\times10^{-7}$
+  and $\eta = 2.5\times10^{-6}$ look arbitrary until you multiply them by 10 per
+  cent and 1 per cent of the stated 5-million-share daily volume: both give
+  0.125 dollars, the stated bid-ask spread of an eighth. Their $\sigma = 0.95$ and
+  $\alpha = 0.02$ likewise reproduce the stated 30 per cent annual volatility and
+  10 per cent annual drift on a 50-dollar stock to four digits. Four numbers
+  taken on trust from search, all confirmed at once by arithmetic.
+- **Monte Carlo against an analytic equilibrium.** Four million paths of the
+  single-auction Kyle model returned 499,407 dollars of insider profit against an
+  analytic 500,000, noise-trader losses of 499,589, and a posterior variance of
+  12.4874 against the predicted 12.5.
+- **A ratio that is independent of its inputs.** The two-thirds capacity result
+  was derived symbolically and then confirmed numerically on a grid, where the
+  cost-to-gross ratio came back 0.666665 for arbitrary $a$ and $b$.
+
+Two attribution traps, both caught by a second differently-worded query. Search
+returned **Econometrica volume 74** for Huberman and Stanzl 2004 from two
+separate hosts, including Columbia Business School's own faculty page; the paper
+is in **volume 72**, issue 4, pages 1247-1275, confirmed by the Econometric
+Society's issue index and RePEc. And a first query for Kyle 1985 gave pages
+1315-**1336**; RePEc and two other returns give 1315-**1335**. Both are the
+ordinary failure mode — search reports what a page says, including when the page
+is wrong — and both would have shipped on one query.
+
+What search did well again: **bibliography**, with all 17 references confirmed by
+a second query including a 1997 BARRA internal handbook and a 2007 *Journal of
+Trading* article whose volume number never firmed up (cited as "Spring 2007,
+pp. 59-66" rather than guessed). What it did badly: **index levels on a specific
+intraday date**. Three differently-worded queries for where the S&P 500 stood at
+2:32 p.m. on 6 May 2010 returned nothing consistent, so the piece dropped the
+"well below the opening level" comparison and kept only the derived 1,093-point
+average execution, which is arithmetic on two figures the joint report itself
+states. **When a comparison cannot be sourced, print the derivation and drop the
+comparison** rather than hedging the sentence.
+
+One rendering note. Inline math immediately followed by a comma will strand that
+comma at the start of the next line when the math falls near the right margin —
+it happened twice in the first render of this piece. The fix is to reword so a
+*word* follows the math, not punctuation; a comma removed or a "then" inserted
+costs nothing and the problem disappears.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -313,6 +380,7 @@ in the format and the easiest to overlook.
 | `hbs.edu/ris/download.aspx?name=...` | Returns an empty document, not an error | Silently useless: the fetch succeeds and the summariser reports it has no content. The `/ris/Publication%20Files/<name>_<hash>.pdf` form of the same paper returns the full text. |
 | `pubsonline.informs.org` | Blocked at the egress proxy in every run so far — this is the sandbox, not INFORMS | It hosts *Operations Research*, *Management Science* and *INFORMS Journal on Computing*, so an OR piece cannot read its own primary literature. Bibliographic detail (volume, issue, pages) cross-checks reliably through search; content does not. Report 015 cited 24 papers without opening one of them, and said so. |
 | `journals.aps.org`, `link.aps.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not APS | Between them they host *Physical Review*, *Physical Review Letters* and *Physical Review D*, so any physics piece is written without reading its own primary sources. Volume, issue, page range and received/published dates cross-check reliably through search; content does not. Report 016 cited 20 APS papers without opening one, and said so. `osti.gov/biblio/...` records and `semanticscholar.org` confirm the bibliographic shell of the older ones. |
+| `www.sec.gov`, `papers.ssrn.com`, `onlinelibrary.wiley.com` | `CONNECT tunnel failed, response 403` / `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publishers | Between them they hold the joint CFTC-SEC flash-crash report, most quantitative-finance working papers, and *Econometrica*, *Journal of Finance* and *Journal of Financial Economics*, so a quant piece is written without reading its own primary sources. Volume, issue and page range cross-check reliably through search — with the two exceptions recorded under report 017 — but content does not. Report 017 cited 17 sources without opening one. `ideas.repec.org` and `www.econometricsociety.org` issue indexes are the best second host for the bibliographic shell. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks

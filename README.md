@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**16 reports.** Next up: **Quantitative Finance** as No. 017 — oldest last-covered date (2026-08-20).
+**17 reports.** Next up: **Energy** as No. 018 — oldest last-covered date (2026-08-21).
 
 ## Log
 
@@ -30,6 +30,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 014 | 2026-08-28 | Cross-Domain Synthesis | The Threshold at One — Criticality in Six Sciences | [014_2026.08.28_ThresholdAtOne_CrossDomain.pdf](reports/014_2026.08.28_ThresholdAtOne_CrossDomain.pdf) |
 | 015 | 2026-08-31 | Operations Research | The Patterns Never Written Down — Column Generation and the Cutting Stock Problem | [015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf](reports/015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf) |
 | 016 | 2026-09-01 | Physics | The Symmetry That Hid Itself | [016_2026.09.01_SymmetryThatHid_Physics.pdf](reports/016_2026.09.01_SymmetryThatHid_Physics.pdf) |
+| 017 | 2026-09-02 | Quantitative Finance | The Price of Being in a Hurry | [017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf](reports/017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf) |
 
 ## Rotation state
 
@@ -40,7 +41,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Quantitative Finance | 2026-08-20 | 1 |
 | Energy | 2026-08-21 | 1 |
 | History of Science | 2026-08-22 | 1 |
 | Geopolitics of Resources | 2026-08-24 | 1 |
@@ -50,6 +50,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Cross-Domain Synthesis | 2026-08-28 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
+| Quantitative Finance | 2026-09-02 | 2 |
 
 ## Burned territory
 
@@ -258,6 +259,25 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Merton jump-diffusion model <sub>(007)</sub>
 - Breeden-Litzenberger recovery of the risk-neutral density <sub>(007)</sub>
 - Variance swaps, log-contract replication and the variance risk premium <sub>(007)</sub>
+- Implementation shortfall as the gap between the decision price and the realised price, and Perold 1988 <sub>(017)</sub>
+- Berkowitz, Logue and Noser 1988 - 14,000 NYSE trades, 23 basis points total, 18 commission, 5 impact <sub>(017)</sub>
+- VWAP as an execution benchmark and its origin in the 1988 Journal of Finance paper <sub>(017)</sub>
+- Kyle 1985 - the single-auction linear equilibrium, beta = sigma_u/sqrt(Sigma_0), lambda = sqrt(Sigma_0)/2 sigma_u <sub>(017)</sub>
+- Kyle's lambda as market depth, and lambda times beta equal to one half <sub>(017)</sub>
+- The half-revelation result - posterior variance falls to Sigma_0/2 in one auction <sub>(017)</sub>
+- The insider's expected profit equal to the noise traders' expected loss, verified by Monte Carlo <sub>(017)</sub>
+- Almgren-Chriss - linear permanent and temporary impact, the mean-variance objective, the sinh trajectory <sub>(017)</sub>
+- The Almgren-Chriss worked example - 1e6 shares, 50 dollars, 5 days, gamma 2.5e-7, eta 2.5e-6, epsilon 1/16 <sub>(017)</sub>
+- The calibration identities - 10 per cent of ADV equals one spread permanently, 1 per cent temporarily <sub>(017)</sub>
+- Trading half-life ln2/kappa, kappa from cosh(kappa tau) = 1 + tau^2 lambda sigma^2 / 2 eta-tilde <sub>(017)</sub>
+- The permanent-impact term gamma X^2 / 2 being independent of the trading strategy <sub>(017)</sub>
+- TWAP as the risk-neutral optimum, and the efficient frontier of execution strategies <sub>(017)</sub>
+- Huberman and Stanzl 2004 - linear permanent impact as the only shape that excludes quasi-arbitrage <sub>(017)</sub>
+- Gatheral 2010 - exponential decay compatible only with linear impact, and gamma + delta close to 1 <sub>(017)</sub>
+- The square-root impact law, Y sigma sqrt(Q/V), and Almgren et al. 2005's 3/5 exponent from Citigroup data <sub>(017)</sub>
+- The capacity theorem - at the optimal size, impact costs equal two-thirds of gross alpha <sub>(017)</sub>
+- The 2010 flash crash, the 75,000 E-Mini contracts, and the 9-per-cent-of-trailing-minute participation rule <sub>(017)</sub>
+- Openings now spent - the 1988 NYSE commission-versus-impact arithmetic as a way in <sub>(017)</sub>
 
 ### Cross-Domain Synthesis
 
@@ -386,9 +406,12 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 - Interest-rate models: Vasicek, Hull-White, HJM and the LIBOR market model
 - American options and optimal stopping
-- Monte Carlo methods and variance reduction
-- Optimal execution and market microstructure (Almgren-Chriss, Kyle)
 - Rough volatility
+- Adaptive and stochastic-control execution - Almgren-Lorenz, Cartea-Jaimungal, and why static schedules survive
+- Market making and inventory risk - Ho-Stoll, Avellaneda-Stoikov, and the spread as an option
+- The limit order book as an object in its own right - queue position, priority rules, and latency
+- Adverse selection and the economics of payment for order flow
+- Market microstructure invariance and whether trading really happens in business time
 
 ### Cross-Domain Synthesis
 
