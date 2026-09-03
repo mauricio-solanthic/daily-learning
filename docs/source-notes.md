@@ -273,6 +273,100 @@ label — the figure still draws, but write $2^{1/2}$ instead if the run is
 supposed to be warning-free. And an inline `$^\pm$` inside a GFM table cell
 renders as a stacked glyph in the PDF; spell it out in words.
 
+### Report 017: the sixth blocked run — and deriving the thing you cannot fetch
+
+Six in a row (012-017). Three `curl` probes (`arxiv.org`, `www.nature.com`,
+`www.newyorkfed.org`, all `CONNECT tunnel failed, response 403` / `000`) and one
+`WebFetch` of an arXiv abstract (`EGRESS_BLOCKED`), then stop. Add
+**`tandfonline.com`** and **`onlinelibrary.wiley.com`** to the mental list of
+hosts a quantitative-finance piece cannot reach: between them they carry
+*Quantitative Finance*, *Applied Mathematical Finance*, *Econometrica* and the
+*Journal of Finance*. Report 017 cited 18 sources and opened none of them. The
+tables below still describe *site* behaviour, not reachability.
+
+The 014-016 rule now has a sharper form. It is not enough to pick a topic whose
+numbers are computable; pick one where **the central claim of the piece is a
+theorem you can prove in the run**. Report 017's spine is that the
+Almgren-Chriss half-life is independent of order size only because the impact
+exponent is exactly 1. That was not looked up — search does not contain it. It
+came out of writing the free-horizon problem with a general exponent
+$k$, noticing the integrand has no explicit time dependence, and using the
+conserved Hamiltonian:
+
+- The first integral $\eta_k k w^{1+k} = \lambda\sigma^2 x^2$ collapses a
+  variational problem to a separable first-order ODE, giving
+  $\theta \propto X^{(k-1)/(k+1)}$ in three lines. At the measured $k = 3/5$
+  that is exactly $-1/4$.
+- **Three independent checks, none of which needed a source.** The closed form
+  agrees with `solve_ivp` integration of $w = c x^{p}$ to a part in a million;
+  the $k \to 1$ limit recovers $\ln 2/\kappa$ continuously (0.216, 0.21897,
+  0.219171 days at $k$ = 0.9, 0.99, 0.999 against 0.219192); and the fitted
+  $d\log\theta/d\log X$ matches $(k-1)/(k+1)$ to six decimals at four values
+  of $k$.
+- **Do not trust a general-purpose optimiser on a badly scaled path problem.**
+  `scipy.optimize.minimize(L-BFGS-B)` on 1,999 interior holdings with
+  $X = 10^6$ silently returned the initial guess — the "numerical confirmation"
+  was the straight line it was handed, and it reported a 0.32-of-$X$ deviation
+  from the analytic answer as though the analytic answer were wrong. Solving the
+  same quadratic as a tridiagonal linear system reproduced the sinh trajectory
+  to 9e-9 of $X$. Where the objective is quadratic, solve the linear system;
+  where it is not, find the first integral. Neither needs an optimiser.
+
+Bibliography again cross-checked cleanly, and again inverted two things a single
+query got wrong. Almgren, Thum, Hauptmann and Li is *Risk* **18**(7), 58-62 —
+the first query said "May 2005" and gave no pages, the second gave July and
+58-62 from two separate citation records. Huberman and Stanzl came back as both
+1247-1275 and 1247-1276, and as *Econometrica* **74** in one secondary
+reference; RePEc's `v:72:y:2004:i:4:p:1247-1275` settles it. One residual
+ambiguity is recorded rather than hidden: Almgren and Chriss is universally
+cited as *Journal of Risk* 3(2), 5-39, 2001, but risk.net's own issue index
+labels volume 3 number 2 as **Winter 2000**, and one search return gave 5-40.
+The piece uses the standard 2001/5-39 form.
+
+Two numeric cautions of the AR6-GWP kind. The square-root law's prefactor $Y$
+came back as 0.5 (futures), 0.9 (equities), "of order 1" and 0.69 (a 2026
+single-stock study, bias-corrected to 0.34) across four queries. **Do not print
+one value.** Report 017 wrote "of order one" with the range and attributed each
+number to its own study. And Frazzini, Israel and Moskowitz's cost figures come
+back as means (9.97 and 11.02 basis points) from one query and medians (6.18 and
+8.63) from another, for samples ending in 2016 and 2013 respectively; "near 10
+and near 11, with medians several basis points lower" is robust to both.
+
+### The ledger cannot see an unmerged pull request
+
+Found the hard way on 2026-09-03. `ledger.py next` derives the rotation from the
+front matter of the files on disk, which on a fresh clone means the files on
+`main`. A report that has been written, committed, pushed and opened as a pull
+request but **not yet merged** is therefore invisible to it. The consequence is
+not subtle: the 2026-09-02 run wrote report 017 on optimal execution and market
+impact and opened PR #11, that PR sat unreviewed, and the next morning
+`ledger.py next` returned `next_seq: 17`, `category: Quantitative Finance`
+again — with an empty `burned_for_category` for everything the unmerged piece
+had spent. `ledger.py check` cleared "optimal execution and market impact"
+because the colliding `burned:` entries were sitting on a branch. The second
+run reproduced the same topic, the same title and the same slug independently.
+
+**So check the remote before researching, not after writing.** One call is
+enough:
+
+```bash
+git ls-remote --heads origin 'report-*'      # branches for seq you are about to claim
+```
+
+A `report-NNN` branch already on the remote for the sequence number
+`ledger.py next` just handed you means a previous run's work is in flight. Read
+its front matter (`git show origin/report-NNN:src/NNN_*.md | sed -n 1,45p`)
+before choosing a sub-topic, and treat its `burned:` list as burned even though
+the ledger does not.
+
+What not to do when it happens: do not force-push over the existing branch, and
+do not open a second pull request for the same sequence number. The first
+destroys unreviewed work; the second hands the reviewer two overlapping
+candidates for one slot and breaks `ledger.py verify`'s numbering check
+whichever merges second. Push to a distinct branch name, say plainly in the pull
+request and the notification that the sequence number is contested, and leave
+the choice of which one is archived to the review.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -313,6 +407,7 @@ in the format and the easiest to overlook.
 | `hbs.edu/ris/download.aspx?name=...` | Returns an empty document, not an error | Silently useless: the fetch succeeds and the summariser reports it has no content. The `/ris/Publication%20Files/<name>_<hash>.pdf` form of the same paper returns the full text. |
 | `pubsonline.informs.org` | Blocked at the egress proxy in every run so far — this is the sandbox, not INFORMS | It hosts *Operations Research*, *Management Science* and *INFORMS Journal on Computing*, so an OR piece cannot read its own primary literature. Bibliographic detail (volume, issue, pages) cross-checks reliably through search; content does not. Report 015 cited 24 papers without opening one of them, and said so. |
 | `journals.aps.org`, `link.aps.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not APS | Between them they host *Physical Review*, *Physical Review Letters* and *Physical Review D*, so any physics piece is written without reading its own primary sources. Volume, issue, page range and received/published dates cross-check reliably through search; content does not. Report 016 cited 20 APS papers without opening one, and said so. `osti.gov/biblio/...` records and `semanticscholar.org` confirm the bibliographic shell of the older ones. |
+| `tandfonline.com`, `onlinelibrary.wiley.com` | `000` / `EGRESS_BLOCKED` in every run so far — this is the sandbox, not Taylor & Francis or Wiley | Together they host *Quantitative Finance*, *Applied Mathematical Finance*, *Econometrica* and the *Journal of Finance*, so a quantitative-finance piece is written without reading its own primary literature. `ideas.repec.org` and `econpapers.repec.org` are the reliable second host for volume, issue, year and page range; `econometricsociety.org` issue indexes confirm month of publication. Report 017 cited 18 sources without opening one. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
