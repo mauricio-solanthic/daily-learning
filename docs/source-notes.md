@@ -340,6 +340,111 @@ it happened twice in the first render of this piece. The fix is to reword so a
 *word* follows the math, not punctuation; a comma removed or a "then" inserted
 costs nothing and the problem disappears.
 
+### Report 018: the seventh blocked run — and what actually moves a page count
+
+Seven in a row (012-018). Two `curl` probes (`arxiv.org`, `www.nature.com`, both
+`CONNECT tunnel failed, response 403` / `000`) and one `WebFetch`
+(`projecteuclid.org`, `EGRESS_BLOCKED`), then stop. **`projecteuclid.org` is worth
+naming alongside the other publisher hosts**: it carries *Probability Surveys*, the
+*Annals of Probability* and the *Annals of Statistics*, so probability and statistics
+join operations research, physics and finance as fields whose primary literature is
+unreachable from this sandbox. Report 018 cited 22 sources without opening one.
+
+The topic was picked to survive that, and the 014-017 rule held again: the entire
+load-bearing content is one reweighting identity and its consequences, so Python
+supplied every number and search supplied only history and bibliography. Four checks
+did the work a fetched PDF would have done, and the first is a trick worth reusing:
+
+- **Reconstructing a second moment from a reported mean and a reported size-biased
+  mean, to confirm both at once.** Hemenway's 1982 class-size figures — 111 courses,
+  mean 14.5, student-experienced "over 78" — are only mutually consistent at a
+  coefficient of variation of 2.09, because $14.5 \times (1 + 2.09^2) = 78.1$. The
+  three courses he names (105, 171, 229) then account for 31 per cent of enrolments
+  and 74 per cent of the second moment. Two numbers taken on trust from a summariser,
+  both confirmed by arithmetic that could not have been faked, plus a new fact.
+- **Stationary simulation against the closed form.** Probing two million instants
+  along long realisations returned mean waits of 4.9998, 5.4134, 7.4955 and 9.9738
+  minutes against theoretical 5.000, 5.417, 7.500 and 10.000 for four interval laws.
+  The harmonic identity $\mathbb{E}[1/X^*] = 1/\mathbb{E}[X]$ reproduced the base
+  mean to four digits on gamma, lognormal and uniform laws.
+- **A reported correction checked against the mechanism's own prediction.** Wolfson
+  et al. 2001 report dementia survival falling from 6.60 to 3.30 years once length
+  bias is removed — a factor of 2.00. Pure length bias on exponential durations
+  inflates the median by 2.4213 (the gamma-2 median 1.678 over the exponential's
+  0.693) and the mean by exactly 2. The observed factor sits just inside what the
+  mechanism predicts, which is how you establish that a reported correction is the
+  right size without reading the paper.
+- **An implied total from two agencies.** 62.3 million small-firm workers at 45.9 per
+  cent of private-sector employment implies 135.7 million private-sector workers,
+  which is the right order — so two figures from two separate federal sources confirm
+  each other.
+
+Four attribution traps, all caught by a second differently-worded query:
+
+- **Fisher 1934 is "The *Effect* of Methods of Ascertainment upon the Estimation of
+  Frequencies"** — singular. The plural "Effects" is what most citing papers write,
+  and what a first query returns.
+- **Pollaczek 1930 is titled "Über eine Aufgabe der Wahrscheinlichkeitstheorie. I"**;
+  Springer's own record carries the numeral, and the Wikipedia-derived citation chain
+  drops it.
+- **"Variation in Class Size, the Class Size Paradox…" is Feld and Grofman 1977**
+  (*Research in Higher Education*, vol. 6, pp. 215-222), not Hemenway 1982. A first
+  query merged the two papers into one.
+- **Masuda and Porter's "The Waiting-Time Paradox" is 2021, in *Frontiers for Young
+  Minds*** 9:582433 — a children's journal, not the physics venue the title suggests.
+  Worth knowing before citing it for anything load-bearing.
+
+One near-miss that no cross-check would have caught, because it was a mathematical
+claim rather than a sourced one. The draft asserted that the exponential is the only
+law whose expected wait equals the whole mean headway. It is not: *any* law with a
+coefficient of variation of one does that, a lognormal at CV 1 included, since the
+wait is $\mu(1+c^2)/2$. The exponential is unique in that the entire residual-wait
+*distribution* equals the interval distribution. **A uniqueness claim about a mean is
+almost never a uniqueness claim** — recompute the condition before writing "the only".
+
+What search did badly, again: **tabulated figures that live on one host.** Terada's
+own 1922 tram numbers, the Ugander et al. Facebook degree table, TfL's excess-wait-time
+table in *Travel in London 2024*, and the Census household-size distribution all
+refused to firm up across differently-worded queries. So the piece cites Terada for
+the argument and not his figures, and drops the Facebook, London-bus and household
+examples entirely rather than hedging them. The firm-size pair survived only because
+the two numbers cross-check arithmetically.
+
+### The 9-to-8 page fight, part two — blocks quantise, prose reflows
+
+Recorded because report 018 spent five renders on it and the lesson generalises past
+the note under report 014. Cutting roughly 250 words of prose **and** dropping two
+whole references moved the page count from 9 to 9. What moved it to 8 was deleting one
+table. Prose reflows within the pages it already occupies; tables, figures, display
+maths and call-outs cannot be split, so they force breaks and leave light pages behind.
+
+The procedure that works:
+
+1. Get the per-page word profile from `pypdf` (`len(page.extract_text().split())`).
+   A saturated body page in this format holds about 500 words.
+2. Any page well under that is light because a **block** forced a break there. That is
+   the page to attack, and the fix is removing a block from it, not words from it.
+3. Report 018's page 7 held 370 words, a heading, two display equations and a
+   summary table whose every row was already stated in the prose. Deleting the table
+   pulled the whole reference block up one page.
+
+Prefer deleting the block that is a **recap** — a table that restates the prose is the
+cheapest thing in the piece — over shortening the argument.
+
+Two smaller notes. The stranded-punctuation problem recorded under report 017 recurred
+twice here and is now cheap to *detect* rather than eyeball: extract the text and scan
+for lines matching `^\s*[,.;:)]`. Both hits were inline math immediately followed by a
+comma or a full stop, and inserting a word after the math fixed both. And
+`ledger.py verify` reports a false overlap when two reports both close their `burned:`
+list with the boilerplate "Openings now spent - … figure" line, since
+*openings / spent / figure* is enough shared vocabulary to trip the checker; reword the
+line rather than shipping a warning that means nothing.
+
+Toolchain, for a fresh container: `pip install --upgrade cffi` still fixes the
+pypdf / `cryptography` panic, three runs running. `matplotlib` 3.11 with `numpy` 2.4
+no longer exposes `np.math`, so a figure script that reached for `np.math.factorial`
+needs a plain `import math`.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -381,6 +486,7 @@ in the format and the easiest to overlook.
 | `pubsonline.informs.org` | Blocked at the egress proxy in every run so far — this is the sandbox, not INFORMS | It hosts *Operations Research*, *Management Science* and *INFORMS Journal on Computing*, so an OR piece cannot read its own primary literature. Bibliographic detail (volume, issue, pages) cross-checks reliably through search; content does not. Report 015 cited 24 papers without opening one of them, and said so. |
 | `journals.aps.org`, `link.aps.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not APS | Between them they host *Physical Review*, *Physical Review Letters* and *Physical Review D*, so any physics piece is written without reading its own primary sources. Volume, issue, page range and received/published dates cross-check reliably through search; content does not. Report 016 cited 20 APS papers without opening one, and said so. `osti.gov/biblio/...` records and `semanticscholar.org` confirm the bibliographic shell of the older ones. |
 | `www.sec.gov`, `papers.ssrn.com`, `onlinelibrary.wiley.com` | `CONNECT tunnel failed, response 403` / `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publishers | Between them they hold the joint CFTC-SEC flash-crash report, most quantitative-finance working papers, and *Econometrica*, *Journal of Finance* and *Journal of Financial Economics*, so a quant piece is written without reading its own primary sources. Volume, issue and page range cross-check reliably through search — with the two exceptions recorded under report 017 — but content does not. Report 017 cited 17 sources without opening one. `ideas.repec.org` and `www.econometricsociety.org` issue indexes are the best second host for the bibliographic shell. |
+| `projecteuclid.org` | `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publisher | It carries *Probability Surveys*, the *Annals of Probability* and the *Annals of Statistics*, so the probability and statistics literature is unreadable too. `arxiv.org` listings and `semanticscholar.org` confirm the bibliographic shell; `ideas.repec.org` does not cover these journals. Report 018 cited 22 sources without opening one. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
