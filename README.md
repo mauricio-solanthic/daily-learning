@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**17 reports.** Next up: **Energy** as No. 018 — oldest last-covered date (2026-08-21).
+**18 reports.** Next up: **Energy** as No. 019 — oldest last-covered date (2026-08-21).
 
 ## Log
 
@@ -31,6 +31,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 015 | 2026-08-31 | Operations Research | The Patterns Never Written Down — Column Generation and the Cutting Stock Problem | [015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf](reports/015_2026.08.31_PatternsNeverWritten_OperationsResearch.pdf) |
 | 016 | 2026-09-01 | Physics | The Symmetry That Hid Itself | [016_2026.09.01_SymmetryThatHid_Physics.pdf](reports/016_2026.09.01_SymmetryThatHid_Physics.pdf) |
 | 017 | 2026-09-02 | Quantitative Finance | The Price of Being in a Hurry | [017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf](reports/017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf) |
+| 018 | 2026-09-04 | Cross-Domain Synthesis | Larger Than Average | [018_2026.09.04_LargerThanAverage_CrossDomain.pdf](reports/018_2026.09.04_LargerThanAverage_CrossDomain.pdf) |
 
 ## Rotation state
 
@@ -47,10 +48,10 @@ last-covered. Ties among never-covered are broken by the order in
 | Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
-| Cross-Domain Synthesis | 2026-08-28 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
+| Cross-Domain Synthesis | 2026-09-04 | 2 |
 
 ## Burned territory
 
@@ -304,6 +305,34 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Tokaimura criticality accident of 30 September 1999 as a self-limiting oscillation about k = 1 <sub>(014)</sub>
 - Measles R0 of 12-18, the 92-94 per cent threshold, and WHO/UNICEF 2024 coverage of 84 and 76 per cent <sub>(014)</sub>
 - Openings now spent - the dying aristocratic surname, and the generating-function fixed-point diagram <sub>(014)</sub>
+- Length-biased and size-biased sampling as one formula across transit, teaching, traffic, queues, medicine and networks <sub>(018)</sub>
+- The length-biased density f*(x) = x f(x) / mu and the inspected interval mean mu(1 + c^2) <sub>(018)</sub>
+- Mean residual life E[L^2]/2E[L] = (mu/2)(1 + c^2) and the forward recurrence time <sub>(018)</sub>
+- Torahiko Terada's 1922 essay on Tokyo City trams, and Masuda and Hiraoka's 2020 translation <sub>(018)</sub>
+- Feller volume II chapter I.4 as the canonical statement of the waiting time paradoxes <sub>(018)</sub>
+- The exponential as the unique law whose residual-wait distribution equals its own interval distribution <sub>(018)</sub>
+- Pareto interval laws with tail index at or below 2 - finite mean headway, infinite expected wait <sub>(018)</sub>
+- The interval-law table at mean 10 minutes - clockface 5.0, uniform 5.417, Erlang-2 7.5, exponential 10, lognormal 16.25 <sub>(018)</sub>
+- Hemenway 1982 - 111 Harvard School of Public Health courses, mean 14.5, student-experienced 78 <sub>(018)</sub>
+- The reconstruction of Hemenway's second moment - c = 2.09, and 105/171/229 supplying 74 per cent of it <sub>(018)</sub>
+- Feld and Grofman 1977 on class size variation and student attendance <sub>(018)</sub>
+- Firm size against job size - 89 per cent of US firms under 20 employees, 45.9 per cent of jobs under 500 <sub>(018)</sub>
+- Cox's 1969 textile fibre length bias and the pincer that misses short fibres <sub>(018)</sub>
+- Wicksell's 1925 corpuscle problem as size bias in a sectioning plane <sub>(018)</sub>
+- Wardrop's relation - time-mean speed equals space-mean speed plus variance over the mean <sub>(018)</sub>
+- The loop detector overstating speed by 11 per cent, and the harmonic mean recovering the space mean <sub>(018)</sub>
+- Pollaczek-Khinchine as a residual-service-time result, and the fivefold delay from CV 2 service times <sub>(018)</sub>
+- Newell and Potts 1964 bus bunching as the mechanism that manufactures the variance <sub>(018)</sub>
+- Wolfson et al. 2001 - dementia survival 6.60 years unadjusted, 3.30 adjusted for length bias <sub>(018)</sub>
+- The exponential median inflation factor of 2.42 under pure length bias, against the observed 2.00 <sub>(018)</sub>
+- Zelen and Feinleib 1969 and length-time bias in screening for chronic disease <sub>(018)</sub>
+- Feld 1991 - why your friends have more friends than you do, and E[k^2]/E[k] <sub>(018)</sub>
+- Friends as sensors (Garcia-Herranz et al. 2014) and acquaintance immunisation (Cohen et al. 2003) <sub>(018)</sub>
+- The harmonic identity E[1/X*] = 1/E[X] and the harmonic mean as the unbiased estimator <sub>(018)</sub>
+- Horvitz and Thompson 1952 inverse-probability weighting as the general antidote <sub>(018)</sub>
+- The Fisher 1934 to Rao 1965 to Patil and Rao 1978 lineage of weighted distributions <sub>(018)</sub>
+- Zero-size units being invisible to any reweighting - the class nobody attends <sub>(018)</sub>
+- Ways in now used up - the tram that was always late, and the paired-density panel <sub>(018)</sub>
 
 ## Backlog
 
@@ -418,4 +447,8 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Percolation proper - lattice thresholds, universality classes, and why the exponents do not care what the substance is
 - Renormalisation group as the reason unrelated systems share critical exponents
 - Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
-- The inspection paradox and size-biased sampling across queues, lifetimes and network degrees
+- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
+- The renormalisation group as the reason unrelated systems share critical exponents
+- Percolation proper - lattice thresholds, universality classes, and substance-independent exponents
+- Berkson's bias and collider stratification as the other great sampling distortion
+- Survivorship bias in fund returns, building stock and the fossil record
