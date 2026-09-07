@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**18 reports.** Next up: **Energy** as No. 019 — oldest last-covered date (2026-08-21).
+**19 reports.** Next up: **History of Science** as No. 020 — oldest last-covered date (2026-08-22).
 
 ## Log
 
@@ -32,6 +32,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 016 | 2026-09-01 | Physics | The Symmetry That Hid Itself | [016_2026.09.01_SymmetryThatHid_Physics.pdf](reports/016_2026.09.01_SymmetryThatHid_Physics.pdf) |
 | 017 | 2026-09-02 | Quantitative Finance | The Price of Being in a Hurry | [017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf](reports/017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf) |
 | 018 | 2026-09-04 | Cross-Domain Synthesis | Larger Than Average | [018_2026.09.04_LargerThanAverage_CrossDomain.pdf](reports/018_2026.09.04_LargerThanAverage_CrossDomain.pdf) |
+| 019 | 2026-09-07 | Energy | The Work Already Done | [019_2026.09.07_WorkAlreadyDone_Energy.pdf](reports/019_2026.09.07_WorkAlreadyDone_Energy.pdf) |
 
 ## Rotation state
 
@@ -42,7 +43,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Energy | 2026-08-21 | 1 |
 | History of Science | 2026-08-22 | 1 |
 | Geopolitics of Resources | 2026-08-24 | 1 |
 | Economics | 2026-08-25 | 1 |
@@ -52,6 +52,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
 | Cross-Domain Synthesis | 2026-09-04 | 2 |
+| Energy | 2026-09-07 | 2 |
 
 ## Burned territory
 
@@ -69,6 +70,30 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The South Australian black system of 28 September 2016 <sub>(008)</sub>
 - The 28 April 2025 Iberian blackout, including the voltage-versus-inertia framing and the Badajoz oscillation <sub>(008)</sub>
 - The "210 GVA·s is only 58 MWh" comparison against Hornsdale <sub>(008)</sub>
+- Uranium enrichment and the separative work unit as the organising idea of a piece <sub>(019)</sub>
+- Dirac's 1941 unpublished note, the Fuchs-Peierls 1942 classified report, and Cohen's 1951 NNES volume <sub>(019)</sub>
+- The value function V(x) = (2x-1) ln(x/(1-x)), its zero at one half and its logarithmic divergence at both ends <sub>(019)</sub>
+- The cascade mass balance F = P(xp-xt)/(xf-xt) and SWU = P V(xp) + T V(xt) - F V(xf) <sub>(019)</sub>
+- Separative work as a potential - path independence verified to 1.7e-13 across six intermediate assays <sub>(019)</sub>
+- The 208.03 SWU per kg of 90 per cent HEU from natural feed at 0.25 per cent tails <sub>(019)</sub>
+- The 78 per cent result - work already spent by 4.5 per cent reactor assay - and 92 per cent by 19.75 per cent HALEU <sub>(019)</sub>
+- The 37 per cent stripping floor that is paid before the assay has moved at all <sub>(019)</sub>
+- The ideal-cascade stage count, abundance ratio rising by root alpha per stage <sub>(019)</sub>
+- Gaseous diffusion alpha = sqrt(352.04/349.03) = 1.0043, and the 1,172-stage reconstruction of the published 1,200 <sub>(019)</sub>
+- Dirac's v-to-the-fourth separative power law and the Tronin/Bogovalov vacuum-core revision to v-squared <sub>(019)</sub>
+- Gernot Zippe, Sukhumi, and the University of Virginia repeat of 1958-1960 <sub>(019)</sub>
+- Paducah's 3,000 MW of TVA power reconciled against its 11.3 million SWU design rating <sub>(019)</sub>
+- The 2,400 versus 50 kWh per SWU contrast, and the 1,040-to-1 versus 22-to-1 energy return <sub>(019)</sub>
+- Megatons to Megawatts - 500 t of HEU, 12,000 t of LEU, 104 million SWU destroyed <sub>(019)</sub>
+- The optimal tails assay condition r = V(xf) - V(xt) - (xf-xt) V'(xt), symbolically confirmed <sub>(019)</sub>
+- The optimal tails assay being independent of the product assay <sub>(019)</sub>
+- The 2021-to-2026 SWU and uranium price tripling that left the price ratio almost unmoved <sub>(019)</sub>
+- The 0.20-to-0.30 per cent tails swing worth 14,800 tU and 12 million SWU a year at world scale <sub>(019)</sub>
+- The 2026 fuel cost stack - uranium 50 per cent, enrichment 33 per cent, 1.19 cents per kWh <sub>(019)</sub>
+- IAEA significant quantities of 25 and 75 kg of contained U-235, and why mass is the wrong metric for the barrier <sub>(019)</sub>
+- Seventeen AC100 machine-years for one significant quantity, against Centrus's 16-machine cascade <sub>(019)</sub>
+- The derived 331 SWU per machine per year from the 900 kg HALEU obligation, against the published 340 rating <sub>(019)</sub>
+- Openings now used up - the unpublished note, and the value-function-plus-cumulative-work panel <sub>(019)</sub>
 
 ### Physics
 
@@ -342,7 +367,6 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 ### Energy
 
-- Nuclear fuel cycle and enrichment economics
 - HVDC transmission and multi-terminal DC
 - Molten-salt and other long-duration thermal storage
 - Pumped hydro siting and economics
@@ -355,6 +379,9 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Industrial heat electrification
 - Hydrogen electrolysis efficiency
 - Refining and biofuel process engineering
+- HVDC transmission and the economics of multi-terminal DC grids
+- Industrial heat electrification and the temperature ladder
+- Transformer and high-voltage cable supply chains as a build-rate constraint
 
 ### Physics
 
