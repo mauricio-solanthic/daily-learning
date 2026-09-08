@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**19 reports.** Next up: **History of Science** as No. 020 — oldest last-covered date (2026-08-22).
+**20 reports.** Next up: **Geopolitics of Resources** as No. 021 — oldest last-covered date (2026-08-24).
 
 ## Log
 
@@ -33,6 +33,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 017 | 2026-09-02 | Quantitative Finance | The Price of Being in a Hurry | [017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf](reports/017_2026.09.02_PriceOfHurry_QuantitativeFinance.pdf) |
 | 018 | 2026-09-04 | Cross-Domain Synthesis | Larger Than Average | [018_2026.09.04_LargerThanAverage_CrossDomain.pdf](reports/018_2026.09.04_LargerThanAverage_CrossDomain.pdf) |
 | 019 | 2026-09-07 | Energy | The Work Already Done | [019_2026.09.07_WorkAlreadyDone_Energy.pdf](reports/019_2026.09.07_WorkAlreadyDone_Energy.pdf) |
+| 020 | 2026-09-08 | History of Science | Cold Short | [020_2026.09.08_ColdShort_HistoryOfScience.pdf](reports/020_2026.09.08_ColdShort_HistoryOfScience.pdf) |
 
 ## Rotation state
 
@@ -43,7 +44,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| History of Science | 2026-08-22 | 1 |
 | Geopolitics of Resources | 2026-08-24 | 1 |
 | Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
@@ -53,6 +53,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Quantitative Finance | 2026-09-02 | 2 |
 | Cross-Domain Synthesis | 2026-09-04 | 2 |
 | Energy | 2026-09-07 | 2 |
+| History of Science | 2026-09-08 | 2 |
 
 ## Burned territory
 
@@ -141,6 +142,33 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Bleaching powder and chlorine as the co-product that kept Leblanc alive; the Weldon and Deacon processes <sub>(009)</sub>
 - The United Alkali Company of 1890 and its forty-five Leblanc firms <sub>(009)</sub>
 - Retire as openings - the Widnes smell, the dying hedgerows of Cheshire, the flowers that died in two hours <sub>(009)</sub>
+- The Thomas-Gilchrist basic Bessemer process as the organising subject of a piece <sub>(020)</sub>
+- Sidney Gilchrist Thomas, the Metropolitan police-court clerkship, Birkbeck evening classes and George Chaloner's lecture-room remark <sub>(020)</sub>
+- Percy Gilchrist and the Blaenavon trials of 1878, from six pounds to ten hundredweight, and the 20-to-99.9 per cent removal range <sub>(020)</sub>
+- The March 1878 Iron and Steel Institute announcement that drew no attention, and the paper not read until May 1879 <sub>(020)</sub>
+- E. W. Richards and the Bolckow Vaughan demonstration at Middlesbrough, 4 April 1879 <sub>(020)</sub>
+- George James Snelus's 1872 lime-lining patent and the unprecedented double Bessemer Gold Medal of 1883 <sub>(020)</sub>
+- Joseph Massenez, Hoerde and Rheinische Stahlwerke taking the German rights in 1878 <sub>(020)</sub>
+- Cold shortness from phosphorus versus hot shortness from sulphur, and the 0.03-0.05 per cent modern cap <sub>(020)</sub>
+- Why an acid silica lining forbids the lime cure - P2O5 as an acid oxide with nothing to bind <sub>(020)</sub>
+- The dephosphorisation reaction 2[P] + 5(FeO) + 4(CaO) = (4CaO.P2O5) + 5Fe and its double requirement <sub>(020)</sub>
+- Calcined dolomite losing 47.7 per cent of its mass as CO2 to leave 58 per cent CaO and 42 per cent MgO <sub>(020)</sub>
+- The 3.62 kg of lime per kg of phosphorus, and 4.28 kg per kg of silicon at a basicity of two <sub>(020)</sub>
+- The three-way reconciliation of pig assay, Thomas-slag grade and the 12-15 per cent lime practice <sub>(020)</sub>
+- The shop-floor rule of 3 kg of lime per 0.1 per cent silicon decoding to a lime-to-silica ratio of 1.40 <sub>(020)</sub>
+- The afterblow, and phosphorus removal waiting on FeO that only accumulates once the carbon is gone <sub>(020)</sub>
+- The 97.4 per cent removal from 1.9 to 0.05 per cent and the slag-metal partition of about 140 <sub>(020)</sub>
+- Phosphorus as 47 per cent of the basic blow's heat - 458 of 970 MJ per tonne, against carbon's 313 <sub>(020)</sub>
+- Silicon as 62 per cent of the acid blow, and each process being forbidden the other's principal fuel <sub>(020)</sub>
+- Phosphorus paying for its own flux 2.5 times over - 24.08 MJ released against 9.55 MJ to heat 6.74 kg of lime <sub>(020)</sub>
+- The 181 MJ lime heat sink, 19 per cent of the blow, and the 789 MJ that survives it <sub>(020)</sub>
+- Thomas slag as a phosphate ore - 272 kg per tonne at 16 per cent P2O5, and 1928's 4 million tonnes <sub>(020)</sub>
+- Basic slag as roughly a fifth of world phosphate supply in 1928, derived against 9.5 Mt of rock <sub>(020)</sub>
+- Dephosphorisation and desulphurisation demanding opposite oxygen potentials in the same basic slag <sub>(020)</sub>
+- The separate hot-metal desulphurisation station as the standing consequence of that incompatibility <sub>(020)</sub>
+- Modern converter slag at 1.9 per cent P2O5 being eight times too lean to sell as fertiliser <sub>(020)</sub>
+- Stranded high-phosphorus oolitic ironstones at Aswan and in China as the constraint moved upstream <sub>(020)</sub>
+- Openings used up - the evening lecture that names a fortune, and the two-fuels stacked comparison <sub>(020)</sub>
 
 ### Geopolitics of Resources
 
@@ -398,13 +426,15 @@ meant to build rather than restart, so prefer these over starting fresh.
 ### History of Science
 
 - The synthetic dye industry and the birth of the corporate research laboratory
-- The Thomas-Gilchrist basic steel process and the phosphorus problem
 - Interchangeable parts and the American system of manufactures
 - Precision measurement, gauge blocks and the metrology of mass production
 - The early history of the vacuum and the air pump
 - The Haber-Bosch process and high-pressure chemical engineering
 - Standardisation of screw threads and the machine-tool trade
 - The Portland cement industry and the rotary kiln
+- Precision measurement, gauge blocks and the metrology of mass production
+- The synthetic dye industry and the birth of the corporate research laboratory
+- The early history of the vacuum and the air pump
 
 ### Geopolitics of Resources
 
