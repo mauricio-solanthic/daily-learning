@@ -544,6 +544,111 @@ One counter-intuitive note: the word-count warning did **not** fire at 2,975 wor
 though the stated target is 2,300-2,700, but it did fire at 3,046. The threshold appears
 to scale with block count, so removing a table can clear the warning as well as the page.
 
+### Report 020: the ninth blocked run — and a reported assay used backwards
+
+Nine in a row (012-020). Three `curl` probes (`arxiv.org`, `www.nature.com`,
+`www.gracesguide.co.uk`, all `CONNECT tunnel failed, response 403` / `000`) and one
+`WebFetch` (`www.gracesguide.co.uk`, `EGRESS_BLOCKED`), then stop. **Two host groups are
+worth naming for a history-of-technology piece.** `www.gracesguide.co.uk` is the single
+best open index of British nineteenth-century engineering biography — obituaries, works
+histories, Iron and Steel Institute proceedings indexes — and it is blocked by the
+sandbox, not by the site. And `en.wikisource.org` remains cache-only (recorded below
+since report 009), which matters more here than usual: the *Dictionary of National
+Biography* and 1911 *Britannica* entries that carry the primary chronology of an
+inventor's life live there, and neither can be opened. Report 020 cited 25 sources
+without opening one.
+
+The 014-019 rule held again, with a new twist worth reusing. The load-bearing content is
+stoichiometry and thermochemistry, so Python supplied every number; but the strongest
+check in the piece came from **running a reported assay backwards to recover an operating
+practice**:
+
+- **A three-way reconciliation from an assay nobody meant as evidence.** Thomas slag was
+  sold as fertiliser, so it was assayed to death: 14-18 per cent P2O5 on 45-50 per cent
+  CaO. A tonne of 1.9 per cent phosphorus pig iron yields 43.5 kg of P2O5, and those two
+  assay bands then *fix* the slag mass (242-311 kg/t) and the lime charge (11-15 per cent
+  of the pig iron) with no further input. The independently reported operating practice is
+  12-15 per cent. Three numbers from three unrelated literatures — a metal analysis, a
+  fertiliser grade and a shop-floor charging rule — none of them readable at source, all
+  confirmed at once by arithmetic. **When a by-product was sold, its assay is better
+  attested than the process that made it; work backwards from the product.**
+- **A rule of thumb that decodes to a slag basicity.** A patent gives "at least 3 kg of
+  lime per 0.1 per cent of silicon per tonne of pig iron". One per cent silicon makes 21.4
+  kg of silica, so 30 kg of lime against it is a lime-to-silica ratio of 1.40 — the rule is
+  a basicity in disguise. Same trick as report 017's Almgren-Chriss calibration constants.
+- **A heat balance that inverts.** Standard enthalpies of formation, divided by atomic
+  mass, give 32.4 / 24.1 / 9.2 / 7.0 MJ per kg for Si / P / C / Mn. On a Lorraine iron
+  (1.9 per cent P, 0.4 Si) phosphorus supplies 47 per cent of the blow, more than the
+  carbon; on a haematite iron (0.05 P, 2.0 Si) silicon supplies 62 per cent. The totals
+  differ by seven per cent. That inversion is the whole piece, and it is nine lines of
+  Python.
+
+**A secondary claim that the arithmetic corrected.** A popular account says the basic
+process was not adopted in America because US ores "didn't have sufficient phosphorus to
+make the chemistry go" — i.e. a heat argument. Net of the lime each impurity demands,
+silicon is still the better fuel (26.4 against 18.9 MJ/kg), so heat is *not* what excluded
+silicon from a basic converter; refractory wear on the dolomite lining is. Phosphorus
+becomes the fuel only *because* silicon has already been excluded for another reason.
+**A causal chain repeated by secondary sources can be checked for direction, not just
+magnitude** — and here the arithmetic reversed it.
+
+**One number that would not firm up, and what replaced it.** Crude steel output for
+Germany and Britain in 1913 came back as 19.3 / 17.6 / 14 Mt and 10.4 / 7.7 Mt across
+differently-worded queries, because territory definitions and steel-versus-pig-iron
+conflate. So the piece prints none of them and uses instead the claim that recurred
+identically everywhere — German output passed Britain's in 1893 and was more than double
+it by 1914 — plus the British ore-import series (208,000 t in 1870 to 7,442,000 t in
+1913), which is one figure from one 1918 *Nature* note and survives because its 8.7 per
+cent compound growth is derivable. Same lesson as report 017's intraday index level:
+**when a level will not firm up, print the ratio.** Two related figures also stayed out:
+Luxembourg's minette tonnage, whose only source was a Springer chapter whose book title
+and authors never surfaced, and the share of German steel made by the Thomas process,
+which returned nothing for 1900-1913 at all.
+
+**Two invented-authorship traps, both self-inflicted.** Search returns a paper's title,
+journal, volume and pages reliably (all 25 references here cross-checked) but often not
+its author list. The temptation is to write "G. Branca and others" because a plausible
+name appeared nearby. Four of this piece's references were drafted that way and all four
+were wrong or unverifiable; the fix is to cite the title with no author, which IEEE style
+permits and which is honest. **An unverified author list is a fabrication in exactly the
+way report 007's Carr-and-Lee citation was.**
+
+One rendering note, and one repo-mechanics note. The renderer's chat-scaffolding check
+also scans the `slack:` field, so an ordinary clause like "modern converter slag" is fine
+but "today's converter slag" is rejected outright — the same `^\s*(Today|Note on today)`
+pattern recorded under report 019, applied to front matter. And a first section heading
+identical to the report's own title renders as a visible stutter under the standfirst;
+the validator does not catch it, so read the first page.
+
+### The 8-to-7 page fight — merging two references beat deleting a table
+
+Report 020 rendered at 8 pages with the last page holding 39 words: the colophon alone,
+report 014's failure mode exactly. Trimming publisher names and cities from twelve
+reference entries moved page 7 from 493 to 440 words and the page count **not at all**.
+What fixed it was noticing that references 11 and 12 were two US patents with the *same
+title* (3,932,172 and 3,938,790, "Method and Converter for Refining Pig-Iron into
+Steel") and merging them into one entry. That removed a numbered item and two rendered
+lines, and the colophon came up onto page 7.
+
+So there is a fifth lever, cheaper than deleting a block and cheaper than trimming prose:
+**look for two references that are really one.** Same-title patents in a family, a paper
+and its preprint, two chapters of one report. Merging costs nothing bibliographically and
+frees a whole entry. The order of operations is now:
+
+1. Per-page word profile from `pypdf`. A saturated page here holds about 500 words.
+2. If the last page holds only the colophon, look for **two references that can merge**,
+   then trim reference entries.
+3. If a body page is light, a **block** forced the break there. Delete the block, and
+   prefer the one that recaps prose.
+4. Prose cuts are for the word-count warning, not for the page count.
+
+Toolchain, unchanged and confirmed again: `pip install Markdown pypdf matplotlib brotli
+fontTools` then `pip install --upgrade cffi` for the pypdf / `cryptography` panic (four
+runs running), and `npm install playwright@1.56.0` with no `playwright install`. One new
+note: `pip install` against `files.pythonhosted.org` timed out twice mid-run on large
+wheels and succeeded on a plain retry, so a `ReadTimeoutError` there is not the egress
+block — just retry it.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -587,6 +692,7 @@ in the format and the easiest to overlook.
 | `www.sec.gov`, `papers.ssrn.com`, `onlinelibrary.wiley.com` | `CONNECT tunnel failed, response 403` / `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publishers | Between them they hold the joint CFTC-SEC flash-crash report, most quantitative-finance working papers, and *Econometrica*, *Journal of Finance* and *Journal of Financial Economics*, so a quant piece is written without reading its own primary sources. Volume, issue and page range cross-check reliably through search — with the two exceptions recorded under report 017 — but content does not. Report 017 cited 17 sources without opening one. `ideas.repec.org` and `www.econometricsociety.org` issue indexes are the best second host for the bibliographic shell. |
 | `projecteuclid.org` | `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publisher | It carries *Probability Surveys*, the *Annals of Probability* and the *Annals of Statistics*, so the probability and statistics literature is unreadable too. `arxiv.org` listings and `semanticscholar.org` confirm the bibliographic shell; `ideas.repec.org` does not cover these journals. Report 018 cited 22 sources without opening one. |
 | `www.iaea.org`, `www-pub.iaea.org`, `www.nrc.gov`, `world-nuclear.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not the agencies | Between them they hold the *IAEA Safeguards Glossary*, the INFCIRC and TECDOC series, the NRC's `ML*` accession PDFs on enrichment processes, and the World Nuclear Association's information papers and fuel reports — so the whole institutional literature of the nuclear fuel cycle is unreadable. Worth knowing that these are the hosts a nuclear piece most wants. Titles, document numbers and worked-example figures cross-check reliably through search; a WNA worked example can be *verified* rather than trusted, because its numbers are reproducible from the value function (see report 019). Report 019 cited 15 sources without opening one. |
+| `www.gracesguide.co.uk` | `CONNECT tunnel failed, response 403` / `EGRESS_BLOCKED` — this is the sandbox, not the site | The best open index of British nineteenth-century engineering biography: obituaries, works histories, and the Iron and Steel Institute's own proceedings indexes. Any history-of-technology piece on British industry wants it. Dates, patent years and meeting dates cross-check reliably through search; the quoted council minutes and obituary text do not. Report 020 cited 25 sources without opening one. Pair this with the `en.wikisource.org` row: between them they hold the *Dictionary of National Biography* and 1911 *Britannica* lives that carry an inventor's primary chronology. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
