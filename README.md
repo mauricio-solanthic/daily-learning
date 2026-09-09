@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**20 reports.** Next up: **Geopolitics of Resources** as No. 021 — oldest last-covered date (2026-08-24).
+**21 reports.** Next up: **Economics** as No. 022 — oldest last-covered date (2026-08-25).
 
 ## Log
 
@@ -34,6 +34,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 018 | 2026-09-04 | Cross-Domain Synthesis | Larger Than Average | [018_2026.09.04_LargerThanAverage_CrossDomain.pdf](reports/018_2026.09.04_LargerThanAverage_CrossDomain.pdf) |
 | 019 | 2026-09-07 | Energy | The Work Already Done | [019_2026.09.07_WorkAlreadyDone_Energy.pdf](reports/019_2026.09.07_WorkAlreadyDone_Energy.pdf) |
 | 020 | 2026-09-08 | History of Science | Cold Short | [020_2026.09.08_ColdShort_HistoryOfScience.pdf](reports/020_2026.09.08_ColdShort_HistoryOfScience.pdf) |
+| 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
 
 ## Rotation state
 
@@ -44,7 +45,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Geopolitics of Resources | 2026-08-24 | 1 |
 | Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
@@ -54,6 +54,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Cross-Domain Synthesis | 2026-09-04 | 2 |
 | Energy | 2026-09-07 | 2 |
 | History of Science | 2026-09-08 | 2 |
+| Geopolitics of Resources | 2026-09-09 | 2 |
 
 ## Burned territory
 
@@ -190,6 +191,37 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Rukwa Basin, Tanzania - the 138 Bcf P50 estimate and the Tanzanian Craton's 7.0e5 Bcf generative potential <sub>(010)</sub>
 - Helium shortages 1.0 through 4.0 and the laboratory NMR shutdowns of 2022 <sub>(010)</sub>
 - Retire as openings - the boiling-off containers, the balloon-versus-MRI framing <sub>(010)</sub>
+- Niobium and the single-supplier problem however approached - Araxa, CBMM, and why a 93 per cent share provokes no alarm <sub>(021)</sub>
+- Brazil at 93 per cent of world niobium mine production and one private company at 75-80 per cent <sub>(021)</sub>
+- The Herfindahl comparison - niobium 0.87 against cobalt 0.57, rare earths 0.57, platinum 0.58 <sub>(021)</sub>
+- Djalma Guimaraes and the 1953 Araxa pyrochlore discovery, CBMM founded 1955, mining from 1961 <sub>(021)</sub>
+- The 896 Mt at 1.49 per cent Nb2O5 regolith resource and the Barreiro carbonatite <sub>(021)</sub>
+- Microalloying arithmetic - 0.05 wt per cent niobium as 301 ppm atomic, one Nb atom per 3,300 iron atoms <sub>(021)</sub>
+- NbC volume fraction 5.68 parts in ten thousand derived from densities 7.82 and 7.87 <sub>(021)</sub>
+- The Smith-Zener limiting grain size D = 4r/3f, and Smith 1948 crediting Zener by private communication <sub>(021)</sub>
+- Zener limits of 29.3, 9.8 and 5.9 micrometres at 0.01, 0.03 and 0.05 per cent niobium for 2.5 nm carbides <sub>(021)</sub>
+- Hall-Petch k reported two ways - 17.4 MPa mm^1/2 and 600 MPa um^1/2 agreeing to 9 per cent <sub>(021)</sub>
+- The 123-to-227 MPa grain-boundary strengthening step and the 104 MPa it buys <sub>(021)</sub>
+- Barlow's formula and the API 5L grade ladder - X52 359, X60 415, X70 485, X80 555 MPa <sub>(021)</sub>
+- Barlow leverage from X52 to X70 - a wall thinner by a quarter, displacing 0.351 kg of steel for every kg shipped <sub>(021)</sub>
+- The 37-dollars-a-tonne break-even steel price at which niobium costs what it saves <sub>(021)</sub>
+- Niobium intensity of steel as a cross-check - 59.5 g/t world, 103 g/t United States against a reported 100 <sub>(021)</sub>
+- The USGS world estimate jumping from 83,000 t (2023) to 112,000 t (2024) and which cross-check favours which <sub>(021)</sub>
+- CBMM's 92,000 t of ferroniobium-equivalent 2023 sales reconciled against the USGS world total <sub>(021)</sub>
+- The whole world niobium market at under three billion dollars a year, 205 times smaller than copper by mass <sub>(021)</sub>
+- NioCorp's Elk Creek project - 1.14 to 1.85 billion dollars of capex for 4.1 per cent of world supply at a 52 per cent higher assumed price <sub>(021)</sub>
+- Reserves-to-production of 188 years world and 135 years for Brazil alone <sub>(021)</sub>
+- Why the rent goes uncollected - the marginal adopter, not the existing user, sets the ceiling price <sub>(021)</sub>
+- Ferrovanadium at 140 dollars a kilogram in October 2018 and China's GB/T 1499.2-2018 rebar standard <sub>(021)</sub>
+- The September 2011 equity sales - 1.95 and 1.8 billion dollars for 15 per cent each, implying 13.0 and 12.0 billion <sub>(021)</sub>
+- Customers buying the monopolist instead of a competitor, and the six Japanese and Korean holders at 2.5 per cent each <sub>(021)</sub>
+- CMOC buying Anglo American's Brazilian niobium and phosphate business in 2016, Magris buying Niobec in January 2015 <sub>(021)</sub>
+- The Brazilian niobium mythology - "more important than petroleum" and the CFEM royalty base <sub>(021)</sub>
+- Superconductor and NMR niobium at about 260 t a year, 0.23 per cent of supply, against the LHC's 470 t of Nb-Ti cable <sub>(021)</sub>
+- C-103 as Nb-10Hf-1Ti and ITER's 600-plus tonnes of Nb3Sn strand <sub>(021)</sub>
+- The 2026 Defense Logistics Agency solicitation - 1,288,082 lb of vacuum-grade ferroniobium, ceiling 160 million dollars <sub>(021)</sub>
+- Concentration risk as willingness-to-pay to avoid interruption rather than share of world output <sub>(021)</sub>
+- Openings now used up - the ranked table of single-country shares, and the paired mechanism-and-share figure <sub>(021)</sub>
 
 ### Economics
 
@@ -440,12 +472,14 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 - Phosphate rock, Morocco and the Western Sahara question
 - Rare earth separation chemistry and the economics of the midstream
-- Niobium and the single-supplier problem
 - Uranium enrichment, conversion capacity and the fuel-cycle bottleneck
 - Water as a traded resource - the Colorado compact and desalination geopolitics
 - Copper grade decline and the coming supply gap
 - Shipping chokepoints as a general class - Malacca, Bab el-Mandeb, Panama
 - Cobalt, artisanal mining and the Congolese state
+- Copper grade decline, strip ratios and the energy cost of a falling head grade
+- Shipping chokepoints as a general class - Malacca, Bab el-Mandeb, Panama
+- Water as a traded resource and the economics of desalination
 
 ### Economics
 
