@@ -649,6 +649,99 @@ note: `pip install` against `files.pythonhosted.org` timed out twice mid-run on 
 wheels and succeeded on a plain retry, so a `ReadTimeoutError` there is not the egress
 block — just retry it.
 
+### Report 021: the tenth blocked run — and a unit conversion as a cross-check
+
+Ten in a row (012-021). Three `curl` probes (`arxiv.org`, `pubs.usgs.gov`, `www.nature.com`,
+all `000`) and one `WebFetch` (`pubs.usgs.gov`, `EGRESS_BLOCKED`), then stop. **The row for
+`pubs.usgs.gov` in the Reliable table below is now wrong for this sandbox and should be read
+with the header warning in mind**: the Mineral Commodity Summaries are the single most useful
+host for any resource-geopolitics piece — one clean two-page PDF per commodity with production
+by country, reserves, unit values and a substitutes paragraph — and they are blocked at the
+egress proxy, not by USGS. Reports 009 and 010 read them directly; report 021 could not, and
+cited four USGS publications without opening one. Plan a commodity piece around that.
+
+The 014-020 rule held again, with a twist: **when the load-bearing content is an economic
+argument rather than a physical law, the derivable core has to be a break-even rather than a
+value.** Report 021's central claim — that niobium's monopoly is unexercised because the real
+competitor is non-use — rests on the price at which the additive costs as much as the steel it
+saves, and that price is Barlow's formula plus one USGS unit value: 26 dollars a kilogram on
+0.5 kg per tonne is 13 dollars, over 0.351 tonnes of steel displaced, is 37 dollars a tonne.
+No steel price had to be sourced at all, which is the same move as report 020's "print the
+ratio when the level will not firm up", applied one level earlier — **choose the quantity that
+does not need the unsourceable input**.
+
+Four checks did the work a fetched PDF would have done:
+
+- **An intensity ratio confirming a disputed tonnage.** USGS's world niobium estimate jumps
+  from 83,000 t (2023 data year) to 112,000 t (2024) — a third in one year, and search returns
+  both confidently. Dividing by worldsteel's crude steel totals gives 43.9 and 59.5 grams of
+  niobium per tonne of steel; the intensity independently reported in the trade literature is
+  55 to 60 g/t. The ratio adjudicates between two levels neither of which could be read.
+  The same check run on the United States (8,400 t apparent consumption over 81.4 Mt of steel
+  = 103 g/t against a reported ~100 for advanced economies) confirms it a second way.
+- **The same check pointing the other way, and saying so.** The dominant producer's own
+  reported 2023 sales, 92,000 t of "ferroniobium equivalent", are 59,800 t of contained
+  niobium at 65 per cent — 72 per cent of the 83,000 t world figure but only 53 per cent of
+  the 112,000 t one, and only the first is compatible with the 75-80 per cent share the company
+  is credited with. **Two arithmetic checks disagreeing is a finding, not a failure**: the piece
+  prints both and makes the un-auditability of a single-private-seller market part of the
+  argument, rather than picking the level it preferred.
+- **A materials constant reported in two unit systems.** The Hall-Petch coefficient for ferrite
+  comes back as 17.4 MPa mm^(1/2) (Pickering's form) from one query and 600 MPa um^(1/2) from
+  another. Converted, 0.5502 and 0.6000 MPa m^(1/2) — agreement to 9 per cent between two
+  figures that look nothing alike. **A quantity quoted in two units is a free cross-check;
+  convert before assuming they are different claims.**
+- **A pound-to-tonne conversion validating a trade-press figure.** A 2026 Defense Logistics
+  Agency solicitation is reported as "1,288,082 lb, or 584.3 t". That converts to 584.27 t,
+  agreeing to 0.01 per cent, which is enough to establish that the reporter had the primary
+  notice in front of them rather than a rounded secondary. Cheap, and it is the only
+  verification available on a live procurement.
+
+**One number deliberately not divided.** The same solicitation carries a ceiling of 160 million
+dollars, and 160 m over 584.3 t is 274 dollars a kilogram of ferroniobium — ten times the
+commodity grade. That may well be right for vacuum-grade material, or the ceiling may cover
+option years the report does not describe. The piece prints both figures as reported and
+instead uses the ratio that needs no assumption (160 m is 5.5 per cent of one year of the world
+market). **When two reported numbers might not share a denominator, use them separately.**
+
+**Three attribution traps, all caught by a second differently-worded query.**
+
+- **The Smith-Zener relation is Smith's paper, crediting Zener.** One search return cites it as
+  "Zener, C. and Smith, C. (1948)"; the paper is C. S. Smith alone, *Trans. AIME* 175, 15-51,
+  "Introduction to Grains, Phases, and Interfaces", and the argument is credited in it to Zener
+  by private communication. Writing Zener as a co-author would have been report 007's
+  Carr-and-Lee error exactly.
+- **Irvine, Pickering and Gladman 1967 was dropped rather than guessed.** Search confirms
+  *J. Iron Steel Inst.* 205, 161, 1967 but never returns the title, and returns the solubility
+  product itself three inconsistent ways — as a product (log[Nb][C] = 2.26 - 6770/T), as a
+  quotient, and in a constants table as A = 6770 with B = 1.03 rather than 2.26. So the piece
+  cites neither the paper nor the constant and puts the quantitative weight on the Smith-Zener
+  limit and the Hall-Petch relation, whose constants do cross-check. **A constant that comes
+  back three ways is not a constant yet.**
+- **Baker's "Microalloyed steels" review is in *Ironmaking and Steelmaking*, vol. 43, no. 4,
+  2016**, not *International Materials Reviews* vol. 61 — the same DOI appears under both on
+  different platforms, and the author's own institutional repository labels it "an invited
+  review for Ironmaking and Steelmaking". Prefer the author's repository over the aggregator
+  when two journals claim one DOI.
+
+What search did well: **corporate-transaction detail**, which cross-checks unexpectedly cleanly.
+The two September 2011 tranches (1.95 and 1.8 billion dollars for 15 per cent each), the five
+Chinese and six Japanese-Korean buyers by name, the 2.5 per cent each, the Niobec sale (530 m,
+of which 500 m cash) and the CMOC-Anglo American deal all came back consistent across
+differently-worded queries, and the two implied enterprise values (13.0 and 12.0 billion) agree
+to 8 per cent, which is itself a check. What it did badly: **copper reserves**, of all things —
+three phrasings returned world copper production (23 Mt) reliably but no reserve figure, so the
+piece drops the reserves-to-production comparison and keeps only the mass ratio, which is two
+confirmed numbers. And **ferroniobium spot prices** are the report 019 problem again: every
+first-page hit is a price-tracker content farm quoting yuan per kilogram of niobium metal, which
+is a different product. The USGS *import unit value* is the citable figure and it is stable
+(21, 25, 25, 26, 26 dollars per kg of contained niobium, 2021-2025).
+
+One figure-mechanics note. On a log x-axis, `ax.set_xticks([...])` leaves the **minor** tick
+labels in place, so hand-chosen major labels ("2.5", "5", "10") render on top of matplotlib's
+own "$4\\times10^0$" minor labels. `ax.set_xticks([], minor=True)` clears them in one line;
+this cost two renders to spot because the collision is only visible at figure scale.
+
 ### Getting a 9-page draft down to 8
 
 Recorded because report 014 lost real time to it. Ninety words of prose cuts
@@ -693,6 +786,7 @@ in the format and the easiest to overlook.
 | `projecteuclid.org` | `EGRESS_BLOCKED` in every run so far — this is the sandbox, not the publisher | It carries *Probability Surveys*, the *Annals of Probability* and the *Annals of Statistics*, so the probability and statistics literature is unreadable too. `arxiv.org` listings and `semanticscholar.org` confirm the bibliographic shell; `ideas.repec.org` does not cover these journals. Report 018 cited 22 sources without opening one. |
 | `www.iaea.org`, `www-pub.iaea.org`, `www.nrc.gov`, `world-nuclear.org` | `EGRESS_BLOCKED` / `000` in every run so far — this is the sandbox, not the agencies | Between them they hold the *IAEA Safeguards Glossary*, the INFCIRC and TECDOC series, the NRC's `ML*` accession PDFs on enrichment processes, and the World Nuclear Association's information papers and fuel reports — so the whole institutional literature of the nuclear fuel cycle is unreadable. Worth knowing that these are the hosts a nuclear piece most wants. Titles, document numbers and worked-example figures cross-check reliably through search; a WNA worked example can be *verified* rather than trusted, because its numbers are reproducible from the value function (see report 019). Report 019 cited 15 sources without opening one. |
 | `www.gracesguide.co.uk` | `CONNECT tunnel failed, response 403` / `EGRESS_BLOCKED` — this is the sandbox, not the site | The best open index of British nineteenth-century engineering biography: obituaries, works histories, and the Iron and Steel Institute's own proceedings indexes. Any history-of-technology piece on British industry wants it. Dates, patent years and meeting dates cross-check reliably through search; the quoted council minutes and obituary text do not. Report 020 cited 25 sources without opening one. Pair this with the `en.wikisource.org` row: between them they hold the *Dictionary of National Biography* and 1911 *Britannica* lives that carry an inventor's primary chronology. |
+| `pubs.usgs.gov` | `000` / `EGRESS_BLOCKED` on report 021 — this is the sandbox, not USGS, and it contradicts the Reliable row below, which reports 009 and 010 earned | It hosts the *Mineral Commodity Summaries* (one clean two-page PDF per commodity: production by country, reserves, unit values, substitutes) and the *Minerals Yearbook* chapters, so it is the first host any resource-geopolitics piece wants. Country shares, reserve totals and import unit values cross-check reliably through search, and an intensity ratio against a second agency's output series can adjudicate between two conflicting tonnage estimates (see report 021). Report 021 cited four USGS publications without opening one. Probe it before planning; the Reliable row may be true again in another sandbox. |
 | `api.bls.gov` | `CONNECT tunnel failed, response 403` from the agent proxy | Not the site's decision — this session's egress policy does not allow it, so the BLS public data API is unavailable and there is no point retrying. Index levels and rates have to come from BLS's own HTML and PDF pages via `WebFetch`, which work well (see Reliable). |
 
 ## Redirects and quirks
