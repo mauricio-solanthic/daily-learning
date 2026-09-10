@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**21 reports.** Next up: **Economics** as No. 022 — oldest last-covered date (2026-08-25).
+**22 reports.** Next up: **Philosophy** as No. 023 — oldest last-covered date (2026-08-26).
 
 ## Log
 
@@ -35,6 +35,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 019 | 2026-09-07 | Energy | The Work Already Done | [019_2026.09.07_WorkAlreadyDone_Energy.pdf](reports/019_2026.09.07_WorkAlreadyDone_Energy.pdf) |
 | 020 | 2026-09-08 | History of Science | Cold Short | [020_2026.09.08_ColdShort_HistoryOfScience.pdf](reports/020_2026.09.08_ColdShort_HistoryOfScience.pdf) |
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
+| 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
 
 ## Rotation state
 
@@ -45,7 +46,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Economics | 2026-08-25 | 1 |
 | Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
 | Operations Research | 2026-08-31 | 5 |
@@ -55,6 +55,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Energy | 2026-09-07 | 2 |
 | History of Science | 2026-09-08 | 2 |
 | Geopolitics of Resources | 2026-09-09 | 2 |
+| Economics | 2026-09-10 | 2 |
 
 ## Burned territory
 
@@ -244,6 +245,33 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Inflation inequality - Jaravel's 0.661-point retail gap between bottom and top income quintiles, and the CPI-W mismatch in Social Security indexation <sub>(011)</sub>
 - Argentina's INDEC 2007-2015, the divide-by-three approximation, and online price indexes as an outside check <sub>(011)</sub>
 - Retire as openings - the union grievance of 1944, the congressional commission of 1996 <sub>(011)</sub>
+- The natural rate of interest r-star, the Laubach-Williams state-space model, and the uncertainty of estimating an unobservable <sub>(022)</sub>
+- Wicksell's 1898 Geldzins und Guterpreise and the natural-versus-money rate distinction <sub>(022)</sub>
+- The HLW decomposition r* = 4g + z and the uninterpretability of the z residual <sub>(022)</sub>
+- The local level model as the canonical signal-extraction problem, and the Riccati fixed point p^2 - qp - q = 0 <sub>(022)</sub>
+- The steady-state Kalman gain K = p/(p+1), and K = 1/phi = 0.618 at unit signal-to-noise <sub>(022)</sub>
+- The identity K approximately equals lambda for small signal-to-noise ratios (0.9802 at lambda = 0.040) <sub>(022)</sub>
+- The filtered estimate as an exponentially weighted moving average with weights K(1-K)^j <sub>(022)</sub>
+- Mean lag (1-K)/K - 24.5 quarters at HLW's lambda_z = 0.040, 76.4 at Buncic's corrected 0.013 <sub>(022)</sub>
+- Only 14.8 per cent of the weight on the most recent four quarters, 55 per cent on the most recent twenty <sub>(022)</sub>
+- Inverting a smoothed estimate - the 2025-2026 LW move of 1.36 to 1.65 per cent implying a 1.6-point underlying shift <sub>(022)</sub>
+- The pile-up problem - Gaussian MLE of a random-walk variance with an atom of probability at zero <sub>(022)</sub>
+- Shephard and Harvey 1990's 0.96-versus-0.66 result for fixed versus diffuse initial level <sub>(022)</sub>
+- The Monte Carlo reproducing 0.66 as 65.0 per cent, and 13.6 per cent zeros at HLW's own lambda on 250 quarters <sub>(022)</sub>
+- The pile-up vanishing at 1,000 quarters, which is 250 years of quarterly data <sub>(022)</sub>
+- Stock and Watson 1998 median-unbiased estimation by inverting a stability-test quantile function <sub>(022)</sub>
+- Buncic's misspecified Stage 2 - lambda_z falling from 0.040 to 0.013 and r* rising by up to 100 basis points <sub>(022)</sub>
+- Berger and Kempa 2019 finding time variation in trend growth but not in the other determinants <sub>(022)</sub>
+- Real-time filtered uncertainty as sqrt(K) times the observation scale, confirmed at 0.1977 against 0.1980 <sub>(022)</sub>
+- Real-time error 1.40 times the final error, and RMS revision 0.65 to 1.28 times the true state's own variation <sub>(022)</sub>
+- Orphanides and van Norden's finding that output-gap revisions are the same order as the gap <sub>(022)</sub>
+- The four-model table for 2024 Q2 and the 0.78-to-2.83-point spread in measured policy stance <sub>(022)</sub>
+- The Cleveland Fed's 3.7 per cent nominal neutral rate with a 68 per cent band of 2.9 to 4.5 <sub>(022)</sub>
+- The reported 95 per cent band on two-sided LW estimates running from about +5.5 to -4.5 per cent <sub>(022)</sub>
+- The November 2020 suspension of LW and HLW publication and the May 2023 resumption <sub>(022)</sub>
+- Orphanides on real-time potential-output mismeasurement as a cause of the Great Inflation <sub>(022)</sub>
+- Orphanides and Williams's difference rules as the robust response to unknown natural rates <sub>(022)</sub>
+- Openings now used up - the bond-market selloff read as news about an unobservable <sub>(022)</sub>
 
 ### Philosophy
 
@@ -488,7 +516,6 @@ meant to build rather than restart, so prefer these over starting fresh.
 - The economics of measurement itself - who funds statistical agencies and what gets counted
 - Purchasing power parity, the Penn effect and international income comparisons
 - Unemployment definitions - U-3 through U-6, labour force participation and discouraged workers
-- The natural rate of interest and the estimation of unobservable macroeconomic quantities
 - Sovereign inflation-linked debt and the design of indexed contracts
 
 ### Philosophy
