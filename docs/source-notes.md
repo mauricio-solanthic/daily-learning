@@ -958,3 +958,103 @@ mistake by reading stale numbers rather than saying access had failed.
 The rule that matters more than the table: **if a lookup fails, say so in the
 reply.** A failed call followed by a confident answer from memory is worse than
 no answer, because it looks identical to a real one.
+
+### Report 022: the eleventh blocked run — and a Monte Carlo that beat a fetched PDF
+
+Eleven in a row (012-022). Three `curl` probes (`arxiv.org`, `www.newyorkfed.org`,
+`www.federalreserve.gov`, all `CONNECT tunnel failed, response 403` / `000`) and one
+`WebFetch` (`www.newyorkfed.org`, `EGRESS_BLOCKED`), then stop. **Two host groups are worth
+naming for any macroeconomics or monetary-policy piece.** `www.newyorkfed.org` is the
+publisher of the LW and HLW r-star estimates themselves — the staff reports, the real-time
+estimates spreadsheet, the suspension and resumption press releases — and it is blocked by the
+sandbox, not by the Bank. So is `www.federalreserve.gov`, which the Reliable table below
+rightly calls excellent for FEDS working papers; read that row with the header warning. The
+regional banks' own research (`clevelandfed.org`, `richmondfed.org`, `frbsf.org`) is where the
+comparative r-star work lives and none of it could be opened either. Add
+`link.springer.com`, `direct.mit.edu` (*Review of Economics and Statistics*) and
+`www.tandfonline.com` for the journal side. Report 022 cited 20 sources without opening one.
+
+The 014-021 rule held, and this run is the cleanest case of it yet: **when a topic's central
+object is an estimator, you can run the estimator yourself.** Everything quantitative in
+report 022 came out of about eighty lines of numpy on the local level model — the Riccati
+fixed point, the steady-state gain, the mean lag, the pile-up frequencies, the revision
+statistics. Nothing rests on a summariser. Four checks did the work a fetched PDF would have
+done, and the first is the strongest verification this series has managed:
+
+- **Reproducing a 1990 published probability by simulation.** Shephard and Harvey report that
+  when the true signal-to-noise ratio is zero, Gaussian ML returns exactly zero with
+  probability 0.96 under a fixed initial level and 0.66 under a diffuse prior. Twenty thousand
+  diffuse-start samples of 250 quarters returned 65.0 per cent. That is a thirty-five-year-old
+  result in a paper that could not be opened, confirmed to one percentage point by arithmetic
+  the summariser could not have faked — and it then licensed the *unpublished* numbers the
+  piece actually needed (13.6 per cent zeros at HLW's own lambda of 0.040, 21.3 per cent at
+  0.030). **Validate your own simulation against the one number the literature does report,
+  then use it for the numbers it does not.**
+- **A closed form checked against the recursion it summarises.** The steady-state gain
+  `K = p/(p+1)` with `p = (q + sqrt(q^2+4q))/2` matched two hundred thousand iterations of the
+  Riccati recursion to machine precision at four values of q, and the EWMA mean lag computed by
+  summing `j*K(1-K)^j` over four thousand terms matched the analytic `(1-K)/K` exactly.
+- **A named constant falling out of the algebra.** At unit signal-to-noise the fixed point is
+  `p^2 - p - 1 = 0`, so p is the golden ratio and K is its reciprocal, 0.6180339887 to ten
+  digits. A landmark like that in the middle of a numerical check is free confirmation the
+  algebra is right.
+- **An arithmetic identity inside a set of reported figures.** The Richmond Fed brief's four
+  2024 Q2 estimates (0.55, 0.74, 1.22, 2.6) and its stated range "0.55 to 2.6" have to agree,
+  and they do — min and max exactly. That is what made it safe to build the policy-stance
+  table on them.
+
+**One transient that looked like a broken formula.** The simulated real-time RMS error came
+back 0.1244 against a theoretical `sqrt(K)` of 0.1136 at lambda = 0.013 — a 10 per cent gap,
+where lambda = 0.040 agreed to three digits. The formula was fine: at that gain the filter's
+transient has a half-life of 53 quarters, so trimming 40 observations from each end of a
+250-quarter sample does not reach steady state. Re-running with T = 3,000 and discarding the
+first 1,000 gave 0.1140 against 0.1136. **Before doubting a steady-state formula, check that
+the simulation actually reached the steady state** — the same failure mode as report 017's
+unscaled SLSQP, wearing a different hat.
+
+**Three attribution traps, all caught by a second differently-worded query, all of which would
+have shipped on one.** Laubach and Williams's "Redux" is *Business Economics* vol. 51,
+**pp. 57-67** — a first query returned 257-267, and only the second, which came back with a
+substantive abstract attached, settled it. Buncic's critique was drafted from its Riksbank
+working-paper title ("Econometric issues *with Laubach and Williams'* estimates…") and is
+published as "Econometric issues *in the estimation of* the natural rate of interest",
+*Economic Modelling* vol. 132, art. 106641, 2024 — the working-paper title is not the article
+title. And Del Negro et al.'s BPEA page range came back as both 235-294 and 235-316; the
+official Brookings and RePEc records give **235-316**, which is the BPEA convention of
+including the published comments.
+
+**One author list deliberately left off.** The widest uncertainty band the piece quotes — a 95
+per cent interval on the two-sided LW estimates running from about +5.5 to -4.5 per cent —
+comes from a section of the Hoover volume *The Structural Foundations of Monetary Policy*
+(Bordo, Cochrane and Seru, Eds., 2018). Search attaches Cochrane's name to it because the PDF
+filename carries it, but he is an editor of the volume and no query confirmed him as the
+section's author, so the reference gives the section title and the editors and no author. That
+is report 020's lesson applied in advance rather than after the fact. The band is also
+attributed in the prose as a survey chapter's *reading* of a figure, not as LW's own reported
+standard error, because the latter could not be sourced.
+
+**What search did badly: the FOMC's own longer-run dot.** Four differently-worded queries for
+the median longer-run federal funds rate in specific SEP vintages returned nothing consistent
+(4.25 per cent for January 2012 and 2.5 for 2019 were never confirmed; June 2026 came back as
+both "3.1 per cent" and "around 3 per cent"). The series is on FRED as `FEDTARMDLR` and FRED
+is unreachable. So the piece drops the dot-plot series entirely and uses instead the federal
+funds *target range*, which is unambiguous and which every source agrees was 5.25-5.50 per cent
+from July 2023 to September 2024 — enough to compute the policy stance against four r-star
+estimates. **When a level series will not firm up, look for the administered number in the
+same sentence**, which is usually better attested than any estimate.
+
+What search did well, again: **bibliography** (all 20 references had journal, volume, issue and
+page range confirmed by a second query, including a 1990 *Journal of Time Series Analysis*
+paper and a 2024 article number), and **institutional chronology** — the November 2020
+suspension of LW and HLW publication after the Q2 2020 release, and the May 2023 resumption
+updated through 2022 Q4, came back identically across three phrasings.
+
+One repo-mechanics note and one figure note. `ledger.py verify` flagged a false overlap
+between 011 and 022 on *error / noise / standard*, from a burned line reading "real-time
+standard error equal to sqrt(K) times the noise scale"; rewording it to "real-time filtered
+uncertainty as sqrt(K) times the observation scale" cleared it, the same fix as report 018's
+boilerplate collision. And naming a numpy array `GRID` in a figure script shadows the
+`GRID` colour constant that all of these scripts define at the top, and the failure surfaces
+as matplotlib complaining that a 301-element float array "is not a valid value for color" —
+one glance at the traceback's array literal is enough, but only if you know to look for the
+shadow rather than for a palette bug.
