@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**21 reports.** Next up: **Economics** as No. 022 — oldest last-covered date (2026-08-25).
+**22 reports.** Next up: **Economics** as No. 024 — oldest last-covered date (2026-08-25).
 
 ## Log
 
@@ -35,6 +35,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 019 | 2026-09-07 | Energy | The Work Already Done | [019_2026.09.07_WorkAlreadyDone_Energy.pdf](reports/019_2026.09.07_WorkAlreadyDone_Energy.pdf) |
 | 020 | 2026-09-08 | History of Science | Cold Short | [020_2026.09.08_ColdShort_HistoryOfScience.pdf](reports/020_2026.09.08_ColdShort_HistoryOfScience.pdf) |
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
+| 023 | 2026-09-11 | Cross-Domain Synthesis | The Shape of the Worst Case | [023_2026.09.11_ShapeOfTheWorstCase_CrossDomain.pdf](reports/023_2026.09.11_ShapeOfTheWorstCase_CrossDomain.pdf) |
 
 ## Rotation state
 
@@ -51,10 +52,10 @@ last-covered. Ties among never-covered are broken by the order in
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
-| Cross-Domain Synthesis | 2026-09-04 | 2 |
 | Energy | 2026-09-07 | 2 |
 | History of Science | 2026-09-08 | 2 |
 | Geopolitics of Resources | 2026-09-09 | 2 |
+| Cross-Domain Synthesis | 2026-09-11 | 3 |
 
 ## Burned territory
 
@@ -418,6 +419,32 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Fisher 1934 to Rao 1965 to Patil and Rao 1978 lineage of weighted distributions <sub>(018)</sub>
 - Zero-size units being invisible to any reweighting - the class nobody attends <sub>(018)</sub>
 - Ways in now used up - the tram that was always late, and the paired-density panel <sub>(018)</sub>
+- Extreme value theory as a cross-domain skeleton - hydrology, insurance, materials failure, finance, lifespan <sub>(023)</sub>
+- The max-stability functional equation and Fisher-Tippett 1928 as the founding paper <sub>(023)</sub>
+- Gnedenko's 1943 rigorous proof, von Mises 1936 and Jenkinson's 1955 unification into the GEV <sub>(023)</sub>
+- The shape parameter xi as the single number that governs extrapolation past the record <sub>(023)</sub>
+- The return-level formula and the Gumbel return-level plot as a straight line <sub>(023)</sub>
+- The extrapolation fan - 100-year to 10,000-year gap of 1.20, 4.61 and 19.00 sigma at xi = -0.2, 0, +0.2 <sub>(023)</sub>
+- The decimation height sigma ln 10 = 2.303 sigma, constant height per decade of return period <sub>(023)</sub>
+- The 1953 North Sea flood, 1,835 Dutch deaths, 67 dike breaches and 10 per cent of GDP <sub>(023)</sub>
+- Van Dantzig's 1956 Econometrica cost-benefit dike model and its exponential exceedance law <sub>(023)</sub>
+- The Dutch 1/250 to 1/10,000 dike-ring standards and the 2017 Water Act risk-based replacement <sub>(023)</sub>
+- Peaks-over-threshold, Pickands 1975 and Balkema-de Haan 1974 sharing the same xi <sub>(023)</sub>
+- The Hill estimator and the bias-variance trade-off in threshold choice <sub>(023)</sub>
+- Weibull's 1939 Stockholm memoirs, the 1951 JAM paper, and xi = -1/m for the Weibull modulus <sub>(023)</sub>
+- The weakest-link size effect - m = 6 and a thousandfold volume keeping 0.316 of the strength <sub>(023)</sub>
+- Griffith 1921 flaws as the physics under the weakest-link statistics <sub>(023)</sub>
+- McNeil 1997 Danish fire losses, xi = 0.684 at a 20 MDKK threshold, alpha = 1.46, infinite variance <sub>(023)</sub>
+- The inverse cubic law - Gopikrishnan 1999 tail exponents 3.1 and 2.84, and no kurtosis <sub>(023)</sub>
+- Einmahl, Einmahl and de Haan 2019 - 285,000 Dutch deaths, endpoints 115.7 and 114.1 years <sub>(023)</sub>
+- Jeanne Calment's 122.45 years sitting outside a fitted finite endpoint <sub>(023)</sub>
+- Fisher and Tippett's own remark on slow Gaussian convergence, and Hall 1979's 1/log n rate <sub>(023)</sub>
+- Squaring the sample size halving the error - 0.00908 at 10^6 against 0.00449 at 10^12 <sub>(023)</sub>
+- The penultimate approximation - best shape -0.038 at n = 10^6 beating the exact limit 35-fold <sub>(023)</sub>
+- The extremal index theta and 1/theta as the mean cluster size <sub>(023)</sub>
+- The 2021 Pacific Northwest heat dome, Lytton's 49.6 C, and 4.6 C above the previous Canadian record <sub>(023)</sub>
+- The 26.03 per cent chance of a 100-year event in thirty years, and 50.5 per cent in seventy <sub>(023)</sub>
+- The 1953 flood night as a way in, and the anchored return-level fan as a figure <sub>(023)</sub>
 
 ## Backlog
 
@@ -537,9 +564,10 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 - Percolation proper - lattice thresholds, universality classes, and why the exponents do not care what the substance is
 - Renormalisation group as the reason unrelated systems share critical exponents
-- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
-- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
 - The renormalisation group as the reason unrelated systems share critical exponents
 - Percolation proper - lattice thresholds, universality classes, and substance-independent exponents
 - Berkson's bias and collider stratification as the other great sampling distortion
 - Survivorship bias in fund returns, building stock and the fossil record
+- The renormalisation group as the reason unrelated systems share critical exponents
+- Berkson's bias and collider stratification as the other great sampling distortion
+- Percolation proper - lattice thresholds, universality classes, and substance-independent exponents

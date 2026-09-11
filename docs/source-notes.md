@@ -759,6 +759,76 @@ a theorem, repointed at the two papers that actually established it, so the fix
 also improved the citations. Reference entries are the cheapest page-count lever
 in the format and the easiest to overlook.
 
+### Report 023: the twelfth blocked run — and a topic chosen to be self-verifying
+
+Twelve runs in a row (012-023) with all outbound HTTPS blocked. Confirmed in four calls —
+`curl` returned `CONNECT tunnel failed, response 403` for `arxiv.org`,
+`www.nature.com` and `www.noaa.gov`, and one `WebFetch` of an arXiv abstract
+returned `EGRESS_BLOCKED` — and then no further probing. Twenty-three searches
+supplied every fact; Python supplied every number; twenty sources were cited
+without opening one of them.
+
+The topic was picked for that condition rather than around it, and extreme
+value theory is close to the ideal case: the whole load-bearing content is one
+functional equation (max-stability) and the consequences of a single fitted
+parameter. **Every quantitative claim in the piece is a computation the run
+performed itself**, not a figure taken on trust from a summariser — the
+return-level fan (1.20, 4.61 and 19.00 sigma at shape -0.2, 0 and +0.2), the
+decimation height `sigma ln 10 = 2.303 sigma`, the Gaussian-maximum convergence
+table, and the penultimate fit. Two further checks did the work a fetched PDF
+would normally do:
+
+- **An identity that reconciles two sources who never cite each other.**
+  McNeil's fitted shape for Danish fire losses came back from search as 0.684
+  at a 20 MDKK threshold; a different search return, discussing the same
+  dataset, reported only that the tail index is "less than 2". `1/0.684 =
+  1.462` reproduces the second from the first. Neither number could be read in
+  its paper; together they are safe to print, and the infinite-variance claim
+  in the piece rests on the arithmetic rather than on either source.
+- **A published worked example reproduced from the theory.** A materials
+  reference returned "assuming m = 6, doubling the specimen size gives about
+  0.9 of the strength". The weakest-link law predicts `2**(-1/6) = 0.8909`.
+  That confirms both the reported number and that the shape convention in the
+  piece (`xi = -1/m`) is the same one the materials literature uses.
+
+Two cautions specific to this subject area. Search returns **1,835 and 1,836**
+interchangeably for the Dutch death toll of the 1953 North Sea flood; the
+larger count appears to include a death at sea, and the piece uses 1,835, which
+is what the sources that also give the 67 breaches and the ~200,000 hectares
+give. And search returns the Delta Commission's safety standard as 1/4,000,
+1/10,000 *and* 1/125,000, which looks like a contradiction and is not: the
+Commission rejected a uniform 1-in-125,000 as unaffordable and then set
+different standards per region, 1/10,000 for North and South Holland and
+1/4,000 elsewhere on the coast. **When three numbers come back for one
+standard, check whether the standard is actually plural before picking one.**
+
+What could not be established: van Dantzig's own numeric optimum from the 1956
+*Econometrica* paper. Four differently-phrased searches returned the model's
+structure and its policy descendants but never his result. It was dropped
+rather than guessed, and the piece cites him for the framework and the
+exponential exceedance fit only.
+
+### Toolchain: `pip` and `python3` can be different interpreters
+
+New and worth thirty seconds next run. In this container `pip` is
+`/usr/lib/python3/dist-packages/pip` bound to one 3.11 install while `python3`
+resolves to `/usr/local/bin/python3`, so a plain `pip install matplotlib`
+reports success and `python3 -c "import matplotlib"` still fails with
+`ModuleNotFoundError`. **Use `python3 -m pip install ...`** so the interpreter
+that runs the renderer is the one that gets the packages. Separately,
+`files.pythonhosted.org` timed out once mid-install and succeeded unchanged on
+retry — the registries are reachable under the egress block but not always
+fast.
+
+Also: the `pypdf` / `cryptography` `_cffi_backend` panic recorded below was
+**not** intermittent on this run. It failed identically on two consecutive
+invocations, so treat `pypdf` as unavailable rather than flaky and use
+`tools/render.py`'s own JSON page count, which is the enforced contract anyway.
+That removes the "find out what is on the last page first" lever from the
+9-to-8 page fight; the substitute is the renderer's `prose_words` figure, which
+this run used instead — trimming 91 words of prose cleared the length warning
+while the page count stayed at 8.
+
 ## Declines automated access — do not attempt to work around
 
 | Host | Behaviour | What to do instead |
