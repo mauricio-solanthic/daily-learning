@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**22 reports.** Next up: **Philosophy** as No. 023 — oldest last-covered date (2026-08-26).
+**23 reports.** Next up: **Climate & Sustainability** as No. 024 — oldest last-covered date (2026-08-27).
 
 ## Log
 
@@ -36,6 +36,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 020 | 2026-09-08 | History of Science | Cold Short | [020_2026.09.08_ColdShort_HistoryOfScience.pdf](reports/020_2026.09.08_ColdShort_HistoryOfScience.pdf) |
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
 | 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
+| 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
 
 ## Rotation state
 
@@ -46,7 +47,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Philosophy | 2026-08-26 | 1 |
 | Climate & Sustainability | 2026-08-27 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
@@ -56,6 +56,7 @@ last-covered. Ties among never-covered are broken by the order in
 | History of Science | 2026-09-08 | 2 |
 | Geopolitics of Resources | 2026-09-09 | 2 |
 | Economics | 2026-09-10 | 2 |
+| Philosophy | 2026-09-14 | 2 |
 
 ## Burned territory
 
@@ -293,6 +294,33 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Kydland and Prescott's time inconsistency as a real Newcomb problem with commitment as one-boxing <sub>(012)</sub>
 - Hofstadter's twenty-colleague prisoner's dilemma and superrationality <sub>(012)</sub>
 - Retire as an opening - the two boxes on a table, the perfect predictor <sub>(012)</sub>
+- Resultant moral luck, the control principle, and the gap between culpability and outcome <sub>(023)</sub>
+- The 1976 Aristotelian Society symposium - Williams pp. 115-135 and Nagel pp. 137-151 in the same supplementary volume <sub>(023)</sub>
+- Williams's Gauguin and retrospective justification by success <sub>(023)</sub>
+- Nagel's lorry driver with unchecked brakes and his drunk driver whose car swerves onto an empty sidewalk <sub>(023)</sub>
+- Nagel's four kinds - resultant, circumstantial, constitutive and causal luck <sub>(023)</sub>
+- Williams's postscript and his intention that "moral luck" read as an oxymoron <sub>(023)</sub>
+- Adam Smith's Theory of Moral Sentiments II.iii, the irregularity of sentiments, and the shadow of merit or demerit <sub>(023)</sub>
+- Smith's final-cause defence and the "every court of judicature would become a real inquisition" line <sub>(023)</sub>
+- Kant's jewel passage and the step-motherly nature of the Groundwork's first section <sub>(023)</sub>
+- The CDC BRFSS impaired-driving episode estimates - 112 million in 2010, 121 million in 2012, about 125 million now <sub>(023)</sub>
+- The episodes-over-rate-per-thousand identity recovering the US adult population to 233.8 and 239.6 million <sub>(023)</sub>
+- NHTSA's 12,429 alcohol-impaired-driving deaths in 2023, 30 per cent of road deaths, one every 42 minutes <sub>(023)</sub>
+- One death per 10,057 impaired-driving episodes, and one arrest per 155 <sub>(023)</sub>
+- The three-outcome table for a single impaired-driving episode <sub>(023)</sub>
+- Harm as a likelihood ratio - a posterior moving 0.10 to 0.92 while the non-event moves it to 0.0999 <sub>(023)</sub>
+- The precision-without-recall structure - catching one careless agent in a thousand <sub>(023)</sub>
+- The law of total variance applied to blame, Var(H) = E[c(1-c)] + Var(c) <sub>(023)</sub>
+- Correlation of 0.013 between an agent's true dangerousness and one episode's outcome <sub>(023)</sub>
+- The 1,950-episode, sixty-eight-year record needed before outcomes correlate 0.5 with culpability <sub>(023)</sub>
+- Zimmerman's scope-versus-degree distinction as the statistical reading of the residue <sub>(023)</sub>
+- Lewis's penal lottery and the risk of punishment as itself a punishment <sub>(023)</sub>
+- A ten-year sentence at one-in-10,057 as an expected 8.7 hours <sub>(023)</sub>
+- Model Penal Code 5.05(1) grading attempt equal to the completed offence <sub>(023)</sub>
+- Attempted murder's three-year floor against murder's mandatory life in England and Wales <sub>(023)</sub>
+- Kneer and Machery's within-subjects versus between-subjects asymmetry and the hindsight-bias reading <sub>(023)</sub>
+- Cushman's split between wrongness judgements tracking mental states and blame tracking causation <sub>(023)</sub>
+- Openings now used up - the survey ratio that nobody set out to compute <sub>(023)</sub>
 
 ### Climate & Sustainability
 
@@ -523,11 +551,13 @@ meant to build rather than restart, so prefer these over starting fresh.
 - The problem of induction, Goodman's grue, and why enumerative support is not a rule
 - Personal identity - fission, teleportation and what Parfit thought survival amounted to
 - Vagueness and the sorites paradox, from Eubulides to supervaluation
-- Moral luck - the 1976 Williams and Nagel symposium and what control has to do with blame
 - Reference and necessity - Kripke's causal-historical account against descriptivism
 - Aggregation and social choice - Arrow's theorem read as a philosophical result rather than an economic one
 - Free will, Frankfurt cases and the compatibilist reading of "could have done otherwise
 - The reference class problem and what a single-case probability could possibly mean
+- Vagueness and the sorites paradox, from Eubulides to supervaluation
+- The reference class problem and what a single-case probability could possibly mean
+- Aggregation and social choice - Arrow's theorem read as a philosophical result
 
 ### Climate & Sustainability
 
