@@ -1058,3 +1058,66 @@ boilerplate collision. And naming a numpy array `GRID` in a figure script shadow
 as matplotlib complaining that a 301-element float array "is not a valid value for color" —
 one glance at the traceback's array literal is enough, but only if you know to look for the
 shadow rather than for a palette bug.
+
+### Report 023: the twelfth blocked run — and a denominator that nearly shipped wrong
+
+Twelve in a row (012-023). Five `curl` probes this time, all `000`, and they are worth naming
+because they are the entire primary literature for a philosophy piece:
+`plato.stanford.edu`, `philpapers.org`, `arxiv.org`, `www.jstor.org` and
+`academic.oup.com`. The last is where the 1976 *Aristotelian Society Supplementary Volume*
+itself lives, so a report on moral luck was written without opening either of the two papers
+that created the subject. Add `onlinelibrary.wiley.com`, `compass.onlinelibrary.wiley.com`,
+`www.sciencedirect.com`, `link.springer.com`, `www.cambridge.org`, `pubmed.ncbi.nlm.nih.gov`
+and `crashstats.nhtsa.dot.gov` — every one of report 023's twenty sources was cited unread.
+Probe two or three hosts, then stop; the tables above still describe *site* behaviour, not
+reachability.
+
+The 014-022 rule held again, in its philosophy-shaped form: **pick a topic whose load-bearing
+content is an argument plus arithmetic on published counts.** Everything quantitative in
+report 023 is either three lines of Bayes or a variance decomposition on two published
+totals, and both were checked in Python before a word was written. Three checks did the work
+a fetched PDF would have done:
+
+- **Three independent internal identities inside the NHTSA release.** 12,429 alcohol-impaired
+  deaths out of 40,901 road deaths is 30.39 per cent against a reported "30 per cent";
+  525,600 minutes divided by 12,429 is 42.3 against a reported "every 42 minutes"; and the
+  7,494 impaired drivers among those deaths is 60.3 per cent against a reported "60%". A
+  figure that satisfies three separately-reported relations is not a summariser's invention.
+- **An identity that recovers a number the source never states.** The CDC's episode totals
+  and its rates per thousand adults are published side by side but never divided. 112e6/0.479
+  = 233.8 million and 121e6/0.505 = 239.6 million, which is the US adult population in 2010
+  and 2012 to a fraction of a per cent. Two survey years, two independent confirmations, one
+  division each. **When a source reports a total and a rate, divide them and see what
+  population falls out.**
+- **A Monte Carlo against the closed form.** Forty million lognormal agents reproduced
+  Var(c) = 1.699e-8 and corr(c, H) = 0.0131 against analytic 1.6988e-8 and 0.01307.
+
+**The mistake that nearly shipped, and how it was caught.** NHTSA's sentence reads "Of the
+12,429 people who died in alcohol-impaired-driving traffic crashes in 2023, there were 7,494
+drivers (60%) who were alcohol-impaired." A first pass read 7,494 as *impaired drivers
+involved in fatal crashes* and built the whole piece's central rate on it. It is not: it is
+impaired drivers **killed**, a subset of the 12,429 deaths, and the 60.3 per cent identity is
+what makes that unambiguous. The fix was to stop trying to count crashes at all and quote an
+exact ratio of two published totals instead — deaths per episode, 12,429/125e6 — flagged in
+the prose as an upper bound on the per-episode probability because one crash can kill several
+people. **When a reported count could be "involved" or "killed", check it against the
+percentage reported alongside it, and if the event you want is not directly counted, publish
+the ratio you can defend and say what it bounds.** Every downstream number and the figure had
+to be recomputed; doing it before drafting cost twenty minutes rather than a re-render.
+
+Two smaller notes. Search returned **1987** and **1989** for Lewis's "The Punishment That
+Leaves Something to Chance" (PhilPapers says 1987); the journal's own volume listing gives
+*Philosophy & Public Affairs* vol. 18, no. 1, Winter **1989**, pp. 53-67, and a second query
+naming the volume and issue settled it. And the FBI's DUI arrest count comes back almost
+entirely through law-firm and statistics-aggregator pages rather than from `cde.ucr.cjis.gov`
+— 804,926 for 2024 recurred across differently-worded queries and is used, but a UCR figure
+reached only through content farms deserves the caution report 010 recorded for commodity
+prices.
+
+One renderer note worth keeping. A draft at 3,133 prose words warned that the target is
+2,300-2,700; at 2,975 words, with the same table, figure and two display-math blocks, it
+rendered warning-free. The guidance band evidently scales with non-prose blocks, so **trim
+until the warning clears rather than to the literal band**. And a full-width figure placed at
+the top of a section left the preceding page half empty; moving it two paragraphs later,
+after the prose it illustrates rather than before, filled the page without changing the page
+count. That is a fourth lever for the page-count fight and the only one that is free.
