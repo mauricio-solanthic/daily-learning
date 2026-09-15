@@ -1121,3 +1121,80 @@ until the warning clears rather than to the literal band**. And a full-width fig
 the top of a section left the preceding page half empty; moving it two paragraphs later,
 after the prose it illustrates rather than before, filled the page without changing the page
 count. That is a fourth lever for the page-count fight and the only one that is free.
+
+### Report 024: the block is now routine, but the *toolchain* was the story
+
+Egress blocked again, confirmed in four calls and then dropped: `curl` returned
+`CONNECT tunnel failed, response 403` for `arxiv.org`, `www.ipcc.ch` and
+`acp.copernicus.org`, and `WebFetch` returned `EGRESS_BLOCKED` for
+`www.nature.com`, `essd.copernicus.org`, `www.usgs.gov` and `www.osti.gov`. Add
+those last four to the roll of hosts that are fine sites and unreachable
+sandboxes; `essd.copernicus.org` is the painful one, because it is fully open
+access and would have served five of this piece's eighteen sources in full.
+
+**The new thing to record is that the Python and Node environments were bare.**
+Reports 012-023 evidently ran in a container that already had them. This one had
+no `matplotlib`, no `markdown`, no `fontTools`, no `pypdf`, and no `playwright` —
+that is, neither the figure step nor the renderer could run at all. Budget for
+this. What worked:
+
+- `pip install` against `files.pythonhosted.org` **times out intermittently**,
+  and a single failure means nothing. `pip download --no-deps -d /tmp/wh <pkg>`
+  in a three-attempt retry loop, one package at a time, succeeded for every
+  package that a plain `pip install` had just failed on. Then
+  `pip install --no-index --find-links /tmp/wh ...` is instant and offline. Pull
+  `numpy pillow contourpy cycler kiwisolver pyparsing python-dateutil packaging`
+  explicitly, since `--no-deps` does not.
+- The PDF step wants **npm** `playwright`, not the Python package — see
+  `.github/workflows/ci.yml`, which is the authoritative list of what render.py
+  needs (`Markdown pypdf` via pip, `playwright@1.56.0` via npm). `npm install
+  --silent playwright@1.56.0` worked first time, and the sandbox's pre-installed
+  Chromium was picked up without `playwright install`.
+- `pypdf` imports **broken** here: a system `cryptography`/`pyo3` conflict panics
+  on import. Harmless — `render.py` counts pages by regex first and only falls
+  back to pypdf — but it means no reading the finished PDF back. `pdftoppm` is
+  also unavailable and `apt-get install poppler-utils` 404s. **To look at the
+  output, render with `--keep-html` and screenshot the HTML with the npm
+  playwright already installed.** That is the only visual check available, and it
+  is a good one.
+
+Research shape was the usual blocked-run shape, and cement was chosen precisely
+to survive it: calcination is stoichiometry, carbonation is a diffusion law, and
+both are Python rather than trust. Thirty searches, zero successful fetches, and
+every load-bearing number either derived or confirmed by an identity:
+
+- **The IPCC emission factor reproduced from atomic masses.** 0.646 x
+  (44.009/56.077) = 0.5070, against the tabulated 0.507 t CO2 per t clinker. A
+  default that falls out of three molar masses cannot have been hallucinated by a
+  summariser.
+- **A ratio recovered by division, as report 023 recommends.** Global cement
+  output and global cement process emissions are published separately and never
+  divided; 1.5 Gt / (4.0-4.2 Gt x 0.507) gives a clinker-to-cement ratio of
+  0.70-0.74, which brackets the industry's own reported figure.
+- **Three-way consistency on the UK inventory.** 1.48 Mt / 5.1 Mt = 29.0 per cent
+  against a reported "29 per cent", and a sink stated as 0.4 per cent of the
+  national total implies 370 Mt against DESNZ's 371 Mt provisional for 2024.
+  Three numbers from two unrelated sources, all confirmed at once.
+- **A disagreement worth printing rather than smoothing.** Guo 2021 gives 21.02
+  Gt cumulative uptake to 2019 and Niu 2025 gives 21.26 Gt to 2023 — 0.24 Gt
+  apart across four years in which annual uptake alone was about 3.2 Gt. When two
+  overlapping author teams cannot be reconciled by arithmetic, say so in the
+  piece; it was the honest version and it was more interesting than a single
+  number.
+
+One caution in the same family as report 013's GWP values. **Cumulative cement
+uptake comes back in at least two units and four vintages** — 4.5 GtC (Xi 2016),
+21.02 Gt CO2 (Guo 2021), 23.89 Gt CO2 (Wu 2024) and 21.26 Gt CO2 (Niu 2025) — and
+the offset percentages attached to them (43, 55, 52, 46) use each study's own
+emissions denominator, so they are not comparable to three significant figures.
+Convert everything to Gt CO2, tabulate with the period attached, and never quote
+"the" offset fraction as a single number. Note also that 16.5/0.43 = 38.4 Gt
+looks like it reproduces Andrew's 38.3 Gt for 1928-2018, and does not — different
+periods, coincidence, and it was cut before it shipped.
+
+Bibliography cross-checked cleanly once more, including two page ranges search
+does not volunteer until asked directly (ESSD 17, 2231-**2247**, and *Materials*
+17, no. 1, art. 101). Two items are cited without full volume detail on purpose:
+the 2026 `npj Materials Degradation` paper, whose volume and article number never
+resolved across three queries, and Aspdin's patent, where the number (5022) and
+date cross-checked but no full text was reachable.

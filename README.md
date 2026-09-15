@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**23 reports.** Next up: **Climate & Sustainability** as No. 024 — oldest last-covered date (2026-08-27).
+**24 reports.** Next up: **Operations Research** as No. 025 — oldest last-covered date (2026-08-31).
 
 ## Log
 
@@ -37,6 +37,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
 | 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
 | 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
+| 024 | 2026-09-15 | Climate & Sustainability | What the Kiln Borrows | [024_2026.09.15_WhatTheKilnBorrows_ClimateAndSustainability.pdf](reports/024_2026.09.15_WhatTheKilnBorrows_ClimateAndSustainability.pdf) |
 
 ## Rotation state
 
@@ -47,7 +48,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Climate & Sustainability | 2026-08-27 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
@@ -57,6 +57,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Geopolitics of Resources | 2026-09-09 | 2 |
 | Economics | 2026-09-10 | 2 |
 | Philosophy | 2026-09-14 | 2 |
+| Climate & Sustainability | 2026-09-15 | 2 |
 
 ## Burned territory
 
@@ -340,6 +341,22 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - New Zealand's split-gas target, the 2019 Zero Carbon Act, and the December 2025 cut to 14-24 per cent <sub>(013)</sub>
 - The Sum44 lagged-cumulative-sum metric as a 2025 alternative to GWP* <sub>(013)</sub>
 - Table of one methane source priced five ways under GWP100 and GWP* <sub>(013)</sub>
+- Calcination stoichiometry - CaCO3 to CaO plus CO2, 0.4397 t CO2 per t CaCO3 and 0.7848 per t CaO <sub>(024)</sub>
+- The IPCC 64.6 per cent lime default reproducing the 0.507 t CO2 per t clinker emission factor exactly <sub>(024)</sub>
+- Recovering the global clinker-to-cement ratio of about 0.72 from published cement output and process emissions <sub>(024)</sub>
+- Joseph Aspdin's 1824 patent 5022 and its phrase "until the carbonic acid is entirely expelled <sub>(024)</sub>
+- The 2.05 GJ/t calcination heat against the 1.75 GJ/t net theoretical heat of clinker formation, and the clinkering exotherm <sub>(024)</sub>
+- Van 't Hoff on CaCO3 - 1 bar equilibrium at dH/dS, and 517 C at 420 ppm ambient partial pressure <sub>(024)</sub>
+- Carbonation favoured by 111 kJ/mol at 298 K and 420 ppm - the kiln borrows rather than destroys <sub>(024)</sub>
+- The carbonation front as x equals k root t, and Sagues's 18-bridge Florida survey with median k of 1.4 mm per root-year <sub>(024)</sub>
+- The 2 k root t over d section-fraction rule, and the 10 mm render against the 300 mm column <sub>(024)</sub>
+- Four published uptake accounts disagreeing - Xi 2016, Guo 2021, Wu 2024, Niu 2025 <sub>(024)</sub>
+- Guo's 21.02 Gt to 2019 against Niu's 21.26 Gt to 2023, four years apart and 3 Gt of uptake missing <sub>(024)</sub>
+- The Global Carbon Budget's 10.1 versus 10.3 GtC with and without the cement carbonation sink <sub>(024)</sub>
+- Tuutti's 1982 initiation-and-propagation split, and 13.7 years to initiation with 30 years to cracking <sub>(024)</sub>
+- Portlandite at about 20 per cent of hardened paste, pH 12.5 falling below 9, and passive-film loss <sub>(024)</sub>
+- The UK's 2026 National Inventory Document entry - 1.48 Mt against 5.1 Mt process emissions and 371 Mt territorial <sub>(024)</sub>
+- The rebate-not-credit framing - cutting the clinker factor cuts the future sink in the same stroke <sub>(024)</sub>
 
 ### Operations Research
 
@@ -562,7 +579,9 @@ meant to build rather than restart, so prefer these over starting fresh.
 ### Climate & Sustainability
 
 - The carbon cycle's airborne fraction and why cumulative emissions predict temperature so linearly
-- Cement, calcination stoichiometry and the carbonation sink that quietly takes some of it back
+- Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
+- Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
+- Carbon border adjustment mechanisms and the measurement problem underneath them
 - Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
 - Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
 - Carbon border adjustment mechanisms and the measurement problem underneath them
