@@ -1121,3 +1121,73 @@ until the warning clears rather than to the literal band**. And a full-width fig
 the top of a section left the preceding page half empty; moving it two paragraphs later,
 after the prose it illustrates rather than before, filled the page without changing the page
 count. That is a fourth lever for the page-count fight and the only one that is free.
+
+## The ledger cannot see an unmerged pull request
+
+Recorded on 2026-09-16, after a scheduled run researched, wrote, rendered and was
+about to push a complete report 024 — cement calcination and the carbonation sink —
+and found `origin/report-024` already on the remote, carrying **the same sequence
+number, the same category, the same sub-topic and even the same figure filename**,
+pushed by the previous day's run as PR #20 and still awaiting review.
+
+This is a structural gap, not a mistake by either run. `ledger.py next` derives the
+sequence number and category from the front matter of reports **in the archive**, and
+nothing enters the archive until Mauricio merges. `ledger.py check` reads `burned:`
+lists from the same place. So both of the mechanisms that exist to stop the series
+repeating itself are blind to work in flight, and a run launched while the previous
+report's PR is still open will re-pick that report's number and, because the backlog
+for a category is ordered, very often its sub-topic too. The failure mode is worst
+exactly when it matters most: two pieces on the same subject, both claiming seq 24,
+and the release workflow tags `report-NNN`, so merging both would collide on the tag
+as well as the ledger.
+
+**What a run should do before anything else.** After `ledger.py next` prints a
+sequence number, check whether a branch or an open pull request already claims it:
+
+```bash
+git ls-remote --heads origin "report-$(printf %03d N)"   # and the unpadded form
+```
+
+If one exists, read its `src/` front matter before researching. If it covers the same
+ground, do not open a competing pull request — the second one cannot be merged
+without corrupting the archive, and a duplicate is worse than a skipped day. Say so
+in the notification, explicitly, and put anything the run learned that the pending
+report does not already contain into this file instead.
+
+**Why not just take the next free number.** Because the pending report might be
+rejected rather than merged, in which case 24 is still free and the series would have
+a hole; and because `ledger.py verify` checks that the archive and the ledger agree,
+which a speculative 025 written against an unmerged 024 would break. The sequence
+belongs to whatever merges.
+
+### Two craft notes from the run that did not ship
+
+Both are general and neither is recorded above, so they are kept here rather than
+lost with the draft.
+
+**Fabricated citations hide in the entries that feel too ordinary to check.** The
+reference block was drafted in one pass with bibliographic details written from
+memory, and four of nineteen entries were inventions: a *Thermochimica Acta* paper
+conjured to carry the 898 C calcination temperature, an author pair invented for a
+real *Buildings* review, an IOP article number guessed, and a *Journal of Cleaner
+Production* volume guessed. A verification pass run after drafting caught all four.
+Three were repaired by a second query; the fourth could not be attributed by any
+query, so the claim was dropped and replaced with the ~900 C precalciner temperature,
+which every source reports and which the argument did not need. Report 007 invented a
+co-author and report 020 invented four author lists, so this is the third time, and
+the pattern is now clear: the temptation is strongest for a handbook, a standard, or a
+constant that every undergraduate course quotes. **Draft the reference block only from
+verified returns, then verify every entry line by line before rendering.**
+
+**Place figure text in axes fractions, not data coordinates, on a log axis.** A label
+fought four rounds of collisions because its anchor was in data space while its
+rendered width is in display space, which makes it impossible to reason about where
+the box ends. Switching every `text` to `transform=ax.transAxes` and every `annotate`
+to `textcoords="axes fraction"` turned placement into arithmetic and fixed it in one
+pass. Two of the four earlier rounds were fixes that created a new overlap elsewhere,
+so re-render and look at the PNG after every move.
+
+One smaller note: `ledger.py verify` flags a false overlap on the words *over* and
+*times* in a `burned:` line, because some earlier report's arithmetic identity is
+written with them (013's "1,922 ppb times 2.75 Tg/ppb over 575 Tg/yr"). Spell the
+operation out in words instead.
