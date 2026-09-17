@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**23 reports.** Next up: **Climate & Sustainability** as No. 024 — oldest last-covered date (2026-08-27).
+**24 reports.** Next up: **Operations Research** as No. 025 — oldest last-covered date (2026-08-31).
 
 ## Log
 
@@ -37,6 +37,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
 | 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
 | 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
+| 024 | 2026-09-17 | Climate & Sustainability | The Rock Takes It Back | [024_2026.09.17_RockTakesItBack_ClimateAndSustainability.pdf](reports/024_2026.09.17_RockTakesItBack_ClimateAndSustainability.pdf) |
 
 ## Rotation state
 
@@ -47,7 +48,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Climate & Sustainability | 2026-08-27 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
@@ -57,6 +57,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Geopolitics of Resources | 2026-09-09 | 2 |
 | Economics | 2026-09-10 | 2 |
 | Philosophy | 2026-09-14 | 2 |
+| Climate & Sustainability | 2026-09-17 | 2 |
 
 ## Burned territory
 
@@ -340,6 +341,29 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - New Zealand's split-gas target, the 2019 Zero Carbon Act, and the December 2025 cut to 14-24 per cent <sub>(013)</sub>
 - The Sum44 lagged-cumulative-sum metric as a 2025 alternative to GWP* <sub>(013)</sub>
 - Table of one methane source priced five ways under GWP100 and GWP* <sub>(013)</sub>
+- Calcination stoichiometry - CaCO3 to CaO plus CO2, and the 44.01/56.08 = 0.7848 mass ratio <sub>(024)</sub>
+- Deriving the IPCC default emission factor 0.510 from 0.65 CaO times 0.7848 <sub>(024)</sub>
+- The 1.02 cement kiln dust correction and the 0.520 inventory factor <sub>(024)</sub>
+- Feeding 1.1601 kg of calcite for each kg of clinker at 65 per cent lime <sub>(024)</sub>
+- Baker's 1962 free-energy line, dG = 38,000 - 32.4 T cal/mol, and T = 1,173 K at one atmosphere <sub>(024)</sub>
+- The naive van't Hoff estimate at 844 C and its 55-kelvin gap from the measured 900 C <sub>(024)</sub>
+- Lowering the calcination temperature to about 808 C by diluting the kiln gas to a quarter atmosphere <sub>(024)</sub>
+- Calcination costing 2.06 GJ of a clinker tonne, closing to the 1.75 GJ textbook minimum <sub>(024)</sub>
+- The lime cycle - burn, slake, carbonate - and portland cement breaking the loop with C-S-H <sub>(024)</sub>
+- Fickian derivation of x = k sqrt(t) from a steady-state flux through the carbonated layer <sub>(024)</sub>
+- Computing k = 2.45 mm per root-year from D, atmospheric CO2 and stoichiometric binding capacity <sub>(024)</sub>
+- The 200 mm wall taking 1,600 years to carbonate through, against 144 years to reach 30 mm cover <sub>(024)</sub>
+- The cover-depth ceiling - 30 per cent of volume, 22.1 per cent of the process carbon <sub>(024)</sub>
+- Carbonation as both the sink and the durability failure mode, pH from 13 to below 9 <sub>(024)</sub>
+- Tuutti's initiation-propagation model as the shape of the whole argument <sub>(024)</sub>
+- Crushing a cubic metre to 20 mm rubble and reaching 67 per cent in five years <sub>(024)</sub>
+- The 73.5 per cent chemical ceiling as the carbonatable fraction over the kiln-dust factor <sub>(024)</sub>
+- Niu 2025's 21.26 Gt against 46.06 Gt of cumulative process emissions - about 46 per cent <sub>(024)</sub>
+- Xi 2016's composition of the sink - mortar 58.5, concrete 30.1, kiln dust 7.1, waste 4.0 per cent <sub>(024)</sub>
+- Xiao and Prentice 2026 putting ambient concrete carbonation at 0.23 Gt a year, under 10 per cent <sub>(024)</sub>
+- Van Roijen 2024's radiative-forcing discount of roughly 60 per cent for slow uptake <sub>(024)</sub>
+- The Global Carbon Budget subtracting a 0.2 GtC cement carbonation line from fossil emissions <sub>(024)</sub>
+- Brevik as the first industrial cement CCS plant, 400,000 tonnes a year, half the plant <sub>(024)</sub>
 
 ### Operations Research
 
@@ -561,11 +585,11 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 ### Climate & Sustainability
 
-- The carbon cycle's airborne fraction and why cumulative emissions predict temperature so linearly
-- Cement, calcination stoichiometry and the carbonation sink that quietly takes some of it back
 - Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
 - Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
 - Carbon border adjustment mechanisms and the measurement problem underneath them
+- Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
+- Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
 
 ### Operations Research
 

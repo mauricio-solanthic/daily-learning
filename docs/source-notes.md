@@ -1121,3 +1121,75 @@ until the warning clears rather than to the literal band**. And a full-width fig
 the top of a section left the preceding page half empty; moving it two paragraphs later,
 after the prose it illustrates rather than before, filled the page without changing the page
 count. That is a fourth lever for the page-count fight and the only one that is free.
+
+### Report 024: the thirteenth blocked run — and a coefficient computed instead of cited
+
+Thirteen in a row (012-024). Five `curl` probes, all `000` (`www.ipcc.ch`, `arxiv.org`,
+`essd.copernicus.org`, `www.usgs.gov`, `gmd.copernicus.org`), then five more on the hosts a
+cement piece specifically wants — `www.ipcc-nggip.iges.or.jp`, `ghgprotocol.org`,
+`www.osti.gov`, `www.epa.gov`, `www.cembureau.eu` — all `000`, and one `WebFetch` on
+`essd.copernicus.org` returning `EGRESS_BLOCKED`. Ten probes was five too many; the rule at the
+top of this file is right and this run should have stopped at three.
+
+**Two host groups worth naming for any climate or industrial-emissions piece.**
+`essd.copernicus.org` is the publisher of nearly the entire cement-carbon literature — Andrew's
+process-emission series, Guo 2021, Niu 2025, and the Global Carbon Budget itself — and it is
+open access, which makes its being blocked by the sandbox rather than the publisher especially
+expensive. Add `www.ipcc-nggip.iges.or.jp`, which hosts the 2006 Guidelines PDFs that every
+national inventory is built on, and `ghgprotocol.org`, which carries the cement calculation
+tools. Report 024 cited 20 sources without opening one.
+
+The 014-023 rule held, in its most literal form yet: **when a topic's central object is a
+stoichiometric ratio, you can just compute it.** Everything load-bearing in report 024 came out
+of molar masses, one published free-energy line and one diffusion balance. Four checks did the
+work a fetched PDF would have done, and three of them reproduce a published constant exactly:
+
+- **An inventory default recovered from two molar masses.** 44.009/56.077 = 0.78480 against the
+  IPCC's quoted 0.785; times 0.65 CaO gives 0.51012 against the quoted default of 0.510; times
+  the 1.02 kiln-dust factor gives 0.52032 against the quoted 0.52. The same arithmetic run
+  backwards gives 1.16012 tonnes of calcite per tonne of clinker against a quoted 1.1601, and
+  44.009/100.086 = 0.43971 and 44.009/84.313 = 0.52197 against the quoted 0.44 and 0.52. Six
+  separately-reported figures from one pair of atomic weights. **Search returned the IPCC default
+  attached to two different lime fractions (0.646 and 0.65) in different secondary sources, and
+  only the arithmetic settles which one actually produces 0.510** — it is 0.65, and the 0.646
+  figure belongs to a different (CSI/WBCSD) convention.
+- **A 1962 measurement recovered from two coefficients.** Baker's fit, dG = 38,000 - 32.4 T
+  cal/mol, gives T = 38,000/32.4 = 1,172.8 K = 899.7 C at one atmosphere — the handbook 900 C to
+  a fraction of a degree, from a paper on `pubs.rsc.org` that could not be opened. The same two
+  numbers then give 808 C at a quarter atmosphere, which is the precalciner's operating point.
+- **A gap that is a real physical fact rather than an error.** Naive van't Hoff on 298 K standard
+  values (dH = +179.0 kJ/mol, dS = 160.2 J/mol/K) gives 1,117 K = 844 C, 55 K below the measured
+  value. Worth checking before assuming a discrepancy is arithmetic: room-temperature
+  thermodynamic data a thousand degrees from room temperature is simply the wrong data.
+- **An engineering coefficient computed rather than fitted.** k = sqrt(2 D Cs / a) with
+  D = 1e-8 m2/s, Cs = 0.0177 mol/m3 at 425 ppm and a = 1,852 mol/m3 gives 2.45 mm/yr^0.5, inside
+  the 1-5 range that field measurements report. No fitted parameter anywhere.
+
+**The mistake that nearly shipped, and the identity that caught it.** A first pass computed the
+binding capacity `a` from 63 per cent CaO in the *cement* (189 kg/m3) while computing the process
+emission from 65 per cent CaO in the *clinker*. The re-uptake cap then came out at 100.4 per cent
+of the process emission, which is thermodynamically impossible — you cannot reabsorb more than
+you calcined. The error is that supplementary materials and limestone filler carry calcium that
+never went through a kiln, and limestone filler is already a carbonate. Fixing it to clinker CaO
+only makes the cap exactly `degree/CKD` = 0.75/1.02 = 73.5 per cent, an identity with no
+arithmetic in it at all. **When a ratio you compute comes out just over 100 per cent, the two
+sides are being measured on different bases** — and the corrected version is usually cleaner than
+the original.
+
+Two smaller notes. `pypdf` failed to import with the same `_cffi_backend` / pyo3
+`PanicException` the report-012 note records, and unlike that run it did **not** clear on a
+retry; `pip install --upgrade cffi` fixed it immediately (the `cryptography` upgrade in the same
+command failed on a Debian-installed RECORD file and did not matter). And matplotlib's mathtext
+cannot render `\sqrt` in TeX Gyre Pagella — an axis title of `$\sqrt{t}$` emits four
+`No TeX to Unicode mapping for '\__radicalbig__'` lines and draws nothing useful. Write the
+radical out in words in figure titles, or keep it in the Markdown where MathJax handles it.
+
+**What search did well:** bibliography, again. All 20 references had journal, volume, issue and
+page range confirmed, including a 1962 *J. Chem. Soc.* paper (pp. 464-470), a 1963 *Can. J. Chem.
+Eng.* paper (vol. 41, no. 4, pp. 170-173) and a July 2026 *Communications Sustainability* article
+that is three weeks old. **What search did badly:** the current atmospheric CO2 mixing ratio came
+back as both 422.80 ppm (NOAA marine boundary layer, 2024) and 427.09 ppm (2025) in the same
+answer, an implausible 4.3 ppm step. The piece uses "about 425 ppm" and says so; the sensitivity
+is a square root, so five ppm moves the carbonation coefficient by 0.6 per cent and nothing in
+the argument turns on it. **When a level series will not firm up and the result depends on its
+square root, quote the round number and note the insensitivity** rather than chasing a digit.
