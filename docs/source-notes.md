@@ -1191,3 +1191,101 @@ One smaller note: `ledger.py verify` flags a false overlap on the words *over* a
 *times* in a `burned:` line, because some earlier report's arithmetic identity is
 written with them (013's "1,922 ppb times 2.75 Tg/ppb over 575 Tg/yr"). Spell the
 operation out in words instead.
+
+### The hazard recurred on 2026-09-17, and the check above is not enough
+
+The run of 2026-09-17 hit the same collision a third day running: `ledger.py next`
+returned seq 24 and Climate & Sustainability again, the category backlog again led
+to cement, and `ledger.py check` again said CLEAR — because PR #20 is still open and
+PR #21, which records the hazard, is still open too. The run researched and wrote a
+complete report before discovering `origin/report-024` on a `git push`, which is
+one step later than the note above intends. So the check is written down but it is
+not yet in `SKILL.md`'s run order, and a run that follows the skill rather than this
+file will keep walking into it.
+
+**Do the probe before researching, not before pushing**, and probe the pull
+requests rather than only the branches — a branch can be deleted after a merge while
+an unmerged PR persists:
+
+```bash
+python3 tools/ledger.py next                      # get N
+git ls-remote --heads origin | grep -i "report-0*N"
+# and, when the GitHub tools are available, list open PRs and read their titles
+```
+
+The 2026-09-17 run followed the standing rule once it found the collision: it did not
+open a competing pull request, pushed its draft to a non-`report-NNN` branch so no
+release workflow can tag it, and put its findings here. Recording that the rule was
+followed matters as much as the rule, because the next run will want to know that a
+day with no report PR was a decision rather than a failure.
+
+### What the 2026-09-17 draft found that PR #20 does not contain
+
+Kept here rather than lost with the draft. The draft itself is on
+`claude/happy-maxwell-tgk6tt` with its figure and figure script, if any of it is worth
+folding into the pending report.
+
+**The IPCC clinker default is 0.510 and it comes from 0.65 lime, not 0.646.** Search
+returns both framings, in confident-sounding secondary sources, and they are not
+compatible. The arithmetic adjudicates: 44.009/56.077 = 0.78480, so 0.650 x 0.78480 =
+0.51012 and 0.646 x 0.78480 = 0.50698. The published Tier 1 default is 0.510 and the
+published kiln-dust-corrected figure is 0.52, and only the 0.65 fraction produces
+both (0.51012 x 1.02 = 0.52032). The 0.646 fraction produces 0.507 and 0.517, neither
+of which appears as a default anywhere. PR #20's report uses 0.507 from the 64.6 per
+cent fraction and describes it as reproducing the emission factor exactly, which is
+true of its own arithmetic but not of the IPCC's published number — worth a second
+look before that report merges. **Where two secondary sources give incompatible
+provenance for the same constant, recompute the constant from each and keep the one
+that reproduces the published value.**
+
+**The 900 C calcination temperature has a real, attributable source, and it is two
+coefficients.** The note above records that the 2026-09-16 draft invented a
+*Thermochimica Acta* citation for 898 C and then dropped the claim because nothing
+could be found to carry it. The source is E. H. Baker, "The calcium oxide-carbon
+dioxide system in the pressure range 1-300 atmospheres," *J. Chem. Soc.*, pp. 464-470,
+1962, whose fit is dG = 38,000 - 32.4 T cal/mol. Setting dG = 0 gives
+38,000/32.4 = 1,172.8 K = 899.7 C, the handbook value to a fraction of a degree, and
+the same two numbers give 808 C at the quarter-atmosphere partial pressure of a
+precalciner and 521 C at ambient. `pubs.rsc.org` declines the full text, but the two
+coefficients come back through search and the value they produce is its own
+verification. **A dropped claim is sometimes a search-phrasing problem rather than an
+unsourceable one: look for the fitted equation instead of the number it produces.**
+
+**The carbonation coefficient can be computed rather than fitted.** A steady-state
+flux balance through the carbonated layer gives k = sqrt(2 D Cs / a). With
+D = 1e-8 m2/s, Cs = 0.0177 mol/m3 at 425 ppm and a = 1,852 mol/m3 of binding capacity
+for 300 kg/m3 of cement, k = 2.45 mm per root-year — inside the 1-5 range that field
+surveys report, with no fitted parameter. That is a stronger footing for a carbonation
+piece than any single measured k, because it is reproducible.
+
+**A basis error that a sanity check caught.** Computing the binding capacity from CaO
+in the *cement* while computing the emission from CaO in the *clinker* gave a
+re-uptake ceiling of 100.4 per cent of the process emission, which is
+thermodynamically impossible — nothing can reabsorb more than was calcined. The cause
+is that supplementary cementitious materials and limestone filler carry calcium that
+never went through a kiln, and limestone filler is already a carbonate. Corrected to
+clinker CaO alone, the ceiling is exactly the carbonatable fraction over the kiln-dust
+factor, 0.75/1.02 = 73.5 per cent, with no arithmetic left in it. **When a ratio comes
+out just over 100 per cent, suspect two different bases rather than a slipped digit.**
+
+### Host and toolchain notes from 2026-09-17
+
+Thirteen blocked runs in a row (012-024). Ten probes, all `000` or `EGRESS_BLOCKED`:
+`www.ipcc.ch`, `arxiv.org`, `essd.copernicus.org`, `www.usgs.gov`,
+`gmd.copernicus.org`, `www.ipcc-nggip.iges.or.jp`, `ghgprotocol.org`, `www.osti.gov`,
+`www.epa.gov`, `www.cembureau.eu`. Ten was seven too many; three is the rule.
+
+| Host | Behaviour | Why it matters |
+|---|---|---|
+| `essd.copernicus.org` | `000` / `EGRESS_BLOCKED` — the sandbox, not the publisher | It publishes Andrew's cement process-emission series, Guo 2021, Niu 2025 and the Global Carbon Budget itself, all open access, so a climate piece cannot read its own primary literature even though none of it is paywalled. |
+| `www.ipcc-nggip.iges.or.jp` | `000` — the sandbox, not the IPCC | Hosts the 2006 Guidelines volume PDFs that every national greenhouse-gas inventory is built on. The Tier 1 defaults are quotable through search but the equations and their footnotes are not. |
+| `ghgprotocol.org` | `000` | Carries the cement calculation tools and their worked examples, which is where an emission factor's provenance is usually stated plainly. |
+
+Two toolchain notes. `pypdf` failed to import with the `_cffi_backend` /
+pyo3 `PanicException` that the report-012 note records, and unlike that run it did
+**not** clear on a retry; `pip install --upgrade cffi` fixed it in one command. (The
+`cryptography` upgrade in the same command failed against a Debian-installed RECORD
+file and turned out not to matter.) And matplotlib's mathtext cannot render `\sqrt`
+in TeX Gyre Pagella: an axis title of `$\sqrt{t}$` emits four
+`No TeX to Unicode mapping for '\__radicalbig__'` lines and draws nothing useful.
+Spell the radical out in words in figure text; MathJax handles it fine in the Markdown.
