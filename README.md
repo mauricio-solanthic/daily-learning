@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**23 reports.** Next up: **Climate & Sustainability** as No. 024 — oldest last-covered date (2026-08-27).
+**24 reports.** Next up: **Climate & Sustainability** as No. 025 — oldest last-covered date (2026-08-27).
 
 ## Log
 
@@ -37,6 +37,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 021 | 2026-09-09 | Geopolitics of Resources | The Cheapest Monopoly | [021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf](reports/021_2026.09.09_CheapestMonopoly_GeopoliticsOfResources.pdf) |
 | 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
 | 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
+| 024 | 2026-09-18 | Cross-Domain Synthesis | The Wall That May Not Be There | [024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf](reports/024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf) |
 
 ## Rotation state
 
@@ -51,12 +52,12 @@ last-covered. Ties among never-covered are broken by the order in
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
-| Cross-Domain Synthesis | 2026-09-04 | 2 |
 | Energy | 2026-09-07 | 2 |
 | History of Science | 2026-09-08 | 2 |
 | Geopolitics of Resources | 2026-09-09 | 2 |
 | Economics | 2026-09-10 | 2 |
 | Philosophy | 2026-09-14 | 2 |
+| Cross-Domain Synthesis | 2026-09-18 | 3 |
 
 ## Burned territory
 
@@ -474,6 +475,30 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - The Fisher 1934 to Rao 1965 to Patil and Rao 1978 lineage of weighted distributions <sub>(018)</sub>
 - Zero-size units being invisible to any reweighting - the class nobody attends <sub>(018)</sub>
 - Ways in now used up - the tram that was always late, and the paired-density panel <sub>(018)</sub>
+- Extreme value theory as a cross-domain skeleton spanning hydrology, insurance and materials failure <sub>(024)</sub>
+- The Fisher-Tippett-Gnedenko theorem, max-stability, and the three limiting families <sub>(024)</sub>
+- Jenkinson's 1955 unification into the generalised extreme value distribution and the single shape parameter xi <sub>(024)</sub>
+- The sign of xi as the whole question of whether a finite upper endpoint exists <sub>(024)</sub>
+- The upper endpoint mu - sigma/xi and the worked case that lands on exactly 5.00 m <sub>(024)</sub>
+- The three-curve return level comparison at mu = 3.00 m, sigma = 0.30 m - 23 cm apart at ten years, 4.46 m apart at ten thousand <sub>(024)</sub>
+- Increments per decade of rarity - constant sigma ln 10 at xi = 0, multiplicative 10^xi above, shrinking below <sub>(024)</sub>
+- The 1-in-T event over T years converging to 1 - 1/e = 0.6321, and 0.2603 over a thirty-year mortgage <sub>(024)</sub>
+- Emil Gumbel counting Weimar political murders, losing Heidelberg in 1932, and becoming the father of applied extreme value statistics <sub>(024)</sub>
+- Wemelsfelder's 1939 straight line on logarithmic paper as a knife-edge xi = 0 assumption <sub>(024)</sub>
+- Van Dantzig's 1956 Econometrica cost-benefit model for the Dutch Delta Committee <sub>(024)</sub>
+- The 1/125,000 economic optimum against the 1/10,000 legislated standard, and 115 cm built of 215 cm recommended <sub>(024)</sub>
+- The 1953 North Sea flood, 1,836 Dutch deaths, and design levels of 3.85, 5.00 and 6.00 m NAP at Hoek van Holland <sub>(024)</sub>
+- Weibull's weakest-link chain, the 1939 IVA paper and the 1951 Journal of Applied Mechanics paper <sub>(024)</sub>
+- The Weibull modulus m and the size effect sigma proportional to volume to the power -1/m <sub>(024)</sub>
+- Four decades of volume costing a factor of 6.31 in strength at m = 5 and 1.45 at m = 25 <sub>(024)</sub>
+- Weibull as a minimum problem and therefore the same theorem run upside down <sub>(024)</sub>
+- The generalised Pareto distribution, peaks over threshold, Pickands 1975 and Balkema-de Haan 1974 <sub>(024)</sub>
+- The Danish fire insurance data straddling xi = 0.5, the exact boundary of finite variance <sub>(024)</sub>
+- Hill's alpha of 2.01 at threshold 10 against a generalised Pareto xi of 0.684 at threshold 20 <sub>(024)</sub>
+- The penultimate approximation, xi_n = -1/(2 ln n), and the normal maximum that looks bounded at every finite n <sub>(024)</sub>
+- Gumbel approximation error for normal maxima still 2 per cent at a trillion observations <sub>(024)</sub>
+- The 2021 Lytton record of 49.6 C, 4.6 C above the previous Canadian mark, outside a fitted GEV's upper bound <sub>(024)</sub>
+- Framings now exhausted - the record that fell outside its own fitted curve, and the fanning return-level chart <sub>(024)</sub>
 
 ## Backlog
 
@@ -594,9 +619,9 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 - Percolation proper - lattice thresholds, universality classes, and why the exponents do not care what the substance is
 - Renormalisation group as the reason unrelated systems share critical exponents
-- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
-- Extreme value theory as a second cross-domain skeleton - hydrology, insurance, materials failure
 - The renormalisation group as the reason unrelated systems share critical exponents
 - Percolation proper - lattice thresholds, universality classes, and substance-independent exponents
 - Berkson's bias and collider stratification as the other great sampling distortion
 - Survivorship bias in fund returns, building stock and the fossil record
+- Percolation proper - lattice thresholds, universality classes and substance-independent exponents
+- The renormalisation group as the reason unrelated systems share critical exponents
