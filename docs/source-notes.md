@@ -1121,3 +1121,112 @@ until the warning clears rather than to the literal band**. And a full-width fig
 the top of a section left the preceding page half empty; moving it two paragraphs later,
 after the prose it illustrates rather than before, filled the page without changing the page
 count. That is a fourth lever for the page-count fight and the only one that is free.
+
+### Report 024: the thirteenth blocked run — and a summariser that inverted a theorem
+
+Thirteen in a row (012-024). Three `curl` probes (`arxiv.org`, `www.nature.com`,
+`www.usgs.gov`, all `000`) and one `WebFetch` (`www.nature.com`,
+`EGRESS_BLOCKED`), then stop. **Four host groups are worth naming for anything in
+extreme value statistics**, because between them they hold the entire primary
+literature of the field and every one is blocked by the sandbox rather than by the
+publisher: `projecteuclid.org` (Pickands 1975 in the *Annals of Statistics*,
+Balkema and de Haan 1974 in the *Annals of Probability*, Hill 1975), `www.cambridge.org`
+(Fisher and Tippett 1928, Cohen 1982, McNeil 1997 and Resnick 1997 in the *ASTIN
+Bulletin*), `onlinelibrary.wiley.com` (Jenkinson 1955, de Haan 1990) and
+`esd.copernicus.org` (the 2021 Pacific Northwest attribution paper). Add
+`www.econometricsociety.org` and `ir.cwi.nl`, which between them host van Dantzig's
+1956 *Econometrica* paper in two places. Report 024 cited 21 sources without
+opening one.
+
+The 014-023 rule held again and chose the topic: **pick a subject whose load-bearing
+content is a closed form plus its consequences.** Everything quantitative here came
+out of the generalised extreme value quantile function and three lines of algebra —
+the three-curve fan at $\mu$ = 3.00 m and $\sigma$ = 0.30 m, the 23 cm spread at ten
+years against 4.46 m at ten thousand, the upper endpoint landing on exactly 5.00 m,
+the $\sigma \ln 10$ = 0.691 m increment per decade of rarity, the Weibull size-effect
+factors, the penultimate shape. Four checks did the work a fetched PDF would have done:
+
+- **A closed form checked against a library implementation that parameterises it
+  differently.** The return-level formula was compared with `scipy.stats.genextreme`,
+  whose shape constant `c` is the negative of the conventional $\xi$. Agreement to
+  six decimals at three shapes and two return periods — and getting the sign wrong is
+  the single easiest error to make in this subject, so the cross-check is worth the
+  three lines it costs.
+- **An asymptotic formula confirmed by simulation across two orders of magnitude.**
+  Fisher and Tippett's penultimate shape $-1/(2\ln n)$ was checked against GEV fits to
+  60,000 simulated maxima at each of eight block sizes from 100 to 316,228. Fitted
+  shapes ran $-0.095$ to $-0.038$ against a theory running $-0.109$ to $-0.039$;
+  agreement is poor below $n \approx 300$, which is what "asymptotic" means, and
+  excellent above it. That is also the figure.
+- **An arithmetic identity inside a pair of reported tail-index estimates.** McNeil's
+  Danish fire result is quoted as $\xi = 0.684$ *or* $\alpha = 1.46$, and a second
+  source gives $\xi = 0.6928$ *or* $\alpha = 1.4435$. Both pairs satisfy
+  $\alpha = 1/\xi$ to four digits, which is what made two numbers from two summarisers
+  safe to print. The Hill-based figure at a lower threshold, $\alpha \approx 2.01$,
+  then straddles $\xi = 1/2$ with them — and **two estimates disagreeing is the
+  finding**, as in report 021, not a reason to pick one.
+- **A high-precision recomputation replacing a floating-point artifact.** The error in
+  the Gumbel approximation to normal maxima came back as 0.9994 at $n = 10^{100}$ in
+  double precision — obviously wrong, since the sequence runs 0.059, 0.048, 0.031,
+  0.020 at $n$ = $10^2$ to $10^{12}$. `mpmath` at 250 digits gives 0.0046. **A "result"
+  that breaks a monotone sequence is an underflow, not a discovery**; `scipy.stats.norm.cdf`
+  returns values indistinguishable from 1 well before the answer stops mattering.
+
+**One attribution trap where a second query did not merely correct the summariser but
+reversed it.** Asked about Fisher and Tippett's penultimate approximation, a first
+query returned that for the normal "it is better to avoid the ultimate approximation
+(to the Gumbel) and use instead the penultimate approximation (**to the Fréchet**)."
+That is backwards: the penultimate shape is $\xi_n \approx -1/(2\ln n) < 0$, which is
+Weibull-type and bounded, and a differently-worded query said so explicitly and gave
+the formula. The simulation then settled it independently. **When a claim is about a
+sign, re-query for the formula rather than the prose** — and if the quantity is
+computable, compute it, because that is the one check a summariser cannot fake.
+
+**Two titles deliberately not printed, for the reason report 020 recorded.** Searches
+confirm that P. J. Wemelsfelder published the founding Dutch storm-surge frequency
+analysis in *De Ingenieur* in 1939, and describe its content consistently across three
+phrasings, but no query returned the Dutch title from a primary record. The reference
+therefore gives a description of the article rather than a guessed title, and says so
+in the entry. The same caution applies to the co-authors of the CPB dike-ring paper:
+search attaches two further names to it, none confirmed, so the entry carries
+Eijgenraam alone.
+
+**One chronology that a second query untangled, and that would have shipped as a
+false causal claim.** A first pass had van Dantzig's cost-benefit optimum (one in
+125,000 per year, about 6 m at Hoek van Holland) being overruled by the Dutch
+legislature. The sequence is the other way round in part: the *Econometrica* paper is
+1956 from a 1954 presentation, the legal standard of one in 10,000 and a 5.00 m design
+level was fixed in 1958, and the 6 m figure comes from a 1960 report. The secondary
+literature also states plainly that his calculation was "one of the arguments, but not
+the most important one" for the 1958 standard. The piece now prints the two pairs as
+reported and says the economics was one argument among several. **When two numbers
+come from documents of different dates, check the dates before writing a "but".**
+
+**One reconstruction deliberately abandoned.** The two reported height-frequency pairs
+(5.00 m at $10^{-4}$, 6.00 m at $8 \times 10^{-6}$) imply a decimation height of
+1.00/log₁₀(12.5) = 0.91 m, which is about three times the figure the Dutch literature
+gives for Hoek van Holland. Either the pairs come from different frequency curves or
+one of them is referenced differently, and neither could be checked. So the piece uses
+both pairs only as reported and builds its own worked example on stated parameters
+instead. **A derived constant that disagrees threefold with the field's own number is
+not a finding, it is a warning that two figures do not share a curve** — report 021's
+lesson, arrived at from the other direction.
+
+What search did well again: **bibliography**, with all 21 references confirmed by a
+second differently-worded query including a 1928 Cambridge proceedings paper, a 1943
+paper in French in the *Annals of Mathematics*, a 1939 Swedish academy monograph and a
+1982 *Advances in Applied Probability* article. Issue numbers were the exception and
+were dropped rather than guessed for Philip et al. 2022 and Cohen 1982. What it did
+badly: **a specific shape-parameter estimate attached to a specific paper**. Four
+queries for McNeil's own reported $\xi$ returned 0.5, 0.684 and 0.6928 at three
+different thresholds, and only the $\alpha = 1/\xi$ identity made any of them usable.
+
+One figure note and one toolchain note. A double-headed annotation arrow drawn at
+$T = 10^4$ passed its vertical stem straight through a series label reading
+"$\xi = -0.15$", turning the minus into what reads unmistakably as a plus in the
+rendered PDF; neither the renderer nor the contract test catches a sign that is
+correct in the source and wrong on the page, so **crop the figure and look at every
+label that contains a minus sign**. And `mpmath` is not preinstalled, `pip install
+mpmath` works, and the `pypdf` / `cryptography` panic recorded above did not recur on
+this container — `pip install numpy scipy matplotlib Markdown pypdf brotli fontTools
+pypdfium2` was enough, with `pip install --upgrade cffi` run as a precaution.
