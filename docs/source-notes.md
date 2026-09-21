@@ -1230,3 +1230,116 @@ label that contains a minus sign**. And `mpmath` is not preinstalled, `pip insta
 mpmath` works, and the `pypdf` / `cryptography` panic recorded above did not recur on
 this container — `pip install numpy scipy matplotlib Markdown pypdf brotli fontTools
 pypdfium2` was enough, with `pip install --upgrade cffi` run as a precaution.
+
+### Report 025: the fourteenth blocked run — and a topic chosen for its reversibility
+
+Fourteen in a row (012-025). Four `curl` probes (`arxiv.org`, `www.nature.com`,
+`www.iea.org`, `essd.copernicus.org`, all `000`) and one `WebFetch`
+(`essd.copernicus.org`, `EGRESS_BLOCKED`), then stop. **`essd.copernicus.org` is
+worth naming for any climate or carbon-accounting piece**, because it is the
+single most useful host the series has yet been unable to reach: *Earth System
+Science Data* publishes the Global Carbon Budget itself and, for this topic,
+four of the five cement-carbonation accounts, all open access, all with their
+numbers in the abstract. It is blocked by the sandbox, not by Copernicus. Add
+`www.ipcc-nggip.iges.or.jp` (the 2006 Guidelines volumes and the EFDB editorial
+notes), `www.ipcc.ch`, `www.iea.org`, `pmc.ncbi.nlm.nih.gov` (recorded since
+report 013 and still the host that would have served three of this piece's
+sources in full) and `www.mdpi.com`. Report 025 cited 19 sources without opening
+one.
+
+The 014-024 rule held and did the topic selection: **pick a subject whose
+load-bearing content is a reaction equation and its consequences.** Everything
+quantitative in report 025 came out of four molar masses, three formation
+enthalpies and Fick's law — the 0.785 lime factor, both IPCC clinker emission
+factors, the 2.08 GJ/t calcination heat, the twenty orders of magnitude of
+atmospheric supersaturation, the carbonation coefficient, the four element
+geometries. Five checks did the work a fetched PDF would have done:
+
+- **Two competing published constants reproduced as the same calculation.** The
+  clinker emission factor circulates as both 0.5070 and 0.5101 t CO2/t clinker,
+  and search returns them from different pages as though they were rival
+  estimates. They are 0.646 and 0.650 times 44.009/56.077, and both reproduce to
+  four decimal places. **When two reported values differ in the third digit, try
+  running the same formula on the two default inputs before treating them as a
+  disagreement.**
+- **An internal identity inside one paper's three headline numbers.** Huang et
+  al. 2023 report 22.9 Gt absorbed, 41.6 Gt emitted and an offset of 55.1 per
+  cent. 22.9/41.6 = 55.05. Three numbers from one abstract, none of them
+  readable at source, all confirmed at once.
+- **A unit conversion confirming two differently-phrased returns.** The Global
+  Carbon Budget's cement carbonation sink came back as "0.2 GtC yr-1" from one
+  query and "above 700 Mtons/year in 2023" from another. 0.2 times 3.664 is
+  0.733. Same lesson as report 021's Hall-Petch coefficient: **a quantity quoted
+  in two unit systems is a free cross-check.**
+- **A first-principles derivation landing inside the measured band.** The
+  carbonation coefficient was derived from Fick's law with an effective
+  diffusivity of 5e-8 m2/s, the atmospheric CO2 concentration and a lime binding
+  capacity of 3,480 mol/m3, giving 4.0 mm per root year against a field range of
+  roughly 2 to 6 for ordinary structural concrete. The derivation is what made
+  it safe to use a coefficient whose provenance search would not settle (see
+  below).
+- **A published theoretical minimum recovered from a heat balance.** Calcination
+  alone is 2.08 GJ/t clinker; the alite-forming reaction gives back about 0.30;
+  net 1.77 against a published theoretical floor of roughly 1.75. The same
+  balance run on pure clinker phases returns 1,848 and 1,343 kJ/kg for alite and
+  belite against reported figures of 1,810 and 1,350 — 2.1 and 0.5 per cent.
+  Two reported constants confirmed at once by arithmetic on standard formation
+  enthalpies.
+
+**One number that would not firm up, and the derivation that replaced it.** The
+carbonation coefficient k = 3.75 mm per root year is quoted by several secondary
+pages as "the mean for in-service structures up to 79 years old", but no query
+attached it to a citable paper — the returns were an ALCONPAT article, a
+ResearchGate table and two machine-learning preprints, none of which could be
+established as the origin. So the piece cites the *model* (Tuutti 1982, fib
+Bulletin 34) rather than the constant, prints the field range instead of the
+point value, and derives 4.0 from Fick's law to show the worked example sits in
+the right place. Same move as report 021's break-even: **choose the quantity
+that does not need the unsourceable input.** The figure still uses 3.75 for the
+worked geometries, and says so on its face rather than attributing it.
+
+**One equilibrium temperature deliberately left out.** Search returns 898 C, 850
+C and 830 C for the temperature at which calcium carbonate decomposes at one
+atmosphere of CO2, and the elementary calculation from standard data gives 844 C
+(856 C with a constant-Cp correction). The gap between the calculation and the
+most-quoted figure could not be resolved from search, so the piece never states
+a decomposition temperature at all — it needs the *enthalpy*, which cross-checks
+cleanly, not the temperature. **When a derived number disagrees with the
+most-quoted one and the disagreement cannot be explained, check whether the
+argument needs the number before trying to fix it.**
+
+**Two shares from two papers, and the ratio printed as a range.** The piece's
+central claim — mortar is about a quarter of cement use and about half of the
+carbonation sink — rests on uptake shares from Huang et al. 2023 (concrete 30.1
+per cent, mortar 58.5) and use shares from Niu et al. 2025 (concrete ~73 per
+cent, mortar ~24). Dividing across the two papers gives mortar 5.9 times as much
+uptake per tonne of cement; using the 2025 paper's own most-recent-decade mortar
+share of 48.0 per cent gives 3.6. Both are defensible and they are not the same
+number, so the piece prints "between three and a half and six times" and names
+the disagreement. The claim that needs no division — a quarter of the cement,
+half of the sink — is directly reported by both papers and is what the headline
+rests on.
+
+Bibliography cross-checked cleanly again, which is now the thirteenth run to say
+so: all five carbonation accounts had first author, journal, volume and page
+range confirmed by a second differently-worded query, including two whose author
+lists a first query returned only as "et al." (Huang et al. 2023, ESSD 15,
+4947-4958; Niu et al. 2025, ESSD 17, 2231-2247). Three references are cited by
+title with no author list, per report 020's rule, because no query established
+one: the IOP minimum-energy paper, the SINTEF demolition report and the IVL
+report for CEMBUREAU.
+
+One figure note and one repo-mechanics note. The `\sqrt` mathtext warning
+recorded under report 016 fired again on an axis annotation; `$x = k\,t^{1/2}$`
+renders identically and silently, and is the fix to reach for without
+experimenting. And `ledger.py verify` flagged a false overlap between 020 and
+025 on *against / heat / released*, from a burned line reading "less 0.30 GJ/t
+released by alite formation, against a published theoretical minimum"; rewording
+it to "minus the 0.30 GJ/t exotherm of alite formation, reaching a published
+theoretical floor" cleared it — the third run to hit this and the third time
+rewording the line, not the content, was the fix.
+
+Toolchain, unchanged and confirmed a sixth time on a fresh container: `pip
+install numpy scipy matplotlib Markdown pypdf brotli fontTools pypdfium2` then
+`pip install --upgrade cffi`, and `npm install playwright@1.56.0` with no
+`playwright install`. The pypdf / `cryptography` panic did not recur.
