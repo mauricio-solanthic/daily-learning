@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**24 reports.** Next up: **Climate & Sustainability** as No. 025 — oldest last-covered date (2026-08-27).
+**25 reports.** Next up: **Operations Research** as No. 026 — oldest last-covered date (2026-08-31).
 
 ## Log
 
@@ -38,6 +38,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 022 | 2026-09-10 | Economics | The Star Nobody Can See | [022_2026.09.10_StarNobodyCanSee_Economics.pdf](reports/022_2026.09.10_StarNobodyCanSee_Economics.pdf) |
 | 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
 | 024 | 2026-09-18 | Cross-Domain Synthesis | The Wall That May Not Be There | [024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf](reports/024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf) |
+| 025 | 2026-09-21 | Climate & Sustainability | The Kiln Runs Backwards | [025_2026.09.21_KilnRunsBackwards_ClimateAndSustainability.pdf](reports/025_2026.09.21_KilnRunsBackwards_ClimateAndSustainability.pdf) |
 
 ## Rotation state
 
@@ -48,7 +49,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Climate & Sustainability | 2026-08-27 | 1 |
 | Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
@@ -58,6 +58,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Economics | 2026-09-10 | 2 |
 | Philosophy | 2026-09-14 | 2 |
 | Cross-Domain Synthesis | 2026-09-18 | 3 |
+| Climate & Sustainability | 2026-09-21 | 2 |
 
 ## Burned territory
 
@@ -341,6 +342,24 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - New Zealand's split-gas target, the 2019 Zero Carbon Act, and the December 2025 cut to 14-24 per cent <sub>(013)</sub>
 - The Sum44 lagged-cumulative-sum metric as a 2025 alternative to GWP* <sub>(013)</sub>
 - Table of one methane source priced five ways under GWP100 and GWP* <sub>(013)</sub>
+- Calcination of limestone, 0.785 kg of carbon dioxide per kg of lime, and the IPCC default clinker factor of 0.510 <sub>(025)</sub>
+- Reproducing both IPCC clinker emission factors, 0.5070 and 0.5101, from the 64.6 and 65 per cent lime defaults <sub>(025)</sub>
+- The clinker energy balance - 2.07 GJ/t of calcination minus the 0.30 GJ/t exotherm of alite formation, reaching a published theoretical floor near 1.75 <sub>(025)</sub>
+- Equilibrium carbon dioxide pressure over calcium carbonate at ambient temperature, and twenty orders of magnitude of atmospheric supersaturation <sub>(025)</sub>
+- The diffusion-limited carbonation front and its advance as k times the root of elapsed time <sub>(025)</sub>
+- Deriving the carbonation coefficient from Fick's law, effective diffusivity and lime binding capacity, landing on the measured band <sub>(025)</sub>
+- Mortar as a quarter of cement use and half of the carbonation sink, and the surface-to-volume explanation <sub>(025)</sub>
+- The four-geometry comparison - 10 mm bed joint, 20 mm render, 200 mm slab, 1 m raft, at 7, 28, 711 and 17,778 years to full carbonation <sub>(025)</sub>
+- The five published cumulative sink accounts - Xi 2016, Guo 2021, Huang 2023, Wu 2024, Niu 2025 - spanning 16.5 to 23.9 Gt and 43 to 55 per cent <sub>(025)</sub>
+- The internal identity 22.9 over 41.6 reproducing a reported 55.1 per cent offset <sub>(025)</sub>
+- The cement carbonation sink as a Global Carbon Budget line item of 0.2 GtC a year, cross-checked through the carbon-to-carbon-dioxide factor <sub>(025)</sub>
+- The ceiling argument - full carbonation returns the calcination carbon dioxide mole for mole and never the fuel carbon dioxide <sub>(025)</sub>
+- Under exponential growth exactly half of cumulative output dates from within the last doubling time, and cement's 2003-2013 doubling <sub>(025)</sub>
+- Carbonation-induced depassivation, pore solution falling from pH 13 to below 9, and cover as a diffusion delay line <sub>(025)</sub>
+- Eurocode 2 durability cover of 25 mm for a fifty-year life reproduced by the root-time law at k near 3.75 <sub>(025)</sub>
+- Demolition and crushing as the accelerant, and the sink being largest when the structure is destroyed <sub>(025)</sub>
+- The accounting asymmetry - calcination counted in every national inventory, carbonation counted in none <sub>(025)</sub>
+- Openings now used up - the two-hundredth anniversary of the Portland cement patent as a way in <sub>(025)</sub>
 
 ### Operations Research
 
@@ -586,11 +605,11 @@ meant to build rather than restart, so prefer these over starting fresh.
 
 ### Climate & Sustainability
 
-- The carbon cycle's airborne fraction and why cumulative emissions predict temperature so linearly
-- Cement, calcination stoichiometry and the carbonation sink that quietly takes some of it back
 - Nitrous oxide, the stratosphere, and the one greenhouse gas with no substitute in agriculture
 - Sea-level commitment - thermosteric expansion, ice-sheet lag, and what is already owed
 - Carbon border adjustment mechanisms and the measurement problem underneath them
+- Supplementary cementitious materials as a supply-constrained decarbonisation lever, and what happens when blast furnaces close
+- Enhanced rock weathering, the same carbonation chemistry run on basalt, and its measurement problem
 
 ### Operations Research
 
