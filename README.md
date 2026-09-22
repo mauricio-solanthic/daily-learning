@@ -8,7 +8,7 @@ print-quality IEEE-cited PDF in a fixed house format.
      reports/. Regenerate with:  python3 tools/ledger.py index
      To change what the ledger says, change the report's front matter. -->
 
-**25 reports.** Next up: **Operations Research** as No. 026 — oldest last-covered date (2026-08-31).
+**26 reports.** Next up: **Physics** as No. 027 — oldest last-covered date (2026-09-01).
 
 ## Log
 
@@ -39,6 +39,7 @@ print-quality IEEE-cited PDF in a fixed house format.
 | 023 | 2026-09-14 | Philosophy | The Sidewalk Was Empty | [023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf](reports/023_2026.09.14_SidewalkWasEmpty_Philosophy.pdf) |
 | 024 | 2026-09-18 | Cross-Domain Synthesis | The Wall That May Not Be There | [024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf](reports/024_2026.09.18_WallMayNotBeThere_CrossDomain.pdf) |
 | 025 | 2026-09-21 | Climate & Sustainability | The Kiln Runs Backwards | [025_2026.09.21_KilnRunsBackwards_ClimateAndSustainability.pdf](reports/025_2026.09.21_KilnRunsBackwards_ClimateAndSustainability.pdf) |
+| 026 | 2026-09-22 | Operations Research | A Price Instead of a Rule — Lagrangian Relaxation and the Art of Choosing What to Break | [026_2026.09.22_PriceInsteadOfRule_OperationsResearch.pdf](reports/026_2026.09.22_PriceInsteadOfRule_OperationsResearch.pdf) |
 
 ## Rotation state
 
@@ -49,7 +50,6 @@ last-covered. Ties among never-covered are broken by the order in
 
 | Category | Last covered | Times run |
 |---|---|---|
-| Operations Research | 2026-08-31 | 5 |
 | Physics | 2026-09-01 | 3 |
 | Quantitative Finance | 2026-09-02 | 2 |
 | Energy | 2026-09-07 | 2 |
@@ -59,6 +59,7 @@ last-covered. Ties among never-covered are broken by the order in
 | Philosophy | 2026-09-14 | 2 |
 | Cross-Domain Synthesis | 2026-09-18 | 3 |
 | Climate & Sustainability | 2026-09-21 | 2 |
+| Operations Research | 2026-09-22 | 6 |
 
 ## Burned territory
 
@@ -409,6 +410,29 @@ Spent, in any reframing. A loose collision still counts. Check a candidate with
 - Branch-and-price and why you cannot branch on a pattern variable <sub>(015)</sub>
 - Airline crew pairing as set partitioning with billions of candidate pairings <sub>(015)</sub>
 - Openings now spent - the mill reel and the order book of widths <sub>(015)</sub>
+- Lagrangian relaxation as pricing a constraint rather than enforcing it, and the Lagrangian function L(u) <sub>(026)</sub>
+- Weak duality for integer programs - any non-negative multiplier vector yields a valid bound <sub>(026)</sub>
+- The Lagrangian dual function as the lower envelope of finitely many affine functions, hence concave and piecewise linear <sub>(026)</sub>
+- The subgradient of the dual function equals the constraint violation at the current multipliers <sub>(026)</sub>
+- The generalized assignment instance behind the figures - 3 lines, 6 orders, 729 assignments, 183 feasible, z_IP 104, z_LP 93.2, z_LD 102, and 0.815 of the LP gap closed <sub>(026)</sub>
+- The single fractional job in the LP relaxation, split 0.1 and 0.9 across two lines <sub>(026)</sub>
+- The one-price dual with 326 affine pieces, its maximum 2719/27 at mu = 10/27, slope +10 left and -17 right <sub>(026)</sub>
+- Warm-starting multipliers at each job's cheapest cost, which empties every knapsack and returns the sum of cheapest costs <sub>(026)</sub>
+- Subgradient ascent being non-monotone - 60 of 199 steps lowering the value, and keeping the running maximum <sub>(026)</sub>
+- Polyak's step rule with a known upper bound, and the divergent-but-vanishing step-size condition <sub>(026)</sub>
+- The subproblem answer at optimal multipliers being infeasible - two of six orders left undone at u = (17, 14, 25, 26, 27, 20) <sub>(026)</sub>
+- The non-zero duality gap for integer programs, and Lagrangian relaxation as a bounding device inside branch-and-bound rather than a solver <sub>(026)</sub>
+- Geoffrion's 1974 theorem that the Lagrangian dual equals the linear program over the convex hull of the retained set <sub>(026)</sub>
+- The integrality property and the rule that a subproblem with an integral polytope gains nothing over the LP bound <sub>(026)</sub>
+- The counterintuitive corollary - keep the hard constraints, dualize the easy ones <sub>(026)</sub>
+- Hugh Everett III as author of the 1963 generalized Lagrange multiplier paper while at the Weapons Systems Evaluation Division <sub>(026)</sub>
+- Held and Karp's 1-tree relaxation, degree constraints dualized, and the branch-and-bound to sixty-four cities <sub>(026)</sub>
+- The Held-Karp bound equalling the subtour-elimination LP optimum, and the 0.8 per cent and 2 per cent empirical gaps <sub>(026)</sub>
+- Lagrangian decomposition and variable splitting (Guignard and Kim 1987) as the escape from the integrality property <sub>(026)</sub>
+- Unit commitment's switch from Lagrangian relaxation to mixed-integer programming at PJM in 2005, and the MISO savings figures <sub>(026)</sub>
+- Dual decomposition reappearing in natural-language parsing (Rush, Sontag, Collins and Jaakkola 2010) <sub>(026)</sub>
+- Bundle and volume methods as the successors to plain subgradient ascent <sub>(026)</sub>
+- Openings now spent - the contract shop, its six orders and three lines, and the greedy schedule that overloads a line <sub>(026)</sub>
 
 ### Quantitative Finance
 
@@ -617,11 +641,11 @@ meant to build rather than restart, so prefer these over starting fresh.
 - Interior-point methods developed properly
 - Matching theory and market design
 - Stochastic programming and robust optimization
-- Unit commitment as a mixed-integer problem
-- Semidefinite programming and relaxation hierarchies
-- Lagrangian relaxation and the subgradient method as the other route to the same bound
 - Cutting planes and the travelling salesman problem, with the separation oracle as the mirror of the pricing oracle
 - Bin packing approximation algorithms - first-fit-decreasing and the asymptotic PTAS
+- Cutting planes and the travelling salesman problem, with the separation oracle in place of the pricing oracle
+- Stochastic programming, scenario decomposition and progressive hedging
+- Matching theory, deferred acceptance and market design
 
 ### Quantitative Finance
 
